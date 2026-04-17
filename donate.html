@@ -1,609 +1,249 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Donate — Mo for Toronto</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,700;0,900;1,900&family=Barlow:wght@400;500;700&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --blue:    #0A3D8F;
-      --blue2:   #0D4FAF;
-      --yellow:  #F5C800;
-      --yellow2: #C49A00;
-      --red:     #E8291C;
-      --black:   #111111;
-      --paper:   #F4F1E8;
-      --white:   #FEFEFE;
-      --muted:   #5a5a5a;
-      --max:     1200px;
-    }
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body { font-family: 'Barlow', sans-serif; background: var(--paper); color: var(--black); overflow-x: hidden; }
-
-    /* ── NAV ── */
-    nav {
-      background: var(--blue);
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 0 48px; height: 64px; position: sticky; top: 0; z-index: 100;
-    }
-    .nav-logo { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 1.9rem; color: var(--yellow); text-decoration: none; line-height: 1; }
-    .nav-logo span { color: rgba(255,255,255,0.55); font-weight: 400; font-size: 0.85rem; letter-spacing: 0.15em; text-transform: uppercase; margin-left: 10px; vertical-align: middle; }
-    .nav-links { display: flex; gap: 36px; list-style: none; align-items: center; }
-    .nav-links a { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 0.85rem; letter-spacing: 0.13em; text-transform: uppercase; color: rgba(255,255,255,0.65); text-decoration: none; transition: color 0.15s; }
-    .nav-links a:hover { color: var(--yellow); }
-    .nav-back { color: rgba(255,255,255,0.5) !important; }
-    .nav-back:hover { color: var(--yellow) !important; }
-    @media (max-width: 600px) { nav { padding: 0 20px; } .nav-links { display: none; } }
-
-    .btn {
-      display: inline-block; font-family: 'Barlow Condensed', sans-serif; font-weight: 700;
-      font-size: 0.95rem; letter-spacing: 0.12em; text-transform: uppercase;
-      text-decoration: none; padding: 14px 30px; border-radius: 3px;
-      border: 2px solid transparent; cursor: pointer;
-      transition: transform 0.12s, background 0.15s, color 0.15s, border-color 0.15s; line-height: 1;
-    }
-    .btn:hover { transform: translateY(-2px); }
-    .btn-yellow { background: var(--yellow); color: var(--black); border-color: var(--yellow); }
-    .btn-yellow:hover { background: white; border-color: white; }
-    .btn-ghost { background: transparent; color: white; border-color: rgba(255,255,255,0.45); }
-    .btn-ghost:hover { background: white; color: var(--blue); }
-    .btn-outline { background: transparent; color: var(--black); border-color: var(--black); }
-    .btn-outline:hover { background: var(--black); color: white; }
-
-    /* ── DONATE HERO ── */
-    .donate-hero {
-      background: var(--blue); padding: 96px 48px 80px;
-      position: relative; overflow: hidden;
-    }
-    .donate-hero::before {
-      content: '';
-      position: absolute; inset: 0;
-      background-image: radial-gradient(circle, rgba(255,255,255,0.055) 1px, transparent 1px);
-      background-size: 28px 28px; pointer-events: none;
-    }
-    .donate-hero-stripe { position: absolute; top: 0; left: 0; right: 0; height: 8px; display: flex; }
-    .donate-hero-inner { max-width: var(--max); margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; position: relative; z-index: 2; }
-    .donate-hero-bg {
-      position: absolute; right: -60px; top: -40px;
-      font-family: 'Barlow Condensed', sans-serif; font-weight: 900;
-      font-size: 40vw; line-height: 1; color: rgba(255,255,255,0.03);
-      pointer-events: none; user-select: none; letter-spacing: -0.04em;
-    }
-    .dh-tag { display: inline-block; background: var(--yellow); color: var(--black); font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 0.75rem; letter-spacing: 0.18em; text-transform: uppercase; padding: 6px 16px; border-radius: 2px; margin-bottom: 24px; }
-    .dh-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: clamp(52px, 7vw, 96px); line-height: 0.88; letter-spacing: -0.02em; text-transform: uppercase; color: white; margin-bottom: 24px; }
-    .dh-title span { color: var(--yellow); }
-    .dh-body { font-size: 1.1rem; line-height: 1.75; color: rgba(255,255,255,0.6); max-width: 480px; }
-    .dh-rules { margin-top: 28px; padding: 20px 24px; background: rgba(255,255,255,0.07); border-radius: 5px; border-left: 4px solid var(--yellow); }
-    .dh-rules p { font-size: 0.88rem; line-height: 1.65; color: rgba(255,255,255,0.5); }
-    .dh-rules strong { color: rgba(255,255,255,0.75); font-weight: 700; }
-
-    /* ── DONATE FORM SECTION ── */
-    .donate-form-section { padding: 80px 48px; }
-    .donate-form-inner { max-width: var(--max); margin: 0 auto; display: grid; grid-template-columns: 1fr 380px; gap: 64px; align-items: start; }
-
-    /* ── FORM CARD ── */
-    .form-card { background: white; border: 1.5px solid #dedad0; border-radius: 8px; padding: 44px 40px; }
-    .form-section-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 1.4rem; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 24px; padding-bottom: 16px; border-bottom: 2px solid var(--paper); }
-    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
-    .form-row.single { grid-template-columns: 1fr; }
-    .form-group { display: flex; flex-direction: column; gap: 7px; }
-    .form-label { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); }
-    .form-input {
-      font-family: 'Barlow', sans-serif; font-size: 0.95rem;
-      padding: 12px 14px; border: 1.5px solid #dedad0; border-radius: 4px;
-      background: var(--paper); color: var(--black);
-      transition: border-color 0.15s, background 0.15s; outline: none;
-    }
-    .form-input:focus { border-color: var(--blue); background: white; }
-    select.form-input { cursor: pointer; }
-
-    /* amount picker */
-    .amount-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 16px; }
-    .amount-btn {
-      font-family: 'Barlow Condensed', sans-serif; font-weight: 900;
-      font-size: 1.25rem; letter-spacing: 0.02em;
-      padding: 16px 10px; border-radius: 4px;
-      border: 2px solid #dedad0; background: var(--paper);
-      cursor: pointer; transition: all 0.15s; text-align: center;
-      color: var(--black);
-    }
-    .amount-btn:hover { border-color: var(--blue); background: white; }
-    .amount-btn.active { border-color: var(--blue); background: var(--blue); color: var(--yellow); }
-    .amount-btn .sub { display: block; font-size: 0.6rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; margin-top: 3px; opacity: 0.6; }
-    .amount-btn.active .sub { opacity: 0.8; color: rgba(255,255,255,0.7); }
-    .custom-amount-wrap { position: relative; margin-bottom: 24px; }
-    .custom-amount-prefix {
-      position: absolute; left: 14px; top: 50%; transform: translateY(-50%);
-      font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 1rem;
-      color: var(--muted); pointer-events: none;
-    }
-    .custom-amount-input {
-      font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 1rem;
-      padding: 13px 14px 13px 28px; border: 1.5px solid #dedad0; border-radius: 4px;
-      background: var(--paper); color: var(--black); width: 100%; outline: none;
-      transition: border-color 0.15s, background 0.15s;
-    }
-    .custom-amount-input:focus { border-color: var(--blue); background: white; }
-
-    /* frequency */
-    .freq-row { display: flex; gap: 10px; margin-bottom: 24px; }
-    .freq-btn {
-      flex: 1; font-family: 'Barlow Condensed', sans-serif; font-weight: 700;
-      font-size: 0.88rem; letter-spacing: 0.1em; text-transform: uppercase;
-      padding: 12px; border-radius: 4px; border: 2px solid #dedad0;
-      background: var(--paper); cursor: pointer; transition: all 0.15s; color: var(--black);
-    }
-    .freq-btn:hover { border-color: var(--blue); }
-    .freq-btn.active { border-color: var(--blue); background: var(--blue); color: var(--yellow); }
-
-    /* card input */
-    .card-row { display: grid; grid-template-columns: 1fr 100px 80px; gap: 12px; }
-
-    /* submit */
-    .submit-btn {
-      width: 100%; padding: 18px; border: none; border-radius: 4px;
-      background: var(--blue); color: var(--yellow);
-      font-family: 'Barlow Condensed', sans-serif; font-weight: 900;
-      font-size: 1.2rem; letter-spacing: 0.12em; text-transform: uppercase;
-      cursor: pointer; transition: background 0.15s, transform 0.12s; margin-top: 28px;
-    }
-    .submit-btn:hover { background: var(--blue2); transform: translateY(-2px); }
-    .form-disclaimer { font-size: 0.78rem; color: var(--muted); line-height: 1.65; margin-top: 16px; text-align: center; }
-
-    .form-divider { height: 2px; background: var(--paper); margin: 32px 0; }
-
-    /* ── SIDEBAR ── */
-    .sidebar { display: flex; flex-direction: column; gap: 20px; }
-    .sidebar-card { background: white; border: 1.5px solid #dedad0; border-radius: 8px; overflow: hidden; }
-    .sidebar-card-header { background: var(--blue); padding: 18px 22px; }
-    .sidebar-card-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--yellow); }
-    .sidebar-card-body { padding: 20px 22px; }
-    .impact-item { display: flex; align-items: flex-start; gap: 14px; padding: 14px 0; border-bottom: 1px solid var(--paper); }
-    .impact-item:last-child { border-bottom: none; }
-    .impact-amount { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 1.6rem; color: var(--blue); line-height: 1; min-width: 60px; }
-    .impact-desc { font-size: 0.88rem; line-height: 1.55; color: var(--muted); padding-top: 3px; }
-    .rules-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
-    .rules-list li { display: flex; align-items: flex-start; gap: 10px; font-size: 0.88rem; line-height: 1.55; color: var(--muted); }
-    .rules-list li::before { content: '—'; color: var(--blue); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
-    .other-ways { background: var(--black); border-radius: 8px; padding: 24px 22px; }
-    .other-ways-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 1rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--yellow); margin-bottom: 14px; }
-    .other-way { display: block; text-decoration: none; padding: 13px 0; border-bottom: 1px solid rgba(255,255,255,0.08); color: rgba(255,255,255,0.6); font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 0.9rem; letter-spacing: 0.08em; text-transform: uppercase; transition: color 0.15s; }
-    .other-way:last-child { border-bottom: none; padding-bottom: 0; }
-    .other-way:hover { color: var(--yellow); }
-
-    /* ── FOOTER ── */
-    footer { background: var(--blue); padding: 48px 48px; }
-    .footer-inner { max-width: var(--max); margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 24px; }
-    .f-logo { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 2.4rem; color: var(--yellow); letter-spacing: -0.02em; text-decoration: none; }
-    .f-note { font-size: 0.78rem; color: rgba(255,255,255,0.3); line-height: 1.8; max-width: 480px; }
-
-    @media (max-width: 960px) {
-      .donate-hero-inner { grid-template-columns: 1fr; }
-      .donate-form-inner { grid-template-columns: 1fr; }
-      .sidebar { display: grid; grid-template-columns: 1fr 1fr; }
-    }
-    @media (max-width: 640px) {
-      .donate-hero { padding: 60px 24px 48px; }
-      .donate-form-section { padding: 48px 24px; }
-      .form-card { padding: 28px 20px; }
-      .amount-grid { grid-template-columns: repeat(2,1fr); }
-      .card-row { grid-template-columns: 1fr 1fr; }
-      .sidebar { grid-template-columns: 1fr; }
-    }
+    :root{--blue:#0A3D8F;--blue2:#0D4FAF;--yellow:#F5C800;--red:#E8291C;--black:#111111;--paper:#F4F1E8;--muted:#5a5a5a;--max:1200px;}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{font-family:'Barlow',sans-serif;background:var(--paper);color:var(--black);overflow-x:hidden;}
+    nav{background:var(--blue);display:flex;align-items:center;justify-content:space-between;padding:0 48px;height:64px;position:sticky;top:0;z-index:100;}
+    .nav-logo{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.9rem;color:var(--yellow);text-decoration:none;line-height:1;display:flex;align-items:center;gap:10px;}
+    .nav-logo span{color:rgba(255,255,255,.5);font-weight:400;font-size:.82rem;letter-spacing:.15em;text-transform:uppercase;}
+    .nav-links{display:flex;gap:36px;list-style:none;align-items:center;}
+    .nav-links a{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.85rem;letter-spacing:.13em;text-transform:uppercase;color:rgba(255,255,255,.65);text-decoration:none;transition:color .15s;}
+    .nav-links a:hover{color:var(--yellow);}
+    @media(max-width:600px){nav{padding:0 20px;}.nav-links{display:none;}}
+    .btn{display:inline-block;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.95rem;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;padding:14px 30px;border-radius:3px;border:2px solid transparent;cursor:pointer;transition:transform .12s,background .15s,color .15s,border-color .15s;line-height:1;}
+    .btn:hover{transform:translateY(-2px);}
+    .btn-yellow{background:var(--yellow);color:var(--black);border-color:var(--yellow);}
+    .btn-yellow:hover{background:white;border-color:white;}
+    .btn-ghost{background:transparent;color:white;border-color:rgba(255,255,255,.45);}
+    .btn-ghost:hover{background:white;color:var(--blue);}
+    .d-hero{background:var(--blue);padding:96px 48px 80px;position:relative;overflow:hidden;}
+    .d-hero::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,.055) 1px,transparent 1px);background-size:26px 26px;pointer-events:none;}
+    .d-hero-stripe{position:absolute;top:0;left:0;right:0;height:8px;display:flex;}
+    .d-hero-inner{max-width:var(--max);margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;position:relative;z-index:2;}
+    .d-tag{display:inline-block;background:var(--yellow);color:var(--black);font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;padding:6px 16px;border-radius:2px;margin-bottom:24px;}
+    .d-title{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(52px,6.5vw,90px);line-height:.88;letter-spacing:-.02em;text-transform:uppercase;color:white;margin-bottom:22px;}
+    .d-title span{color:var(--yellow);}
+    .d-body{font-size:1.05rem;line-height:1.75;color:rgba(255,255,255,.58);max-width:480px;}
+    .d-rules{margin-top:26px;padding:18px 22px;background:rgba(255,255,255,.07);border-radius:5px;border-left:4px solid var(--yellow);}
+    .d-rules p{font-size:.88rem;line-height:1.65;color:rgba(255,255,255,.48);}
+    .d-rules strong{color:rgba(255,255,255,.75);font-weight:700;}
+    .d-progress{background:rgba(255,255,255,.08);border:1.5px solid rgba(255,255,255,.14);border-radius:6px;overflow:hidden;}
+    .d-prog-top{padding:28px 32px;border-bottom:1.5px solid rgba(255,255,255,.1);}
+    .d-raised{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:3.4rem;color:var(--yellow);line-height:1;display:block;}
+    .d-raised-lbl{font-family:'Barlow Condensed',sans-serif;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.38);display:block;margin-top:5px;}
+    .d-prog-bar-wrap{padding:22px 32px;border-bottom:1.5px solid rgba(255,255,255,.1);}
+    .d-prog-lbl{font-family:'Barlow Condensed',sans-serif;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.38);margin-bottom:10px;}
+    .d-bar-bg{height:10px;background:rgba(255,255,255,.1);border-radius:999px;overflow:hidden;}
+    .d-bar-fill{height:100%;width:47.2%;background:var(--yellow);border-radius:999px;}
+    .d-prog-meta{font-family:'Barlow Condensed',sans-serif;font-size:.72rem;color:rgba(255,255,255,.32);margin-top:8px;}
+    .d-prog-btns{padding:22px 32px;}
+    .d-form-section{padding:80px 48px;}
+    .d-form-inner{max-width:var(--max);margin:0 auto;display:grid;grid-template-columns:1fr 380px;gap:64px;align-items:start;}
+    .form-card{background:white;border:1.5px solid #dedad0;border-radius:8px;padding:44px 40px;}
+    .fc-title{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.4rem;text-transform:uppercase;letter-spacing:.04em;margin-bottom:24px;padding-bottom:16px;border-bottom:2px solid var(--paper);}
+    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;}
+    .form-row.single{grid-template-columns:1fr;}
+    .form-group{display:flex;flex-direction:column;gap:7px;}
+    .form-label{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);}
+    .form-input{font-family:'Barlow',sans-serif;font-size:.95rem;padding:12px 14px;border:1.5px solid #dedad0;border-radius:4px;background:var(--paper);color:var(--black);transition:border-color .15s,background .15s;outline:none;}
+    .form-input:focus{border-color:var(--blue);background:white;}
+    .amt-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:16px;}
+    .amt-btn{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.2rem;padding:16px 10px;border-radius:4px;border:2px solid #dedad0;background:var(--paper);cursor:pointer;transition:all .15s;text-align:center;color:var(--black);}
+    .amt-btn:hover{border-color:var(--blue);background:white;}
+    .amt-btn.active{border-color:var(--blue);background:var(--blue);color:var(--yellow);}
+    .amt-btn .sub{display:block;font-size:.58rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;margin-top:3px;opacity:.6;}
+    .amt-btn.active .sub{opacity:.75;color:rgba(255,255,255,.7);}
+    .custom-wrap{position:relative;margin-bottom:24px;}
+    .custom-prefix{position:absolute;left:14px;top:50%;transform:translateY(-50%);font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1rem;color:var(--muted);pointer-events:none;}
+    .custom-input{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1rem;padding:13px 14px 13px 28px;border:1.5px solid #dedad0;border-radius:4px;background:var(--paper);color:var(--black);width:100%;outline:none;transition:border-color .15s,background .15s;}
+    .custom-input:focus{border-color:var(--blue);background:white;}
+    .freq-row{display:flex;gap:10px;margin-bottom:24px;}
+    .freq-btn{flex:1;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.88rem;letter-spacing:.1em;text-transform:uppercase;padding:12px;border-radius:4px;border:2px solid #dedad0;background:var(--paper);cursor:pointer;transition:all .15s;color:var(--black);}
+    .freq-btn.active{border-color:var(--blue);background:var(--blue);color:var(--yellow);}
+    .card-row{display:grid;grid-template-columns:1fr 100px 80px;gap:12px;}
+    .form-divider{height:2px;background:var(--paper);margin:32px 0;}
+    .submit-btn{width:100%;padding:18px;border:none;border-radius:4px;background:var(--blue);color:var(--yellow);font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.2rem;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;transition:background .15s,transform .12s;margin-top:28px;}
+    .submit-btn:hover{background:var(--blue2);transform:translateY(-2px);}
+    .form-disc{font-size:.78rem;color:var(--muted);line-height:1.65;margin-top:16px;text-align:center;}
+    .sidebar{display:flex;flex-direction:column;gap:20px;}
+    .sb-card{background:white;border:1.5px solid #dedad0;border-radius:8px;overflow:hidden;}
+    .sb-header{background:var(--blue);padding:18px 22px;}
+    .sb-title{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.1rem;text-transform:uppercase;letter-spacing:.04em;color:var(--yellow);}
+    .sb-body{padding:20px 22px;}
+    .impact-item{display:flex;align-items:flex-start;gap:14px;padding:14px 0;border-bottom:1px solid var(--paper);}
+    .impact-item:last-child{border-bottom:none;}
+    .impact-amt{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.6rem;color:var(--blue);line-height:1;min-width:60px;}
+    .impact-desc{font-size:.88rem;line-height:1.55;color:var(--muted);padding-top:3px;}
+    .rules-list{list-style:none;display:flex;flex-direction:column;gap:12px;}
+    .rules-list li{display:flex;align-items:flex-start;gap:10px;font-size:.88rem;line-height:1.55;color:var(--muted);}
+    .rules-list li::before{content:'—';color:var(--blue);font-weight:700;flex-shrink:0;margin-top:1px;}
+    .other-ways{background:var(--black);border-radius:8px;padding:24px 22px;}
+    .ow-title{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1rem;text-transform:uppercase;letter-spacing:.06em;color:var(--yellow);margin-bottom:14px;}
+    .ow-link{display:block;text-decoration:none;padding:13px 0;border-bottom:1px solid rgba(255,255,255,.08);color:rgba(255,255,255,.6);font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.9rem;letter-spacing:.08em;text-transform:uppercase;transition:color .15s;}
+    .ow-link:last-child{border-bottom:none;padding-bottom:0;}
+    .ow-link:hover{color:var(--yellow);}
+    footer{background:var(--blue);padding:48px;}
+    .footer-inner{max-width:var(--max);margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:24px;}
+    .f-logo{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:2.4rem;color:var(--yellow);letter-spacing:-.02em;text-decoration:none;}
+    .f-note{font-size:.78rem;color:rgba(255,255,255,.3);line-height:1.8;max-width:480px;}
+    @media(max-width:960px){.d-hero-inner{grid-template-columns:1fr;}.d-form-inner{grid-template-columns:1fr;}.sidebar{display:grid;grid-template-columns:1fr 1fr;}}
+    @media(max-width:640px){.d-hero,.d-form-section{padding:60px 24px 48px;}.form-card{padding:28px 20px;}.amt-grid{grid-template-columns:repeat(2,1fr);}.sidebar{grid-template-columns:1fr;}}
   </style>
 </head>
 <body>
-
-  <nav>
-    <a class="nav-logo" href="index.html">Mo <span>for Toronto</span></a>
-    <ul class="nav-links">
-      <li><a href="index.html" class="nav-back">← Back to campaign</a></li>
-      <li><a href="index.html#platform">Platform</a></li>
-      <li><a href="index.html#involve">Get Involved</a></li>
-    </ul>
-  </nav>
-
-  <!-- HERO -->
-  <div class="donate-hero">
-    <div class="donate-hero-stripe">
-      <span style="background:#0A3D8F;flex:5;"></span>
-      <span style="background:#F5C800;flex:2;"></span>
-      <span style="background:#E8291C;flex:1;"></span>
-    </div>
-    <div class="donate-hero-bg" aria-hidden="true">$</div>
-    <div class="donate-hero-inner">
-      <div>
-        <div class="dh-tag">Support the campaign</div>
-        <h1 class="dh-title">Fund the<br><span>movement</span></h1>
-        <p class="dh-body">Every dollar goes directly to organizing, canvassing, community events, and making sure every corner of Toronto hears this campaign. No PACs. No corporate money. Just neighbours funding neighbours.</p>
-        <div class="dh-rules">
-          <p><strong>Toronto municipal campaign finance rules apply.</strong> Contributions are limited to individuals who are Canadian citizens or permanent residents. Corporate and union donations are not permitted. Maximum individual contribution: $2,500 per calendar year.</p>
-        </div>
+<nav>
+  <a class="nav-logo" href="index.html">Mo <span>for Toronto</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">← Back to campaign</a></li>
+    <li><a href="index.html#platform">Platform</a></li>
+    <li><a href="index.html#events">Events</a></li>
+    <li><a href="index.html#involve">Get Involved</a></li>
+  </ul>
+</nav>
+<div class="d-hero">
+  <div class="d-hero-stripe">
+    <span style="background:#0A3D8F;flex:5;"></span>
+    <span style="background:#F5C800;flex:2;"></span>
+    <span style="background:#E8291C;flex:1;"></span>
+  </div>
+  <div class="d-hero-inner">
+    <div>
+      <div class="d-tag">Support the campaign</div>
+      <h1 class="d-title">Fund the<br><span>movement</span></h1>
+      <p class="d-body">Every dollar goes directly to organizing, canvassing, community events, and making sure every corner of Toronto hears this campaign. No PACs. No corporate money. Just neighbours funding neighbours.</p>
+      <div class="d-rules">
+        <p><strong>Toronto municipal campaign finance rules apply.</strong> Contributions are limited to Canadian citizens or permanent residents. Corporate and union donations are not permitted. Maximum individual contribution: $2,500 per calendar year.</p>
       </div>
-      <div style="display:flex;flex-direction:column;gap:16px;">
-        <div style="background:rgba(255,255,255,0.07);border-radius:6px;padding:26px 28px;border-left:4px solid var(--yellow);">
-          <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:3rem;color:var(--yellow);line-height:1;">$47,200</div>
-          <div style="font-family:'Barlow Condensed',sans-serif;font-size:0.75rem;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-top:6px;">Raised so far</div>
-        </div>
-        <div style="background:rgba(255,255,255,0.07);border-radius:6px;padding:20px 28px;">
-          <div style="font-family:'Barlow Condensed',sans-serif;font-size:0.72rem;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:10px;">Progress to $100k goal</div>
-          <div style="height:10px;background:rgba(255,255,255,0.1);border-radius:999px;overflow:hidden;">
-            <div style="height:100%;width:47.2%;background:var(--yellow);border-radius:999px;"></div>
-          </div>
-          <div style="font-family:'Barlow Condensed',sans-serif;font-size:0.78rem;color:rgba(255,255,255,0.35);margin-top:8px;">47% of goal · 1,240 donors</div>
-        </div>
+    </div>
+    <div class="d-progress">
+      <div class="d-prog-top">
+        <span class="d-raised">$47,200</span>
+        <span class="d-raised-lbl">Raised so far · 1,240 donors</span>
+      </div>
+      <div class="d-prog-bar-wrap">
+        <div class="d-prog-lbl">Progress to $100k goal</div>
+        <div class="d-bar-bg"><div class="d-bar-fill"></div></div>
+        <div class="d-prog-meta">47% of goal</div>
+      </div>
+      <div class="d-prog-btns">
+        <a class="btn btn-yellow" href="#form" style="width:100%;text-align:center;display:block;">Donate now</a>
       </div>
     </div>
   </div>
-
-  <!-- FORM + SIDEBAR -->
-  <div class="donate-form-section">
-    <div class="donate-form-inner">
-
-      <!-- FORM -->
-      <div class="form-card">
-        <div class="form-section-title">Choose your amount</div>
-
-        <!-- Frequency -->
-        <div class="freq-row">
-          <button class="freq-btn active" onclick="setFreq(this, 'once')">Give once</button>
-          <button class="freq-btn" onclick="setFreq(this, 'monthly')">Give monthly</button>
-        </div>
-
-        <!-- Amount buttons -->
-        <div class="amount-grid">
-          <button class="amount-btn" onclick="setAmount(this, 25)">$25<span class="sub">Canvass shift</span></button>
-          <button class="amount-btn active" onclick="setAmount(this, 50)">$50<span class="sub">100 flyers</span></button>
-          <button class="amount-btn" onclick="setAmount(this, 100)">$100<span class="sub">500 flyers</span></button>
-          <button class="amount-btn" onclick="setAmount(this, 250)">$250<span class="sub">Ward event</span></button>
-          <button class="amount-btn" onclick="setAmount(this, 500)">$500<span class="sub">Community event</span></button>
-          <button class="amount-btn" onclick="setAmount(this, 1000)">$1,000<span class="sub">Major sponsor</span></button>
-          <button class="amount-btn" onclick="setAmount(this, 2500)">$2,500<span class="sub">Maximum</span></button>
-          <button class="amount-btn" onclick="setCustom(this)">Other<span class="sub">You choose</span></button>
-        </div>
-        <div class="custom-amount-wrap">
-          <span class="custom-amount-prefix">$</span>
-          <input class="custom-amount-input" type="number" id="custom-amount" placeholder="Enter custom amount" min="1" max="2500" />
-        </div>
-
-        <div class="form-divider"></div>
-        <div class="form-section-title">Your information</div>
-
-        <div class="form-row">
-          <div class="form-group">
-            <label class="form-label">First name</label>
-            <input class="form-input" type="text" placeholder="Jane" />
-          </div>
-          <div class="form-group">
-            <label class="form-label">Last name</label>
-            <input class="form-input" type="text" placeholder="Smith" />
-          </div>
-        </div>
-        <div class="form-row single">
-          <div class="form-group">
-            <label class="form-label">Email address</label>
-            <input class="form-input" type="email" placeholder="jane@email.com" />
-          </div>
-        </div>
-        <div class="form-row single">
-          <div class="form-group">
-            <label class="form-label">Phone (optional)</label>
-            <input class="form-input" type="tel" placeholder="416-555-0100" />
-          </div>
-        </div>
-
-        <div class="form-divider"></div>
-        <div class="form-section-title">Your address</div>
-        <div class="form-row single">
-          <div class="form-group">
-            <label class="form-label">Street address</label>
-            <input class="form-input" type="text" placeholder="123 Main Street" />
-          </div>
-        </div>
-        <div class="form-row">
-          <div class="form-group">
-            <label class="form-label">City</label>
-            <input class="form-input" type="text" placeholder="Toronto" value="Toronto" />
-          </div>
-          <div class="form-group">
-            <label class="form-label">Postal code</label>
-            <input class="form-input" type="text" placeholder="M5V 2T6" />
-          </div>
-        </div>
-
-        <div class="form-divider"></div>
-        <div class="form-section-title">Payment</div>
-
-        <div class="form-row single">
-          <div class="form-group">
-            <label class="form-label">Card number</label>
-            <input class="form-input" type="text" placeholder="1234 5678 9012 3456" maxlength="19" />
-          </div>
-        </div>
-        <div class="card-row">
-          <div class="form-group">
-            <label class="form-label">Cardholder name</label>
-            <input class="form-input" type="text" placeholder="Jane Smith" />
-          </div>
-          <div class="form-group">
-            <label class="form-label">Expiry</label>
-            <input class="form-input" type="text" placeholder="MM/YY" maxlength="5" />
-          </div>
-          <div class="form-group">
-            <label class="form-label">CVV</label>
-            <input class="form-input" type="text" placeholder="123" maxlength="4" />
-          </div>
-        </div>
-
-        <button class="submit-btn" id="submit-btn">Donate $50 to Mo for Toronto</button>
-        <p class="form-disclaimer">
-          By donating you confirm you are a Canadian citizen or permanent resident and that this contribution is made from personal funds.
-          Contributions to Mo Khan's mayoral campaign are not tax-deductible.
-          Your personal information is kept confidential and will not be sold or shared.
-        </p>
+</div>
+<div class="d-form-section" id="form">
+  <div class="d-form-inner">
+    <div class="form-card">
+      <div class="fc-title">Choose your amount</div>
+      <div class="freq-row">
+        <button class="freq-btn active" onclick="setFreq(this)">Give once</button>
+        <button class="freq-btn" onclick="setFreq(this)">Give monthly</button>
       </div>
-
-      <!-- SIDEBAR -->
-      <div class="sidebar">
-
-        <div class="sidebar-card">
-          <div class="sidebar-card-header">
-            <div class="sidebar-card-title">Your impact</div>
-          </div>
-          <div class="sidebar-card-body">
-            <div class="impact-item">
-              <div class="impact-amount">$25</div>
-              <div class="impact-desc">Covers a full canvass shift — one volunteer, one evening, hundreds of doors</div>
-            </div>
-            <div class="impact-item">
-              <div class="impact-amount">$50</div>
-              <div class="impact-desc">Prints 100 door-knocker flyers for a neighbourhood in your ward</div>
-            </div>
-            <div class="impact-item">
-              <div class="impact-amount">$100</div>
-              <div class="impact-desc">Prints 500 flyers and covers digital outreach to 2,000 Toronto voters</div>
-            </div>
-            <div class="impact-item">
-              <div class="impact-amount">$500</div>
-              <div class="impact-desc">Sponsors a full community event — venue, materials, and volunteers</div>
-            </div>
-            <div class="impact-item">
-              <div class="impact-amount">$2,500</div>
-              <div class="impact-desc">Maximum contribution — funds a ward organizer for a full week</div>
-            </div>
-          </div>
+      <div class="amt-grid">
+        <button class="amt-btn" onclick="setAmt(this,25)">$25<span class="sub">Canvass shift</span></button>
+        <button class="amt-btn active" onclick="setAmt(this,50)">$50<span class="sub">100 flyers</span></button>
+        <button class="amt-btn" onclick="setAmt(this,100)">$100<span class="sub">500 flyers</span></button>
+        <button class="amt-btn" onclick="setAmt(this,250)">$250<span class="sub">Ward event</span></button>
+        <button class="amt-btn" onclick="setAmt(this,500)">$500<span class="sub">Full event</span></button>
+        <button class="amt-btn" onclick="setAmt(this,1000)">$1,000<span class="sub">Major sponsor</span></button>
+        <button class="amt-btn" onclick="setAmt(this,2500)">$2,500<span class="sub">Maximum</span></button>
+        <button class="amt-btn" onclick="setCustom(this)">Other<span class="sub">You choose</span></button>
+      </div>
+      <div class="custom-wrap">
+        <span class="custom-prefix">$</span>
+        <input class="custom-input" type="number" id="custom-amt" placeholder="Enter custom amount" min="1" max="2500"/>
+      </div>
+      <div class="form-divider"></div>
+      <div class="fc-title">Your information</div>
+      <div class="form-row">
+        <div class="form-group"><label class="form-label">First name</label><input class="form-input" type="text" placeholder="Jane"/></div>
+        <div class="form-group"><label class="form-label">Last name</label><input class="form-input" type="text" placeholder="Smith"/></div>
+      </div>
+      <div class="form-row single">
+        <div class="form-group"><label class="form-label">Email address</label><input class="form-input" type="email" placeholder="jane@email.com"/></div>
+      </div>
+      <div class="form-row single">
+        <div class="form-group"><label class="form-label">Phone (optional)</label><input class="form-input" type="tel" placeholder="416-555-0100"/></div>
+      </div>
+      <div class="form-divider"></div>
+      <div class="fc-title">Your address</div>
+      <div class="form-row single">
+        <div class="form-group"><label class="form-label">Street address</label><input class="form-input" type="text" placeholder="123 Main Street"/></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label class="form-label">City</label><input class="form-input" type="text" placeholder="Toronto" value="Toronto"/></div>
+        <div class="form-group"><label class="form-label">Postal code</label><input class="form-input" type="text" placeholder="M5V 2T6"/></div>
+      </div>
+      <div class="form-divider"></div>
+      <div class="fc-title">Payment</div>
+      <div class="form-row single">
+        <div class="form-group"><label class="form-label">Card number</label><input class="form-input" type="text" placeholder="1234 5678 9012 3456" maxlength="19"/></div>
+      </div>
+      <div class="card-row">
+        <div class="form-group"><label class="form-label">Cardholder name</label><input class="form-input" type="text" placeholder="Jane Smith"/></div>
+        <div class="form-group"><label class="form-label">Expiry</label><input class="form-input" type="text" placeholder="MM/YY" maxlength="5"/></div>
+        <div class="form-group"><label class="form-label">CVV</label><input class="form-input" type="text" placeholder="123" maxlength="4"/></div>
+      </div>
+      <button class="submit-btn" id="submit-btn">Donate $50 to Mo for Toronto</button>
+      <p class="form-disc">By donating you confirm you are a Canadian citizen or permanent resident and that this contribution is from personal funds. Contributions are not tax-deductible.</p>
+    </div>
+    <div class="sidebar">
+      <div class="sb-card">
+        <div class="sb-header"><div class="sb-title">Your impact</div></div>
+        <div class="sb-body">
+          <div class="impact-item"><div class="impact-amt">$25</div><div class="impact-desc">Covers a full canvass shift — one volunteer, one evening, hundreds of doors</div></div>
+          <div class="impact-item"><div class="impact-amt">$50</div><div class="impact-desc">Prints 100 door-knocker flyers for a neighbourhood in your ward</div></div>
+          <div class="impact-item"><div class="impact-amt">$100</div><div class="impact-desc">Prints 500 flyers and covers digital outreach to 2,000 Toronto voters</div></div>
+          <div class="impact-item"><div class="impact-amt">$500</div><div class="impact-desc">Sponsors a full community event — venue, materials, and volunteers</div></div>
+          <div class="impact-item"><div class="impact-amt">$2,500</div><div class="impact-desc">Maximum contribution — funds a ward organizer for a full week</div></div>
         </div>
-
-        <div class="sidebar-card">
-          <div class="sidebar-card-header">
-            <div class="sidebar-card-title">Eligibility rules</div>
-          </div>
-          <div class="sidebar-card-body">
-            <ul class="rules-list">
-              <li>Must be a Canadian citizen or permanent resident</li>
-              <li>Contributions must come from personal funds only</li>
-              <li>Maximum $2,500 per calendar year</li>
-              <li>Corporate, union, and business donations are not permitted</li>
-              <li>Contributions are not tax-deductible</li>
-              <li>A receipt will be emailed to you for your records</li>
-            </ul>
-          </div>
+      </div>
+      <div class="sb-card">
+        <div class="sb-header"><div class="sb-title">Eligibility rules</div></div>
+        <div class="sb-body">
+          <ul class="rules-list">
+            <li>Must be a Canadian citizen or permanent resident</li>
+            <li>Contributions must come from personal funds only</li>
+            <li>Maximum $2,500 per calendar year</li>
+            <li>Corporate, union, and business donations are not permitted</li>
+            <li>Contributions are not tax-deductible</li>
+            <li>A receipt will be emailed to you for your records</li>
+          </ul>
         </div>
-
-        <div class="other-ways">
-          <div class="other-ways-title">Other ways to give</div>
-          <a class="other-way" href="#">Host a fundraiser event</a>
-          <a class="other-way" href="#">Donate by cheque</a>
-          <a class="other-way" href="#">Volunteer your time</a>
-          <a class="other-way" href="#">Spread the word</a>
-        </div>
-
+      </div>
+      <div class="other-ways">
+        <div class="ow-title">Other ways to give</div>
+        <a class="ow-link" href="#">Host a fundraiser event</a>
+        <a class="ow-link" href="#">Donate by cheque</a>
+        <a class="ow-link" href="#">Volunteer your time</a>
+        <a class="ow-link" href="#">Spread the word</a>
       </div>
     </div>
   </div>
-
-  <footer>
-    <div class="footer-inner">
-      <a class="f-logo" href="index.html">Mo</a>
-      <p class="f-note">Authorized by the Mo Khan Mayoralty Campaign. Contributions subject to Toronto municipal campaign finance rules. For questions contact info@mofortoronto.ca</p>
-    </div>
-  </footer>
-
-  <script>
-    let selectedAmount = 50;
-
-    function setAmount(btn, amount) {
-      document.querySelectorAll('.amount-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      selectedAmount = amount;
-      document.getElementById('custom-amount').value = '';
-      updateSubmit();
-    }
-
-    function setCustom(btn) {
-      document.querySelectorAll('.amount-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      document.getElementById('custom-amount').focus();
-    }
-
-    function setFreq(btn, type) {
-      document.querySelectorAll('.freq-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      updateSubmit();
-    }
-
-    document.getElementById('custom-amount').addEventListener('input', function() {
-      selectedAmount = parseFloat(this.value) || 0;
-      updateSubmit();
-    });
-
-    function updateSubmit() {
-      const customVal = parseFloat(document.getElementById('custom-amount').value);
-      const amount = customVal > 0 ? customVal : selectedAmount;
-      const freq = document.querySelector('.freq-btn.active').textContent.trim();
-      const label = freq === 'Give monthly' ? `/mo` : '';
-      document.getElementById('submit-btn').textContent = `Donate $${amount.toLocaleString()}${label} to Mo for Toronto`;
-    }
-
-    updateSubmit();
-  </script>
-</body>
-</html>    }
-
-    .nav, .section {
-      background: var(--paper);
-      border: 2px solid var(--border);
-      box-shadow: var(--shadow);
-      border-radius: 28px;
-    }
-
-    .nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 12px;
-      flex-wrap: wrap;
-      padding: 14px 16px;
-      margin-bottom: 18px;
-    }
-
-    .brand {
-      font-weight: 900;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-    }
-
-    .navlinks {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-
-    .navlinks a {
-      text-decoration: none;
-      color: var(--ink);
-      font-weight: 800;
-      font-size: 0.95rem;
-    }
-
-    .section {
-      padding: 20px 16px;
-      margin-bottom: 18px;
-    }
-
-    h1 {
-      margin: 0 0 10px;
-      font-size: clamp(2rem, 8vw, 3.5rem);
-      line-height: 0.95;
-      text-transform: uppercase;
-      letter-spacing: -0.04em;
-    }
-
-    h2 {
-      margin: 0 0 10px;
-      font-size: 1rem;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-    }
-
-    p {
-      margin: 0 0 14px;
-      color: var(--muted);
-      line-height: 1.65;
-      font-weight: 500;
-    }
-
-    .amounts {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-      margin-top: 12px;
-    }
-
-    .amount, .btn {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 56px;
-      text-decoration: none;
-      border-radius: 18px;
-      border: 2px solid var(--border);
-      background: #fff;
-      color: var(--ink);
-      font-weight: 900;
-      text-transform: uppercase;
-      letter-spacing: 0.02em;
-      box-shadow: 5px 5px 0 rgba(15, 23, 42, 0.95);
-    }
-
-    .btn.primary {
-      background: var(--red);
-      color: white;
-    }
-
-    .note {
-      background: #fff;
-      border: 2px solid var(--border);
-      border-radius: 20px;
-      padding: 16px;
-      box-shadow: 4px 4px 0 rgba(15, 23, 42, 0.9);
-      margin-top: 14px;
-    }
-
-    .actions {
-      display: grid;
-      gap: 12px;
-      margin-top: 16px;
-    }
-  </style>
-</head>
-<body>
-  <main class="container">
-    <nav class="nav">
-      <div class="brand">Mo Khan for Mayor</div>
-      <div class="navlinks">
-        <a href="index.html">Home</a>
-        <a href="why-mo.html">Why Mo</a>
-        <a href="platform.html">Platform</a>
-        <a href="media.html">Media</a>
-      </div>
-    </nav>
-
-    <section class="section">
-      <h1>Donate</h1>
-      <p>
-        Help support the campaign’s outreach, organizing, events, and communications across Toronto.
-      </p>
-
-      <div class="amounts">
-        <a class="amount" href="#">$25</a>
-        <a class="amount" href="#">$50</a>
-        <a class="amount" href="#">$100</a>
-        <a class="amount" href="#">$250</a>
-      </div>
-
-      <div class="actions">
-        <a class="btn primary" href="#">Continue to secure donation</a>
-      </div>
-
-      <div class="note">
-        <p>
-          Replace the button above with your real donation link once your campaign finance setup is ready.
-        </p>
-      </div>
-    </section>
-
-    <section class="section">
-      <h2>Why donate</h2>
-      <p>
-        Your support helps the campaign meet people directly, hold conversations across the city,
-        produce digital content, and build a serious movement for a faster, more affordable, and more open Toronto.
-      </p>
-    </section>
-  </main>
+</div>
+<footer>
+  <div class="footer-inner">
+    <a class="f-logo" href="index.html">Mo</a>
+    <p class="f-note">Authorized by the Mo Khan Mayoralty Campaign. Contributions subject to Toronto municipal campaign finance rules. For questions: info@mofortoronto.ca</p>
+  </div>
+</footer>
+<script>
+  let selAmt=50;
+  function setAmt(btn,amt){document.querySelectorAll('.amt-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');selAmt=amt;document.getElementById('custom-amt').value='';updateBtn();}
+  function setCustom(btn){document.querySelectorAll('.amt-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');document.getElementById('custom-amt').focus();}
+  function setFreq(btn){document.querySelectorAll('.freq-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');updateBtn();}
+  document.getElementById('custom-amt').addEventListener('input',function(){selAmt=parseFloat(this.value)||0;updateBtn();});
+  function updateBtn(){const cv=parseFloat(document.getElementById('custom-amt').value);const amt=cv>0?cv:selAmt;const freq=document.querySelector('.freq-btn.active').textContent.trim();const suffix=freq==='Give monthly'?'/mo':'';document.getElementById('submit-btn').textContent=`Donate $${amt.toLocaleString()}${suffix} to Mo for Toronto`;}
+  updateBtn();
+</script>
 </body>
 </html>
