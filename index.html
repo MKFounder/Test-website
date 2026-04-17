@@ -15,10 +15,10 @@
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
     html{scroll-behavior:smooth;}
     body{font-family:'Barlow',sans-serif;background:var(--paper);color:var(--black);overflow-x:hidden;}
-
+ 
     /* ── ANN BAR ── */
     .ann-bar{background:var(--yellow);color:var(--black);font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.82rem;letter-spacing:.13em;text-transform:uppercase;text-align:center;padding:10px 24px;}
-
+ 
     /* ── NAV ── */
     nav{background:var(--blue);display:flex;align-items:center;justify-content:space-between;padding:0 48px;height:64px;position:sticky;top:0;z-index:100;}
     .nav-logo{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.9rem;color:var(--yellow);text-decoration:none;line-height:1;display:flex;align-items:center;gap:10px;}
@@ -29,7 +29,7 @@
     .nav-cta{background:var(--yellow)!important;color:var(--black)!important;padding:10px 22px;border-radius:3px;}
     .nav-cta:hover{background:white!important;color:var(--blue)!important;}
     @media(max-width:900px){.nav-links{display:none;}nav{padding:0 24px;}}
-
+ 
     /* ── HERO ── */
     .hero{background:var(--blue);min-height:100vh;display:grid;grid-template-columns:1fr 400px;align-items:stretch;position:relative;overflow:hidden;}
     .hero::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,.055) 1px,transparent 1px);background-size:26px 26px;pointer-events:none;z-index:0;}
@@ -38,7 +38,7 @@
     .hero-bg-mo{position:absolute;bottom:-80px;right:-40px;font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:52vw;line-height:1;color:rgba(255,255,255,.03);pointer-events:none;user-select:none;letter-spacing:-.04em;z-index:1;}
     .hero-left{padding:96px 64px 80px;display:flex;flex-direction:column;justify-content:flex-end;position:relative;z-index:2;}
     .hero-right{display:flex;flex-direction:column;justify-content:center;padding:96px 48px 80px 0;position:relative;z-index:2;}
-
+ 
     .hero-tag{display:inline-block;background:var(--yellow);color:var(--black);font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;padding:6px 16px;border-radius:2px;margin-bottom:28px;width:fit-content;opacity:0;animation:riseIn .5s ease .1s forwards;}
     .hero-name-wrap{position:relative;display:inline-block;opacity:0;animation:riseIn .55s ease .25s forwards;}
     .hero-name-shadow{position:absolute;top:10px;left:10px;font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(110px,17vw,220px);line-height:.82;letter-spacing:-.03em;color:var(--yellow2);z-index:0;pointer-events:none;user-select:none;}
@@ -51,7 +51,7 @@
     .s-dash{width:22px;height:3px;background:var(--yellow);border-radius:2px;flex-shrink:0;}
     .hero-btns{margin-top:44px;display:flex;gap:14px;flex-wrap:wrap;opacity:0;animation:riseIn .5s ease .7s forwards;}
     .hero-langs{margin-top:36px;font-size:.7rem;color:rgba(255,255,255,.24);letter-spacing:.07em;line-height:2.1;opacity:0;animation:riseIn .5s ease .85s forwards;}
-
+ 
     /* right column — photo + stats */
     .hero-photo-block{opacity:0;animation:riseIn .6s ease .4s forwards;display:flex;flex-direction:column;gap:0;border:1.5px solid rgba(255,255,255,.14);border-radius:6px;overflow:hidden;}
     .hero-photo{width:100%;aspect-ratio:4/3;background:rgba(255,255,255,.06);display:flex;align-items:center;justify-content:center;border-bottom:1.5px solid rgba(255,255,255,.1);}
@@ -65,7 +65,7 @@
     .hero-stat-num{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:2.2rem;color:var(--yellow);line-height:1;display:block;}
     .hero-stat-lbl{font-family:'Barlow Condensed',sans-serif;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.36);display:block;margin-top:4px;}
     .hero-stat-cta{grid-column:1/-1;padding:18px 22px;border-top:1.5px solid rgba(255,255,255,.1);}
-
+ 
     /* ── BUTTONS ── */
     .btn{display:inline-block;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.95rem;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;padding:14px 30px;border-radius:3px;border:2px solid transparent;cursor:pointer;transition:transform .12s,background .15s,color .15s,border-color .15s;line-height:1;}
     .btn:hover{transform:translateY(-2px);}
@@ -77,21 +77,21 @@
     .btn-blue:hover{background:var(--blue2);}
     .btn-outline{background:transparent;color:var(--black);border-color:var(--black);}
     .btn-outline:hover{background:var(--black);color:white;}
-
+ 
     /* ── PRESS BAR ── */
     .press-bar{background:var(--black);padding:24px 48px;overflow:hidden;}
     .press-bar-inner{max-width:var(--max);margin:0 auto;display:flex;align-items:center;gap:40px;}
     .press-bar-label{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.3);white-space:nowrap;flex-shrink:0;}
     .press-logos{display:flex;align-items:center;gap:36px;flex-wrap:wrap;}
     .press-logo{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.1rem;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.22);white-space:nowrap;}
-
+ 
     /* ── SECTIONS ── */
     .section{padding:96px 48px;}
     .section-inner{max-width:var(--max);margin:0 auto;}
     .eyebrow{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--blue);display:block;margin-bottom:12px;}
     .section-title{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(44px,5vw,76px);line-height:.9;letter-spacing:-.01em;text-transform:uppercase;margin-bottom:22px;}
     .section-body{font-size:1.05rem;line-height:1.78;color:var(--muted);max-width:580px;}
-
+ 
     /* ── PLATFORM ── */
     .platform-section{background:var(--blue);}
     .platform-section .eyebrow{color:var(--yellow);}
@@ -104,7 +104,7 @@
     .p-num{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:3rem;color:var(--yellow);opacity:.25;line-height:1;margin-bottom:8px;}
     .p-title{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.4rem;letter-spacing:.03em;text-transform:uppercase;color:var(--yellow);margin-bottom:12px;}
     .p-body{font-size:.93rem;line-height:1.7;color:rgba(255,255,255,.58);}
-
+ 
     /* ── WHY MO ── */
     .why-section{background:var(--paper);}
     .why-layout{display:grid;grid-template-columns:1fr 1fr;gap:88px;align-items:start;}
@@ -113,7 +113,7 @@
     .w-eyebrow{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;color:var(--blue);margin-bottom:8px;}
     .w-title{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.2rem;text-transform:uppercase;letter-spacing:.02em;margin-bottom:9px;}
     .w-body{font-size:.9rem;line-height:1.65;color:var(--muted);}
-
+ 
     /* ── EVENTS ── */
     .events-section{background:var(--black);}
     .events-section .eyebrow{color:var(--yellow);}
@@ -131,7 +131,7 @@
     .event-title{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.15rem;text-transform:uppercase;letter-spacing:.02em;color:white;margin-bottom:6px;}
     .event-where{font-size:.88rem;color:rgba(255,255,255,.42);line-height:1.5;}
     .event-time{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-top:10px;}
-
+ 
     /* ── ENDORSEMENTS ── */
     .endorse-section{background:var(--yellow);}
     .endorse-section .eyebrow{color:var(--blue);}
@@ -141,7 +141,7 @@
     .e-item:hover{background:var(--paper);}
     .e-quote{font-family:'Barlow Condensed',sans-serif;font-style:italic;font-size:1.18rem;line-height:1.55;color:var(--black);margin-bottom:14px;}
     .e-who{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.74rem;letter-spacing:.13em;text-transform:uppercase;color:var(--blue);}
-
+ 
     /* ── GET INVOLVED ── */
     .involve-section{background:var(--paper);}
     .involve-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:52px;}
@@ -150,7 +150,7 @@
     .i-icon{font-size:1.7rem;margin-bottom:14px;display:block;}
     .i-title{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.15rem;text-transform:uppercase;letter-spacing:.04em;color:var(--black);margin-bottom:8px;}
     .i-body{font-size:.88rem;line-height:1.6;color:var(--muted);}
-
+ 
     /* ── SOUND ── */
     .sound-section{background:var(--blue);}
     .sound-section .eyebrow{color:var(--yellow);}
@@ -165,7 +165,7 @@
     .sound-title{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.4rem;text-transform:uppercase;color:white;letter-spacing:.03em;}
     .sound-embed{padding:0 18px 18px;}
     .sound-embed iframe{width:100%;border-radius:6px;border:0;display:block;}
-
+ 
     /* ── DONATE ── */
     .donate-section{background:var(--red);}
     .donate-section .eyebrow{color:rgba(255,255,255,.65);}
@@ -176,7 +176,7 @@
     .d-tier:last-child{margin-bottom:0;}
     .d-amt{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:2rem;color:var(--yellow);line-height:1;}
     .d-desc{font-family:'Barlow Condensed',sans-serif;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-top:5px;}
-
+ 
     /* ── SOCIAL ── */
     .social-section{background:var(--paper);}
     .social-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:36px;}
@@ -184,7 +184,7 @@
     .s-link:hover{border-color:var(--blue);transform:translateY(-2px);}
     .s-name{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1rem;letter-spacing:.07em;text-transform:uppercase;color:var(--black);display:block;}
     .s-handle{font-size:.8rem;color:var(--muted);margin-top:4px;display:block;}
-
+ 
     /* ── FOOTER ── */
     footer{background:var(--blue);padding:60px 48px;}
     .footer-inner{max-width:var(--max);margin:0 auto;display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:56px;}
@@ -196,9 +196,9 @@
     .f-links{list-style:none;display:flex;flex-direction:column;gap:11px;}
     .f-links a{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.9rem;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.5);text-decoration:none;transition:color .15s;}
     .f-links a:hover{color:var(--yellow);}
-
+ 
     @keyframes riseIn{from{opacity:0;transform:translateY(22px);}to{opacity:1;transform:translateY(0);}}
-
+ 
     @media(max-width:1024px){
       .hero{grid-template-columns:1fr;min-height:auto;}
       .hero-right{display:none;}
@@ -219,9 +219,9 @@
   </style>
 </head>
 <body>
-
+ 
 <div class="ann-bar">Toronto deserves better — Mo is running to deliver it &nbsp;·&nbsp; Join the movement today</div>
-
+ 
 <nav>
   <a class="nav-logo" href="index.html">Mo <span>for Toronto</span></a>
   <ul class="nav-links">
@@ -233,7 +233,7 @@
     <li><a href="donate.html" class="nav-cta">Donate</a></li>
   </ul>
 </nav>
-
+ 
 <!-- HERO -->
 <section class="hero">
   <div class="hero-stripe">
@@ -242,7 +242,7 @@
     <span style="background:#E8291C;flex:1;"></span>
   </div>
   <div class="hero-bg-mo" aria-hidden="true">MO</div>
-
+ 
   <div class="hero-left">
     <div class="hero-tag">Toronto 2026 Mayoral Campaign</div>
     <div class="hero-name-wrap">
@@ -268,7 +268,7 @@
       Manggagawa &nbsp;·&nbsp; Para todos &nbsp;·&nbsp; ਟੋਰਾਂਟੋ &nbsp;·&nbsp; তোমাদের জন্য
     </div>
   </div>
-
+ 
   <!-- Right: photo + stats -->
   <div class="hero-right">
     <div class="hero-photo-block">
@@ -302,7 +302,7 @@
     </div>
   </div>
 </section>
-
+ 
 <!-- PRESS BAR -->
 <div class="press-bar" id="media">
   <div class="press-bar-inner">
@@ -317,7 +317,7 @@
     </div>
   </div>
 </div>
-
+ 
 <!-- PLATFORM -->
 <section class="section platform-section" id="platform">
   <div class="section-inner">
@@ -338,7 +338,7 @@
     </div>
   </div>
 </section>
-
+ 
 <!-- WHY MO -->
 <section class="section why-section" id="why">
   <div class="section-inner">
@@ -361,7 +361,7 @@
     </div>
   </div>
 </section>
-
+ 
 <!-- EVENTS -->
 <section class="section events-section" id="events">
   <div class="section-inner">
@@ -412,7 +412,7 @@
     </div>
   </div>
 </section>
-
+ 
 <!-- ENDORSEMENTS -->
 <section class="section endorse-section">
   <div class="section-inner">
@@ -426,7 +426,7 @@
     </div>
   </div>
 </section>
-
+ 
 <!-- GET INVOLVED -->
 <section class="section involve-section" id="involve">
   <div class="section-inner">
@@ -443,7 +443,7 @@
     </div>
   </div>
 </section>
-
+ 
 <!-- SOUNDTRACK -->
 <section class="section sound-section">
   <div class="section-inner">
@@ -469,7 +469,7 @@
     </div>
   </div>
 </section>
-
+ 
 <!-- DONATE TEASER -->
 <section class="section donate-section" id="donate">
   <div class="section-inner">
@@ -491,7 +491,7 @@
     </div>
   </div>
 </section>
-
+ 
 <!-- SOCIAL -->
 <section class="section social-section">
   <div class="section-inner">
@@ -510,7 +510,7 @@
     </div>
   </div>
 </section>
-
+ 
 <!-- FOOTER -->
 <footer>
   <div class="footer-inner">
@@ -542,6 +542,6 @@
     </div>
   </div>
 </footer>
-
+ 
 </body>
 </html>
