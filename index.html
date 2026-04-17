@@ -1,40 +1,550 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Mo for Toronto — 2026 Mayoral Campaign</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,700;0,900;1,900&family=Barlow:wght@400;500;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --blue:    #0A3D8F;
-      --blue2:   #0D4FAF;
-      --yellow:  #F5C800;
-      --yellow2: #C49A00;
-      --red:     #E8291C;
-      --black:   #111111;
-      --paper:   #F4F1E8;
-      --white:   #FEFEFE;
-      --muted:   #5a5a5a;
-      --max:     1200px;
+      --blue:#0A3D8F; --blue2:#0D4FAF; --yellow:#F5C800; --yellow2:#C49A00;
+      --red:#E8291C; --black:#111111; --paper:#F4F1E8; --muted:#5a5a5a; --max:1200px;
     }
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body { font-family: 'Barlow', sans-serif; background: var(--paper); color: var(--black); overflow-x: hidden; }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{font-family:'Barlow',sans-serif;background:var(--paper);color:var(--black);overflow-x:hidden;}
 
     /* ── ANN BAR ── */
-    .ann-bar {
-      background: var(--yellow); color: var(--black);
-      font-family: 'Barlow Condensed', sans-serif; font-weight: 700;
-      font-size: 0.82rem; letter-spacing: 0.13em; text-transform: uppercase;
-      text-align: center; padding: 10px 24px;
-    }
+    .ann-bar{background:var(--yellow);color:var(--black);font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.82rem;letter-spacing:.13em;text-transform:uppercase;text-align:center;padding:10px 24px;}
 
     /* ── NAV ── */
-    nav {
-      background: var(--blue);
+    nav{background:var(--blue);display:flex;align-items:center;justify-content:space-between;padding:0 48px;height:64px;position:sticky;top:0;z-index:100;}
+    .nav-logo{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.9rem;color:var(--yellow);text-decoration:none;line-height:1;display:flex;align-items:center;gap:10px;}
+    .nav-logo span{color:rgba(255,255,255,.5);font-weight:400;font-size:.82rem;letter-spacing:.15em;text-transform:uppercase;}
+    .nav-links{display:flex;gap:32px;list-style:none;align-items:center;}
+    .nav-links a{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.85rem;letter-spacing:.13em;text-transform:uppercase;color:rgba(255,255,255,.65);text-decoration:none;transition:color .15s;}
+    .nav-links a:hover{color:var(--yellow);}
+    .nav-cta{background:var(--yellow)!important;color:var(--black)!important;padding:10px 22px;border-radius:3px;}
+    .nav-cta:hover{background:white!important;color:var(--blue)!important;}
+    @media(max-width:900px){.nav-links{display:none;}nav{padding:0 24px;}}
+
+    /* ── HERO ── */
+    .hero{background:var(--blue);min-height:100vh;display:grid;grid-template-columns:1fr 400px;align-items:stretch;position:relative;overflow:hidden;}
+    .hero::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,.055) 1px,transparent 1px);background-size:26px 26px;pointer-events:none;z-index:0;}
+    .hero-stripe{position:absolute;top:0;left:0;right:0;height:8px;display:flex;z-index:3;}
+    /* big ghost MO watermark */
+    .hero-bg-mo{position:absolute;bottom:-80px;right:-40px;font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:52vw;line-height:1;color:rgba(255,255,255,.03);pointer-events:none;user-select:none;letter-spacing:-.04em;z-index:1;}
+    .hero-left{padding:96px 64px 80px;display:flex;flex-direction:column;justify-content:flex-end;position:relative;z-index:2;}
+    .hero-right{display:flex;flex-direction:column;justify-content:center;padding:96px 48px 80px 0;position:relative;z-index:2;}
+
+    .hero-tag{display:inline-block;background:var(--yellow);color:var(--black);font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;padding:6px 16px;border-radius:2px;margin-bottom:28px;width:fit-content;opacity:0;animation:riseIn .5s ease .1s forwards;}
+    .hero-name-wrap{position:relative;display:inline-block;opacity:0;animation:riseIn .55s ease .25s forwards;}
+    .hero-name-shadow{position:absolute;top:10px;left:10px;font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(110px,17vw,220px);line-height:.82;letter-spacing:-.03em;color:var(--yellow2);z-index:0;pointer-events:none;user-select:none;}
+    .hero-name{position:relative;z-index:1;font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(110px,17vw,220px);line-height:.82;letter-spacing:-.03em;color:var(--yellow);display:block;}
+    .hero-byline{opacity:0;animation:riseIn .55s ease .4s forwards;margin-top:6px;}
+    .hero-for{font-family:'Barlow Condensed',sans-serif;font-weight:400;font-size:clamp(16px,2vw,28px);letter-spacing:.28em;text-transform:uppercase;color:rgba(255,255,255,.42);display:block;}
+    .hero-toronto{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(36px,7vw,88px);letter-spacing:.06em;text-transform:uppercase;color:white;display:block;line-height:1;}
+    .hero-slogans{margin-top:36px;display:flex;flex-direction:column;gap:12px;opacity:0;animation:riseIn .5s ease .55s forwards;}
+    .hero-slogan{display:flex;align-items:center;gap:14px;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:clamp(14px,1.5vw,20px);letter-spacing:.1em;text-transform:uppercase;color:white;}
+    .s-dash{width:22px;height:3px;background:var(--yellow);border-radius:2px;flex-shrink:0;}
+    .hero-btns{margin-top:44px;display:flex;gap:14px;flex-wrap:wrap;opacity:0;animation:riseIn .5s ease .7s forwards;}
+    .hero-langs{margin-top:36px;font-size:.7rem;color:rgba(255,255,255,.24);letter-spacing:.07em;line-height:2.1;opacity:0;animation:riseIn .5s ease .85s forwards;}
+
+    /* right column — photo + stats */
+    .hero-photo-block{opacity:0;animation:riseIn .6s ease .4s forwards;display:flex;flex-direction:column;gap:0;border:1.5px solid rgba(255,255,255,.14);border-radius:6px;overflow:hidden;}
+    .hero-photo{width:100%;aspect-ratio:4/3;background:rgba(255,255,255,.06);display:flex;align-items:center;justify-content:center;border-bottom:1.5px solid rgba(255,255,255,.1);}
+    .hero-photo-placeholder{text-align:center;}
+    .hero-photo-circle{width:96px;height:96px;border-radius:50%;background:rgba(255,255,255,.12);border:2px solid rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;margin:0 auto 12px;font-size:2.2rem;}
+    .hero-photo-lbl{font-family:'Barlow Condensed',sans-serif;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.3);}
+    .hero-stats{display:grid;grid-template-columns:1fr 1fr;}
+    .hero-stat{padding:20px 22px;border-right:1.5px solid rgba(255,255,255,.1);border-bottom:1.5px solid rgba(255,255,255,.1);}
+    .hero-stat:nth-child(even){border-right:none;}
+    .hero-stat:nth-last-child(-n+2){border-bottom:none;}
+    .hero-stat-num{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:2.2rem;color:var(--yellow);line-height:1;display:block;}
+    .hero-stat-lbl{font-family:'Barlow Condensed',sans-serif;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.36);display:block;margin-top:4px;}
+    .hero-stat-cta{grid-column:1/-1;padding:18px 22px;border-top:1.5px solid rgba(255,255,255,.1);}
+
+    /* ── BUTTONS ── */
+    .btn{display:inline-block;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.95rem;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;padding:14px 30px;border-radius:3px;border:2px solid transparent;cursor:pointer;transition:transform .12s,background .15s,color .15s,border-color .15s;line-height:1;}
+    .btn:hover{transform:translateY(-2px);}
+    .btn-yellow{background:var(--yellow);color:var(--black);border-color:var(--yellow);}
+    .btn-yellow:hover{background:white;border-color:white;}
+    .btn-ghost{background:transparent;color:white;border-color:rgba(255,255,255,.45);}
+    .btn-ghost:hover{background:white;color:var(--blue);border-color:white;}
+    .btn-blue{background:var(--blue);color:white;border-color:var(--blue);}
+    .btn-blue:hover{background:var(--blue2);}
+    .btn-outline{background:transparent;color:var(--black);border-color:var(--black);}
+    .btn-outline:hover{background:var(--black);color:white;}
+
+    /* ── PRESS BAR ── */
+    .press-bar{background:var(--black);padding:24px 48px;overflow:hidden;}
+    .press-bar-inner{max-width:var(--max);margin:0 auto;display:flex;align-items:center;gap:40px;}
+    .press-bar-label{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.3);white-space:nowrap;flex-shrink:0;}
+    .press-logos{display:flex;align-items:center;gap:36px;flex-wrap:wrap;}
+    .press-logo{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.1rem;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.22);white-space:nowrap;}
+
+    /* ── SECTIONS ── */
+    .section{padding:96px 48px;}
+    .section-inner{max-width:var(--max);margin:0 auto;}
+    .eyebrow{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--blue);display:block;margin-bottom:12px;}
+    .section-title{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(44px,5vw,76px);line-height:.9;letter-spacing:-.01em;text-transform:uppercase;margin-bottom:22px;}
+    .section-body{font-size:1.05rem;line-height:1.78;color:var(--muted);max-width:580px;}
+
+    /* ── PLATFORM ── */
+    .platform-section{background:var(--blue);}
+    .platform-section .eyebrow{color:var(--yellow);}
+    .platform-section .section-title{color:white;}
+    .platform-section .section-body{color:rgba(255,255,255,.52);}
+    .platform-header{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:28px;margin-bottom:52px;}
+    .platform-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:rgba(255,255,255,.08);border-radius:6px;overflow:hidden;}
+    .p-card{background:rgba(10,61,143,.92);padding:36px 30px;transition:background .2s;border:1px solid rgba(255,255,255,.06);}
+    .p-card:hover{background:rgba(255,255,255,.08);}
+    .p-num{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:3rem;color:var(--yellow);opacity:.25;line-height:1;margin-bottom:8px;}
+    .p-title{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.4rem;letter-spacing:.03em;text-transform:uppercase;color:var(--yellow);margin-bottom:12px;}
+    .p-body{font-size:.93rem;line-height:1.7;color:rgba(255,255,255,.58);}
+
+    /* ── WHY MO ── */
+    .why-section{background:var(--paper);}
+    .why-layout{display:grid;grid-template-columns:1fr 1fr;gap:88px;align-items:start;}
+    .why-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+    .w-card{background:white;border:1.5px solid #dedad0;border-radius:5px;padding:26px 22px;}
+    .w-eyebrow{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;color:var(--blue);margin-bottom:8px;}
+    .w-title{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.2rem;text-transform:uppercase;letter-spacing:.02em;margin-bottom:9px;}
+    .w-body{font-size:.9rem;line-height:1.65;color:var(--muted);}
+
+    /* ── EVENTS ── */
+    .events-section{background:var(--black);}
+    .events-section .eyebrow{color:var(--yellow);}
+    .events-section .section-title{color:white;}
+    .events-section .section-body{color:rgba(255,255,255,.42);}
+    .events-header{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:24px;margin-bottom:48px;}
+    .events-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+    .event-card{border:1.5px solid rgba(255,255,255,.1);border-radius:5px;overflow:hidden;transition:border-color .15s;}
+    .event-card:hover{border-color:var(--yellow);}
+    .event-date-block{background:var(--yellow);padding:14px 18px;display:flex;align-items:baseline;gap:8px;}
+    .event-day{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:2.4rem;color:var(--black);line-height:1;}
+    .event-month{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:var(--black);opacity:.65;}
+    .event-body{padding:18px;}
+    .event-type{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--yellow);margin-bottom:6px;}
+    .event-title{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.15rem;text-transform:uppercase;letter-spacing:.02em;color:white;margin-bottom:6px;}
+    .event-where{font-size:.88rem;color:rgba(255,255,255,.42);line-height:1.5;}
+    .event-time{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-top:10px;}
+
+    /* ── ENDORSEMENTS ── */
+    .endorse-section{background:var(--yellow);}
+    .endorse-section .eyebrow{color:var(--blue);}
+    .endorse-section .section-title{color:var(--black);}
+    .endorse-layout{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:52px;}
+    .e-item{background:white;border:2px solid var(--black);border-radius:5px;padding:28px 26px;transition:background .15s;}
+    .e-item:hover{background:var(--paper);}
+    .e-quote{font-family:'Barlow Condensed',sans-serif;font-style:italic;font-size:1.18rem;line-height:1.55;color:var(--black);margin-bottom:14px;}
+    .e-who{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.74rem;letter-spacing:.13em;text-transform:uppercase;color:var(--blue);}
+
+    /* ── GET INVOLVED ── */
+    .involve-section{background:var(--paper);}
+    .involve-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:52px;}
+    .i-card{border:1.5px solid #dedad0;border-radius:5px;padding:28px 22px;text-decoration:none;display:block;background:white;transition:border-color .15s,transform .12s;}
+    .i-card:hover{border-color:var(--blue);transform:translateY(-2px);}
+    .i-icon{font-size:1.7rem;margin-bottom:14px;display:block;}
+    .i-title{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.15rem;text-transform:uppercase;letter-spacing:.04em;color:var(--black);margin-bottom:8px;}
+    .i-body{font-size:.88rem;line-height:1.6;color:var(--muted);}
+
+    /* ── SOUND ── */
+    .sound-section{background:var(--blue);}
+    .sound-section .eyebrow{color:var(--yellow);}
+    .sound-section .section-title{color:white;}
+    .sound-section .section-body{color:rgba(255,255,255,.52);}
+    .sound-layout{display:grid;grid-template-columns:1fr 1fr;gap:88px;align-items:center;}
+    .sound-card{background:rgba(255,255,255,.06);border:1.5px solid rgba(255,255,255,.12);border-radius:8px;overflow:hidden;}
+    .sound-header{padding:26px 28px 20px;display:flex;align-items:center;gap:20px;}
+    .sound-disc{width:58px;height:58px;border-radius:50%;background:var(--yellow);display:flex;align-items:center;justify-content:center;font-size:1.5rem;flex-shrink:0;animation:spin 8s linear infinite;}
+    @keyframes spin{to{transform:rotate(360deg);}}
+    .sound-lbl{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:var(--yellow);margin-bottom:4px;}
+    .sound-title{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.4rem;text-transform:uppercase;color:white;letter-spacing:.03em;}
+    .sound-embed{padding:0 18px 18px;}
+    .sound-embed iframe{width:100%;border-radius:6px;border:0;display:block;}
+
+    /* ── DONATE ── */
+    .donate-section{background:var(--red);}
+    .donate-section .eyebrow{color:rgba(255,255,255,.65);}
+    .donate-section .section-title{color:white;}
+    .donate-section .section-body{color:rgba(255,255,255,.65);}
+    .donate-layout{display:grid;grid-template-columns:1fr 1fr;gap:88px;align-items:center;}
+    .d-tier{background:rgba(255,255,255,.12);border-radius:5px;padding:22px 26px;margin-bottom:12px;}
+    .d-tier:last-child{margin-bottom:0;}
+    .d-amt{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:2rem;color:var(--yellow);line-height:1;}
+    .d-desc{font-family:'Barlow Condensed',sans-serif;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-top:5px;}
+
+    /* ── SOCIAL ── */
+    .social-section{background:var(--paper);}
+    .social-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:36px;}
+    .s-link{display:block;text-decoration:none;background:white;border:1.5px solid #dedad0;border-radius:5px;padding:18px 16px;text-align:center;transition:border-color .15s,transform .12s;}
+    .s-link:hover{border-color:var(--blue);transform:translateY(-2px);}
+    .s-name{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1rem;letter-spacing:.07em;text-transform:uppercase;color:var(--black);display:block;}
+    .s-handle{font-size:.8rem;color:var(--muted);margin-top:4px;display:block;}
+
+    /* ── FOOTER ── */
+    footer{background:var(--blue);padding:60px 48px;}
+    .footer-inner{max-width:var(--max);margin:0 auto;display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:56px;}
+    .f-logo{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:3.2rem;color:var(--yellow);letter-spacing:-.02em;display:block;line-height:1;margin-bottom:4px;}
+    .f-sub{font-family:'Barlow Condensed',sans-serif;font-weight:400;font-size:.78rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.36);margin-bottom:20px;display:block;}
+    .f-bar{width:52px;height:4px;background:var(--yellow);border-radius:2px;margin-bottom:20px;}
+    .f-note{font-size:.8rem;color:rgba(255,255,255,.28);line-height:1.85;}
+    .f-col-title{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--yellow);margin-bottom:18px;}
+    .f-links{list-style:none;display:flex;flex-direction:column;gap:11px;}
+    .f-links a{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.9rem;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.5);text-decoration:none;transition:color .15s;}
+    .f-links a:hover{color:var(--yellow);}
+
+    @keyframes riseIn{from{opacity:0;transform:translateY(22px);}to{opacity:1;transform:translateY(0);}}
+
+    @media(max-width:1024px){
+      .hero{grid-template-columns:1fr;min-height:auto;}
+      .hero-right{display:none;}
+      .hero-left{padding:80px 32px 56px;}
+      .platform-grid,.events-grid{grid-template-columns:1fr 1fr;}
+      .why-layout,.sound-layout,.donate-layout{grid-template-columns:1fr;gap:40px;}
+      .endorse-layout{grid-template-columns:1fr;}
+      .involve-grid{grid-template-columns:1fr 1fr;}
+      .social-grid{grid-template-columns:repeat(2,1fr);}
+      .footer-inner{grid-template-columns:1fr 1fr;}
+      .section{padding:72px 32px;}
+      .press-bar{padding:20px 32px;}
+    }
+    @media(max-width:580px){
+      .platform-grid,.why-grid,.events-grid,.involve-grid{grid-template-columns:1fr;}
+      .footer-inner{grid-template-columns:1fr;}
+    }
+  </style>
+</head>
+<body>
+
+<div class="ann-bar">Toronto deserves better — Mo is running to deliver it &nbsp;·&nbsp; Join the movement today</div>
+
+<nav>
+  <a class="nav-logo" href="index.html">Mo <span>for Toronto</span></a>
+  <ul class="nav-links">
+    <li><a href="#platform">Platform</a></li>
+    <li><a href="#why">Why Mo</a></li>
+    <li><a href="#events">Events</a></li>
+    <li><a href="#involve">Get Involved</a></li>
+    <li><a href="#media">Media</a></li>
+    <li><a href="donate.html" class="nav-cta">Donate</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-stripe">
+    <span style="background:#0A3D8F;flex:5;"></span>
+    <span style="background:#F5C800;flex:2;"></span>
+    <span style="background:#E8291C;flex:1;"></span>
+  </div>
+  <div class="hero-bg-mo" aria-hidden="true">MO</div>
+
+  <div class="hero-left">
+    <div class="hero-tag">Toronto 2026 Mayoral Campaign</div>
+    <div class="hero-name-wrap">
+      <span class="hero-name-shadow" aria-hidden="true">MO</span>
+      <span class="hero-name">MO</span>
+    </div>
+    <div class="hero-byline">
+      <span class="hero-for">for</span>
+      <span class="hero-toronto">Toronto</span>
+    </div>
+    <div class="hero-slogans">
+      <div class="hero-slogan"><span class="s-dash"></span>Freeze the rent</div>
+      <div class="hero-slogan"><span class="s-dash"></span>Free transit for students</div>
+      <div class="hero-slogan"><span class="s-dash"></span>City Hall for everyone</div>
+      <div class="hero-slogan"><span class="s-dash"></span>Safe streets, not just slogans</div>
+    </div>
+    <div class="hero-btns">
+      <a class="btn btn-yellow" href="#involve">Join the movement</a>
+      <a class="btn btn-ghost" href="#platform">Read the platform</a>
+    </div>
+    <div class="hero-langs">
+      موفق باشید &nbsp;·&nbsp; நம்பிக்கை &nbsp;·&nbsp; 多伦多 &nbsp;·&nbsp;
+      Manggagawa &nbsp;·&nbsp; Para todos &nbsp;·&nbsp; ਟੋਰਾਂਟੋ &nbsp;·&nbsp; তোমাদের জন্য
+    </div>
+  </div>
+
+  <!-- Right: photo + stats -->
+  <div class="hero-right">
+    <div class="hero-photo-block">
+      <div class="hero-photo">
+        <div class="hero-photo-placeholder">
+          <div class="hero-photo-circle">📷</div>
+          <div class="hero-photo-lbl">Add Mo's photo here</div>
+        </div>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <span class="hero-stat-num">2,400+</span>
+          <span class="hero-stat-lbl">Supporters</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-num">47</span>
+          <span class="hero-stat-lbl">Wards visited</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-num">120+</span>
+          <span class="hero-stat-lbl">Events held</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-num">2026</span>
+          <span class="hero-stat-lbl">Election year</span>
+        </div>
+      </div>
+      <div class="hero-stat-cta">
+        <a class="btn btn-yellow" href="donate.html" style="width:100%;text-align:center;display:block;">Donate to the campaign</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRESS BAR -->
+<div class="press-bar" id="media">
+  <div class="press-bar-inner">
+    <div class="press-bar-label">As seen in</div>
+    <div class="press-logos">
+      <span class="press-logo">Toronto Star</span>
+      <span class="press-logo">CBC Toronto</span>
+      <span class="press-logo">Globe & Mail</span>
+      <span class="press-logo">NOW Magazine</span>
+      <span class="press-logo">Toronto Life</span>
+      <span class="press-logo">CP24</span>
+    </div>
+  </div>
+</div>
+
+<!-- PLATFORM -->
+<section class="section platform-section" id="platform">
+  <div class="section-inner">
+    <div class="platform-header">
+      <div>
+        <span class="eyebrow">The platform</span>
+        <h2 class="section-title">What Mo<br>will do</h2>
+      </div>
+      <p class="section-body">Concrete actions, not campaign promises. Six priorities Mo will move on from day one at City Hall.</p>
+    </div>
+    <div class="platform-grid">
+      <div class="p-card"><div class="p-num">01</div><div class="p-title">Freeze the rent</div><p class="p-body">Cap rent increases at inflation, close renoviction loopholes, and create a tenant protection office that actually picks up the phone.</p></div>
+      <div class="p-card"><div class="p-num">02</div><div class="p-title">Fix the TTC</div><p class="p-body">Free transit for students and seniors. Faster service on the busiest routes. Real accountability for every delay and every cancelled bus.</p></div>
+      <div class="p-card"><div class="p-num">03</div><div class="p-title">Build housing fast</div><p class="p-body">Cut red tape on missing middle housing, end exclusionary zoning near transit, and open 10,000 affordable units in the first term.</p></div>
+      <div class="p-card"><div class="p-num">04</div><div class="p-title">Safe communities</div><p class="p-body">Invest in mental health crisis response, youth programming, and community safety — prevention over reaction, always.</p></div>
+      <div class="p-card"><div class="p-num">05</div><div class="p-title">Small biz first</div><p class="p-body">Cut licensing friction, create a dedicated small business desk at City Hall, and fight for commercial rent relief for shops being priced out.</p></div>
+      <div class="p-card"><div class="p-num">06</div><div class="p-title">Open City Hall</div><p class="p-body">Live-streamed council meetings. Multilingual services. A Mayor's office that shows up in Scarborough, Etobicoke, and every ward in between.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY MO -->
+<section class="section why-section" id="why">
+  <div class="section-inner">
+    <div class="why-layout">
+      <div>
+        <span class="eyebrow">Why Mo</span>
+        <h2 class="section-title">Built for<br>this city</h2>
+        <p class="section-body">Mo understands affordability, transit, safety, and accountability — because he's lived them. A campaign built with students, workers, new Canadians, and the communities City Hall too often ignores.</p>
+        <div style="margin-top:36px;display:flex;gap:14px;flex-wrap:wrap;">
+          <a class="btn btn-blue" href="#involve">Volunteer with Mo</a>
+          <a class="btn btn-outline" href="#involve">Meet Mo in your community</a>
+        </div>
+      </div>
+      <div class="why-grid">
+        <div class="w-card"><div class="w-eyebrow">Students</div><div class="w-title">Campus to city</div><p class="w-body">Free transit, affordable housing near campuses, and a mayor who understands what it costs to start your life in Toronto right now.</p></div>
+        <div class="w-card"><div class="w-eyebrow">New Canadians</div><div class="w-title">New roots, new voice</div><p class="w-body">Multilingual services, fair access to housing, and representation that reflects the Toronto that actually exists today.</p></div>
+        <div class="w-card"><div class="w-eyebrow">Condo residents</div><div class="w-title">Your home, your city</div><p class="w-body">Stronger renter protections, transparent condo board rules, and a mayor who takes vertical communities seriously.</p></div>
+        <div class="w-card"><div class="w-eyebrow">Non-voters</div><div class="w-title">This one's different</div><p class="w-body">If you've tuned out because nobody runs for you — Mo is running for you. Real policy. Real presence. Real accountability.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EVENTS -->
+<section class="section events-section" id="events">
+  <div class="section-inner">
+    <div class="events-header">
+      <div>
+        <span class="eyebrow">Upcoming events</span>
+        <h2 class="section-title">Meet Mo<br>in person</h2>
+      </div>
+      <a class="btn btn-ghost" href="#">See all events</a>
+    </div>
+    <div class="events-grid">
+      <div class="event-card">
+        <div class="event-date-block">
+          <div class="event-day">14</div>
+          <div class="event-month">May</div>
+        </div>
+        <div class="event-body">
+          <div class="event-type">Student town hall</div>
+          <div class="event-title">Campus affordability forum</div>
+          <div class="event-where">University of Toronto — Hart House, 7 Hart House Circle</div>
+          <div class="event-time">6:30 PM — Doors at 6:00 PM · Free entry</div>
+        </div>
+      </div>
+      <div class="event-card">
+        <div class="event-date-block">
+          <div class="event-day">19</div>
+          <div class="event-month">May</div>
+        </div>
+        <div class="event-body">
+          <div class="event-type">Community canvass</div>
+          <div class="event-title">Scarborough door-knock day</div>
+          <div class="event-where">Meeting at Scarborough Civic Centre, 150 Borough Drive</div>
+          <div class="event-time">10:00 AM — All welcome · Lunch provided</div>
+        </div>
+      </div>
+      <div class="event-card">
+        <div class="event-date-block">
+          <div class="event-day">24</div>
+          <div class="event-month">May</div>
+        </div>
+        <div class="event-body">
+          <div class="event-type">Fundraiser</div>
+          <div class="event-title">New Canadians for Mo — dinner</div>
+          <div class="event-where">Aga Khan Museum, 77 Wynford Drive, North York</div>
+          <div class="event-time">7:00 PM · Tickets from $50</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ENDORSEMENTS -->
+<section class="section endorse-section">
+  <div class="section-inner">
+    <span class="eyebrow">Voices for Mo</span>
+    <h2 class="section-title">What Toronto<br>is saying</h2>
+    <div class="endorse-layout">
+      <div class="e-item"><p class="e-quote">"Mo actually listens — and shows up. That's rare for someone running citywide."</p><span class="e-who">Community organizer — Scarborough</span></div>
+      <div class="e-item"><p class="e-quote">"This campaign feels different. There's a real plan behind every promise."</p><span class="e-who">Small business owner — Kensington Market</span></div>
+      <div class="e-item"><p class="e-quote">"As a student, I finally feel like someone running for mayor gets what we're actually dealing with."</p><span class="e-who">U of T student — Ward 11</span></div>
+      <div class="e-item"><p class="e-quote">"My family came here for opportunity. Mo's campaign was the first one that spoke to us in our language — and meant it."</p><span class="e-who">New Canadian resident — North York</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- GET INVOLVED -->
+<section class="section involve-section" id="involve">
+  <div class="section-inner">
+    <span class="eyebrow">Get involved</span>
+    <h2 class="section-title">This city<br>needs you</h2>
+    <p class="section-body">Whether you knock doors, host an event, or share one post — every action moves this campaign forward.</p>
+    <div class="involve-grid">
+      <a class="i-card" href="#"><span class="i-icon">🎓</span><div class="i-title">Students for Mo</div><p class="i-body">Organize at your campus, join a phone bank, or host a student town hall in your faculty.</p></a>
+      <a class="i-card" href="#"><span class="i-icon">🏠</span><div class="i-title">Renters for Mo</div><p class="i-body">Connect with tenant groups in your building, share the platform, fight for your community.</p></a>
+      <a class="i-card" href="#"><span class="i-icon">🌍</span><div class="i-title">New Canadians for Mo</div><p class="i-body">Help us reach communities in every language across every neighbourhood in the city.</p></a>
+      <a class="i-card" href="#"><span class="i-icon">🏪</span><div class="i-title">Business owners for Mo</div><p class="i-body">Host a window sign, join our small business roundtable, or organize a local fundraiser.</p></a>
+      <a class="i-card" href="#"><span class="i-icon">🚪</span><div class="i-title">Knock doors</div><p class="i-body">Join a canvass team in your ward. The most powerful thing you can do for this campaign.</p></a>
+      <a class="i-card" href="#"><span class="i-icon">📣</span><div class="i-title">Endorse or connect</div><p class="i-body">Community leaders, organizers, and local groups — let's build something together.</p></a>
+    </div>
+  </div>
+</section>
+
+<!-- SOUNDTRACK -->
+<section class="section sound-section">
+  <div class="section-inner">
+    <div class="sound-layout">
+      <div>
+        <span class="eyebrow">Campaign soundtrack</span>
+        <h2 class="section-title">City<br>on Go</h2>
+        <p class="section-body">The campaign anthem. Use it at events, in your social clips, on your stories. Let it travel.</p>
+        <div style="margin-top:32px;display:flex;gap:14px;flex-wrap:wrap;">
+          <a class="btn btn-yellow" href="https://drive.google.com/file/d/1ruCtHaLHbL-SOkNnWkQ3U0mrbdl4f8nu/view?usp=sharing" target="_blank" rel="noopener">Listen now</a>
+          <a class="btn btn-ghost" href="#">Use in clips</a>
+        </div>
+      </div>
+      <div class="sound-card">
+        <div class="sound-header">
+          <div class="sound-disc">♪</div>
+          <div><div class="sound-lbl">Featured track</div><div class="sound-title">City on Go</div></div>
+        </div>
+        <div class="sound-embed">
+          <iframe src="https://drive.google.com/file/d/1ruCtHaLHbL-SOkNnWkQ3U0mrbdl4f8nu/preview" height="90" allow="autoplay"></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DONATE TEASER -->
+<section class="section donate-section" id="donate">
+  <div class="section-inner">
+    <div class="donate-layout">
+      <div>
+        <span class="eyebrow">Support the campaign</span>
+        <h2 class="section-title">Fund the<br>movement</h2>
+        <p class="section-body">Every dollar goes to organizing, outreach, events, and making sure every corner of Toronto hears this campaign. No corporate money. Just neighbours funding neighbours.</p>
+        <div style="margin-top:36px;display:flex;gap:14px;flex-wrap:wrap;">
+          <a class="btn btn-yellow" href="donate.html">Donate online</a>
+          <a class="btn btn-ghost" href="#">Host a fundraiser</a>
+        </div>
+      </div>
+      <div>
+        <div class="d-tier"><div class="d-amt">$25</div><div class="d-desc">Covers a full volunteer canvass shift</div></div>
+        <div class="d-tier"><div class="d-amt">$100</div><div class="d-desc">Prints 500 door-knocker flyers</div></div>
+        <div class="d-tier"><div class="d-amt">$500</div><div class="d-desc">Sponsors a full community event</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOCIAL -->
+<section class="section social-section">
+  <div class="section-inner">
+    <span class="eyebrow">Follow the campaign</span>
+    <h2 class="section-title">Stay in<br>the loop</h2>
+    <p class="section-body">Updates, clips, events, and ways to get involved — across every platform.</p>
+    <div class="social-grid">
+      <a class="s-link" href="#"><span class="s-name">Instagram</span><span class="s-handle">@mofortoronto</span></a>
+      <a class="s-link" href="#"><span class="s-name">TikTok</span><span class="s-handle">@mofortoronto</span></a>
+      <a class="s-link" href="#"><span class="s-name">X</span><span class="s-handle">@mofortoronto</span></a>
+      <a class="s-link" href="#"><span class="s-name">YouTube</span><span class="s-handle">Mo for Toronto</span></a>
+      <a class="s-link" href="#"><span class="s-name">LinkedIn</span><span class="s-handle">Mo Khan</span></a>
+      <a class="s-link" href="#"><span class="s-name">Bluesky</span><span class="s-handle">@mofortoronto</span></a>
+      <a class="s-link" href="#"><span class="s-name">Threads</span><span class="s-handle">@mofortoronto</span></a>
+      <a class="s-link" href="mailto:info@mofortoronto.ca"><span class="s-name">Email us</span><span class="s-handle">info@mofortoronto.ca</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <span class="f-logo">Mo</span>
+      <span class="f-sub">for Toronto · 2026</span>
+      <div class="f-bar"></div>
+      <p class="f-note">Authorized by the Mo Khan Mayoralty Campaign.<br>Contributions subject to Toronto municipal campaign finance rules.<br><br>موفق باشید · நம்பிக்கை · 多伦多 · Para todos · ਟੋਰਾਂਟੋ</p>
+    </div>
+    <div>
+      <div class="f-col-title">Quick links</div>
+      <ul class="f-links">
+        <li><a href="#platform">Platform</a></li>
+        <li><a href="#why">Why Mo</a></li>
+        <li><a href="#events">Events</a></li>
+        <li><a href="#involve">Get involved</a></li>
+        <li><a href="donate.html">Donate</a></li>
+        <li><a href="#">Media</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="f-col-title">Contact</div>
+      <ul class="f-links">
+        <li><a href="mailto:info@mofortoronto.ca">info@mofortoronto.ca</a></li>
+        <li><a href="#">Press inquiries</a></li>
+        <li><a href="#">Volunteer sign-up</a></li>
+        <li><a href="#">Endorse Mo</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>      background: var(--blue);
       display: flex; align-items: center; justify-content: space-between;
       padding: 0 48px; height: 64px;
       position: sticky; top: 0; z-index: 100;
