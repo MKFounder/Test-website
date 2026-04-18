@@ -8,18 +8,18 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,700;0,900;1,900&family=Barlow:wght@400;500;700&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --blue:#0A3D8F; --blue2:#0D4FAF; --yellow:#F5C800; --yellow2:#C49A00;
-      --red:#E8291C; --black:#111111; --paper:#F4F1E8; --muted:#5a5a5a; --max:1200px;
+    :root{
+      --blue:#0A3D8F;--blue2:#0D4FAF;--yellow:#F5C800;--yellow2:#C49A00;
+      --red:#E8291C;--black:#111111;--paper:#F4F1E8;--muted:#5a5a5a;--max:1200px;
     }
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
     html{scroll-behavior:smooth;}
     body{font-family:'Barlow',sans-serif;background:var(--paper);color:var(--black);overflow-x:hidden;}
- 
-    /* ── ANN BAR ── */
+
+    /* ANN BAR */
     .ann-bar{background:var(--yellow);color:var(--black);font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.82rem;letter-spacing:.13em;text-transform:uppercase;text-align:center;padding:10px 24px;}
- 
-    /* ── NAV ── */
+
+    /* NAV */
     nav{background:var(--blue);display:flex;align-items:center;justify-content:space-between;padding:0 48px;height:64px;position:sticky;top:0;z-index:100;}
     .nav-logo{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.9rem;color:var(--yellow);text-decoration:none;line-height:1;display:flex;align-items:center;gap:10px;}
     .nav-logo span{color:rgba(255,255,255,.5);font-weight:400;font-size:.82rem;letter-spacing:.15em;text-transform:uppercase;}
@@ -29,16 +29,15 @@
     .nav-cta{background:var(--yellow)!important;color:var(--black)!important;padding:10px 22px;border-radius:3px;}
     .nav-cta:hover{background:white!important;color:var(--blue)!important;}
     @media(max-width:900px){.nav-links{display:none;}nav{padding:0 24px;}}
- 
-    /* ── HERO ── */
+
+    /* HERO */
     .hero{background:var(--blue);min-height:100vh;display:grid;grid-template-columns:1fr 400px;align-items:stretch;position:relative;overflow:hidden;}
     .hero::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,.055) 1px,transparent 1px);background-size:26px 26px;pointer-events:none;z-index:0;}
     .hero-stripe{position:absolute;top:0;left:0;right:0;height:8px;display:flex;z-index:3;}
-    /* big ghost MO watermark */
     .hero-bg-mo{position:absolute;bottom:-80px;right:-40px;font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:52vw;line-height:1;color:rgba(255,255,255,.03);pointer-events:none;user-select:none;letter-spacing:-.04em;z-index:1;}
     .hero-left{padding:96px 64px 80px;display:flex;flex-direction:column;justify-content:flex-end;position:relative;z-index:2;}
     .hero-right{display:flex;flex-direction:column;justify-content:center;padding:96px 48px 80px 0;position:relative;z-index:2;}
- 
+
     .hero-tag{display:inline-block;background:var(--yellow);color:var(--black);font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;padding:6px 16px;border-radius:2px;margin-bottom:28px;width:fit-content;opacity:0;animation:riseIn .5s ease .1s forwards;}
     .hero-name-wrap{position:relative;display:inline-block;opacity:0;animation:riseIn .55s ease .25s forwards;}
     .hero-name-shadow{position:absolute;top:10px;left:10px;font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(110px,17vw,220px);line-height:.82;letter-spacing:-.03em;color:var(--yellow2);z-index:0;pointer-events:none;user-select:none;}
@@ -46,18 +45,21 @@
     .hero-byline{opacity:0;animation:riseIn .55s ease .4s forwards;margin-top:6px;}
     .hero-for{font-family:'Barlow Condensed',sans-serif;font-weight:400;font-size:clamp(16px,2vw,28px);letter-spacing:.28em;text-transform:uppercase;color:rgba(255,255,255,.42);display:block;}
     .hero-toronto{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(36px,7vw,88px);letter-spacing:.06em;text-transform:uppercase;color:white;display:block;line-height:1;}
-    .hero-slogans{margin-top:36px;display:flex;flex-direction:column;gap:12px;opacity:0;animation:riseIn .5s ease .55s forwards;}
-    .hero-slogan{display:flex;align-items:center;gap:14px;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:clamp(14px,1.5vw,20px);letter-spacing:.1em;text-transform:uppercase;color:white;}
-    .s-dash{width:22px;height:3px;background:var(--yellow);border-radius:2px;flex-shrink:0;}
-    .hero-btns{margin-top:44px;display:flex;gap:14px;flex-wrap:wrap;opacity:0;animation:riseIn .5s ease .7s forwards;}
-    .hero-langs{margin-top:36px;font-size:.7rem;color:rgba(255,255,255,.24);letter-spacing:.07em;line-height:2.1;opacity:0;animation:riseIn .5s ease .85s forwards;}
- 
-    /* right column — photo + stats */
-    .hero-photo-block{opacity:0;animation:riseIn .6s ease .4s forwards;display:flex;flex-direction:column;gap:0;border:1.5px solid rgba(255,255,255,.14);border-radius:6px;overflow:hidden;}
+
+    /* Hero promise pills */
+    .hero-promises{margin-top:36px;display:flex;flex-direction:column;gap:10px;opacity:0;animation:riseIn .5s ease .55s forwards;}
+    .hero-promise{display:flex;align-items:center;gap:14px;}
+    .hp-badge{background:var(--yellow);color:var(--black);font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;padding:4px 10px;border-radius:2px;white-space:nowrap;flex-shrink:0;}
+    .hp-text{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:clamp(13px,1.4vw,18px);letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.85);}
+
+    .hero-btns{margin-top:40px;display:flex;gap:14px;flex-wrap:wrap;opacity:0;animation:riseIn .5s ease .7s forwards;}
+    .hero-langs{margin-top:32px;font-size:.7rem;color:rgba(255,255,255,.24);letter-spacing:.07em;line-height:2.1;opacity:0;animation:riseIn .5s ease .85s forwards;}
+
+    /* right col */
+    .hero-photo-block{opacity:0;animation:riseIn .6s ease .4s forwards;display:flex;flex-direction:column;border:1.5px solid rgba(255,255,255,.14);border-radius:6px;overflow:hidden;}
     .hero-photo{width:100%;aspect-ratio:4/3;background:rgba(255,255,255,.06);display:flex;align-items:center;justify-content:center;border-bottom:1.5px solid rgba(255,255,255,.1);}
-    .hero-photo-placeholder{text-align:center;}
     .hero-photo-circle{width:96px;height:96px;border-radius:50%;background:rgba(255,255,255,.12);border:2px solid rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;margin:0 auto 12px;font-size:2.2rem;}
-    .hero-photo-lbl{font-family:'Barlow Condensed',sans-serif;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.3);}
+    .hero-photo-lbl{font-family:'Barlow Condensed',sans-serif;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.3);text-align:center;}
     .hero-stats{display:grid;grid-template-columns:1fr 1fr;}
     .hero-stat{padding:20px 22px;border-right:1.5px solid rgba(255,255,255,.1);border-bottom:1.5px solid rgba(255,255,255,.1);}
     .hero-stat:nth-child(even){border-right:none;}
@@ -65,8 +67,8 @@
     .hero-stat-num{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:2.2rem;color:var(--yellow);line-height:1;display:block;}
     .hero-stat-lbl{font-family:'Barlow Condensed',sans-serif;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.36);display:block;margin-top:4px;}
     .hero-stat-cta{grid-column:1/-1;padding:18px 22px;border-top:1.5px solid rgba(255,255,255,.1);}
- 
-    /* ── BUTTONS ── */
+
+    /* BUTTONS */
     .btn{display:inline-block;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.95rem;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;padding:14px 30px;border-radius:3px;border:2px solid transparent;cursor:pointer;transition:transform .12s,background .15s,color .15s,border-color .15s;line-height:1;}
     .btn:hover{transform:translateY(-2px);}
     .btn-yellow{background:var(--yellow);color:var(--black);border-color:var(--yellow);}
@@ -77,115 +79,134 @@
     .btn-blue:hover{background:var(--blue2);}
     .btn-outline{background:transparent;color:var(--black);border-color:var(--black);}
     .btn-outline:hover{background:var(--black);color:white;}
- 
-    /* ── PRESS BAR ── */
-    .press-bar{background:var(--black);padding:24px 48px;overflow:hidden;}
-    .press-bar-inner{max-width:var(--max);margin:0 auto;display:flex;align-items:center;gap:40px;}
-    .press-bar-label{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.3);white-space:nowrap;flex-shrink:0;}
-    .press-logos{display:flex;align-items:center;gap:36px;flex-wrap:wrap;}
-    .press-logo{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.1rem;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.22);white-space:nowrap;}
- 
-    /* ── SECTIONS ── */
+
+    /* PRESS BAR */
+    .press-bar{background:var(--black);padding:22px 48px;}
+    .press-bar-inner{max-width:var(--max);margin:0 auto;display:flex;align-items:center;gap:36px;flex-wrap:wrap;}
+    .press-lbl{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.28);white-space:nowrap;flex-shrink:0;}
+    .press-logos{display:flex;align-items:center;gap:32px;flex-wrap:wrap;}
+    .press-logo{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.05rem;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.2);}
+
+    /* SECTIONS */
     .section{padding:96px 48px;}
     .section-inner{max-width:var(--max);margin:0 auto;}
     .eyebrow{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--blue);display:block;margin-bottom:12px;}
     .section-title{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(44px,5vw,76px);line-height:.9;letter-spacing:-.01em;text-transform:uppercase;margin-bottom:22px;}
     .section-body{font-size:1.05rem;line-height:1.78;color:var(--muted);max-width:580px;}
- 
-    /* ── PLATFORM ── */
-    .platform-section{background:var(--blue);}
-    .platform-section .eyebrow{color:var(--yellow);}
-    .platform-section .section-title{color:white;}
-    .platform-section .section-body{color:rgba(255,255,255,.52);}
+
+    /* SIGNATURE PLANKS — hero platform section */
+    .planks-section{background:var(--blue);}
+    .planks-section .eyebrow{color:var(--yellow);}
+    .planks-section .section-title{color:white;}
+    .planks-section .section-body{color:rgba(255,255,255,.52);}
+    .planks-header{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:28px;margin-bottom:52px;}
+    .planks-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:2px;background:rgba(255,255,255,.08);border-radius:6px;overflow:hidden;}
+    .plank{background:rgba(10,61,143,.92);padding:32px 24px;transition:background .2s;border:1px solid rgba(255,255,255,.06);display:flex;flex-direction:column;}
+    .plank:hover{background:rgba(255,255,255,.09);}
+    .plank-guarantee{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:2.8rem;color:var(--yellow);line-height:1;margin-bottom:4px;opacity:.9;}
+    .plank-guarantee-unit{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--yellow);opacity:.65;margin-bottom:16px;}
+    .plank-title{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.15rem;letter-spacing:.03em;text-transform:uppercase;color:white;margin-bottom:10px;flex:1;}
+    .plank-body{font-size:.88rem;line-height:1.65;color:rgba(255,255,255,.52);}
+
+    /* PLATFORM DEEP — full grid */
+    .platform-section{background:var(--paper);}
     .platform-header{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:28px;margin-bottom:52px;}
-    .platform-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:rgba(255,255,255,.08);border-radius:6px;overflow:hidden;}
-    .p-card{background:rgba(10,61,143,.92);padding:36px 30px;transition:background .2s;border:1px solid rgba(255,255,255,.06);}
-    .p-card:hover{background:rgba(255,255,255,.08);}
-    .p-num{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:3rem;color:var(--yellow);opacity:.25;line-height:1;margin-bottom:8px;}
-    .p-title{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.4rem;letter-spacing:.03em;text-transform:uppercase;color:var(--yellow);margin-bottom:12px;}
-    .p-body{font-size:.93rem;line-height:1.7;color:rgba(255,255,255,.58);}
- 
-    /* ── WHY MO ── */
-    .why-section{background:var(--paper);}
+    .platform-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+    .p-card{background:white;border:1.5px solid #dedad0;border-radius:5px;padding:28px 24px;transition:border-color .15s,transform .12s;}
+    .p-card:hover{border-color:var(--blue);transform:translateY(-2px);}
+    .p-tag{display:inline-block;background:var(--blue);color:white;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;padding:4px 10px;border-radius:2px;margin-bottom:12px;}
+    .p-tag.yellow{background:var(--yellow);color:var(--black);}
+    .p-tag.red{background:var(--red);color:white;}
+    .p-tag.black{background:var(--black);color:white;}
+    .p-title{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.25rem;text-transform:uppercase;letter-spacing:.03em;margin-bottom:10px;}
+    .p-body{font-size:.9rem;line-height:1.68;color:var(--muted);}
+    .p-pills{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px;}
+    .p-pill{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;padding:4px 10px;border-radius:2px;background:var(--paper);color:var(--muted);border:1px solid #dedad0;}
+
+    /* WHY MO */
+    .why-section{background:var(--black);}
+    .why-section .eyebrow{color:var(--yellow);}
+    .why-section .section-title{color:white;}
     .why-layout{display:grid;grid-template-columns:1fr 1fr;gap:88px;align-items:start;}
     .why-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
-    .w-card{background:white;border:1.5px solid #dedad0;border-radius:5px;padding:26px 22px;}
-    .w-eyebrow{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;color:var(--blue);margin-bottom:8px;}
-    .w-title{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.2rem;text-transform:uppercase;letter-spacing:.02em;margin-bottom:9px;}
-    .w-body{font-size:.9rem;line-height:1.65;color:var(--muted);}
- 
-    /* ── EVENTS ── */
-    .events-section{background:var(--black);}
-    .events-section .eyebrow{color:var(--yellow);}
-    .events-section .section-title{color:white;}
-    .events-section .section-body{color:rgba(255,255,255,.42);}
+    .w-card{background:rgba(255,255,255,.05);border:1.5px solid rgba(255,255,255,.1);border-radius:5px;padding:24px 20px;transition:border-color .15s;}
+    .w-card:hover{border-color:var(--yellow);}
+    .w-eyebrow{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;color:var(--yellow);margin-bottom:8px;}
+    .w-title{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.15rem;text-transform:uppercase;letter-spacing:.02em;color:white;margin-bottom:9px;}
+    .w-body{font-size:.88rem;line-height:1.65;color:rgba(255,255,255,.42);}
+
+    /* EVENTS */
+    .events-section{background:var(--yellow);}
+    .events-section .eyebrow{color:var(--blue);}
+    .events-section .section-title{color:var(--black);}
     .events-header{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:24px;margin-bottom:48px;}
     .events-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
-    .event-card{border:1.5px solid rgba(255,255,255,.1);border-radius:5px;overflow:hidden;transition:border-color .15s;}
-    .event-card:hover{border-color:var(--yellow);}
-    .event-date-block{background:var(--yellow);padding:14px 18px;display:flex;align-items:baseline;gap:8px;}
-    .event-day{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:2.4rem;color:var(--black);line-height:1;}
-    .event-month{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:var(--black);opacity:.65;}
+    .event-card{background:white;border:2px solid var(--black);border-radius:5px;overflow:hidden;transition:transform .15s;}
+    .event-card:hover{transform:translateY(-3px);}
+    .event-date-block{background:var(--black);padding:14px 18px;display:flex;align-items:baseline;gap:8px;}
+    .event-day{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:2.4rem;color:var(--yellow);line-height:1;}
+    .event-month{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.5);}
     .event-body{padding:18px;}
-    .event-type{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--yellow);margin-bottom:6px;}
-    .event-title{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.15rem;text-transform:uppercase;letter-spacing:.02em;color:white;margin-bottom:6px;}
-    .event-where{font-size:.88rem;color:rgba(255,255,255,.42);line-height:1.5;}
-    .event-time{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-top:10px;}
- 
-    /* ── ENDORSEMENTS ── */
-    .endorse-section{background:var(--yellow);}
-    .endorse-section .eyebrow{color:var(--blue);}
-    .endorse-section .section-title{color:var(--black);}
+    .event-type{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--blue);margin-bottom:6px;}
+    .event-title{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.1rem;text-transform:uppercase;letter-spacing:.02em;color:var(--black);margin-bottom:6px;}
+    .event-where{font-size:.88rem;color:var(--muted);line-height:1.5;}
+    .event-time{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:10px;}
+
+    /* ENDORSEMENTS */
+    .endorse-section{background:var(--paper);}
     .endorse-layout{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:52px;}
-    .e-item{background:white;border:2px solid var(--black);border-radius:5px;padding:28px 26px;transition:background .15s;}
-    .e-item:hover{background:var(--paper);}
+    .e-item{background:white;border:1.5px solid #dedad0;border-radius:5px;padding:28px 26px;transition:border-color .15s;}
+    .e-item:hover{border-color:var(--blue);}
     .e-quote{font-family:'Barlow Condensed',sans-serif;font-style:italic;font-size:1.18rem;line-height:1.55;color:var(--black);margin-bottom:14px;}
     .e-who{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.74rem;letter-spacing:.13em;text-transform:uppercase;color:var(--blue);}
- 
-    /* ── GET INVOLVED ── */
-    .involve-section{background:var(--paper);}
+
+    /* INVOLVE */
+    .involve-section{background:var(--blue);}
+    .involve-section .eyebrow{color:var(--yellow);}
+    .involve-section .section-title{color:white;}
+    .involve-section .section-body{color:rgba(255,255,255,.42);}
     .involve-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:52px;}
-    .i-card{border:1.5px solid #dedad0;border-radius:5px;padding:28px 22px;text-decoration:none;display:block;background:white;transition:border-color .15s,transform .12s;}
-    .i-card:hover{border-color:var(--blue);transform:translateY(-2px);}
+    .i-card{border:1.5px solid rgba(255,255,255,.12);border-radius:5px;padding:28px 22px;text-decoration:none;display:block;transition:border-color .15s,background .15s;}
+    .i-card:hover{border-color:var(--yellow);background:rgba(245,200,0,.05);}
     .i-icon{font-size:1.7rem;margin-bottom:14px;display:block;}
-    .i-title{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.15rem;text-transform:uppercase;letter-spacing:.04em;color:var(--black);margin-bottom:8px;}
-    .i-body{font-size:.88rem;line-height:1.6;color:var(--muted);}
- 
-    /* ── SOUND ── */
-    .sound-section{background:var(--blue);}
+    .i-title{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.15rem;text-transform:uppercase;letter-spacing:.04em;color:white;margin-bottom:8px;}
+    .i-body{font-size:.88rem;line-height:1.6;color:rgba(255,255,255,.4);}
+
+    /* SOUND */
+    .sound-section{background:var(--black);}
     .sound-section .eyebrow{color:var(--yellow);}
     .sound-section .section-title{color:white;}
-    .sound-section .section-body{color:rgba(255,255,255,.52);}
+    .sound-section .section-body{color:rgba(255,255,255,.45);}
     .sound-layout{display:grid;grid-template-columns:1fr 1fr;gap:88px;align-items:center;}
-    .sound-card{background:rgba(255,255,255,.06);border:1.5px solid rgba(255,255,255,.12);border-radius:8px;overflow:hidden;}
-    .sound-header{padding:26px 28px 20px;display:flex;align-items:center;gap:20px;}
-    .sound-disc{width:58px;height:58px;border-radius:50%;background:var(--yellow);display:flex;align-items:center;justify-content:center;font-size:1.5rem;flex-shrink:0;animation:spin 8s linear infinite;}
+    .sound-card{background:rgba(255,255,255,.05);border:1.5px solid rgba(255,255,255,.12);border-radius:8px;overflow:hidden;}
+    .sound-header{padding:24px 26px 18px;display:flex;align-items:center;gap:18px;}
+    .sound-disc{width:56px;height:56px;border-radius:50%;background:var(--yellow);display:flex;align-items:center;justify-content:center;font-size:1.4rem;flex-shrink:0;animation:spin 8s linear infinite;}
     @keyframes spin{to{transform:rotate(360deg);}}
     .sound-lbl{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:var(--yellow);margin-bottom:4px;}
-    .sound-title{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.4rem;text-transform:uppercase;color:white;letter-spacing:.03em;}
+    .sound-title{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.35rem;text-transform:uppercase;color:white;letter-spacing:.03em;}
     .sound-embed{padding:0 18px 18px;}
     .sound-embed iframe{width:100%;border-radius:6px;border:0;display:block;}
- 
-    /* ── DONATE ── */
+
+    /* DONATE */
     .donate-section{background:var(--red);}
     .donate-section .eyebrow{color:rgba(255,255,255,.65);}
     .donate-section .section-title{color:white;}
     .donate-section .section-body{color:rgba(255,255,255,.65);}
     .donate-layout{display:grid;grid-template-columns:1fr 1fr;gap:88px;align-items:center;}
-    .d-tier{background:rgba(255,255,255,.12);border-radius:5px;padding:22px 26px;margin-bottom:12px;}
+    .d-tier{background:rgba(255,255,255,.12);border-radius:5px;padding:20px 24px;margin-bottom:10px;}
     .d-tier:last-child{margin-bottom:0;}
     .d-amt{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:2rem;color:var(--yellow);line-height:1;}
     .d-desc{font-family:'Barlow Condensed',sans-serif;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-top:5px;}
- 
-    /* ── SOCIAL ── */
+
+    /* SOCIAL */
     .social-section{background:var(--paper);}
     .social-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:36px;}
     .s-link{display:block;text-decoration:none;background:white;border:1.5px solid #dedad0;border-radius:5px;padding:18px 16px;text-align:center;transition:border-color .15s,transform .12s;}
     .s-link:hover{border-color:var(--blue);transform:translateY(-2px);}
     .s-name{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1rem;letter-spacing:.07em;text-transform:uppercase;color:var(--black);display:block;}
     .s-handle{font-size:.8rem;color:var(--muted);margin-top:4px;display:block;}
- 
-    /* ── FOOTER ── */
+
+    /* FOOTER */
     footer{background:var(--blue);padding:60px 48px;}
     .footer-inner{max-width:var(--max);margin:0 auto;display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:56px;}
     .f-logo{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:3.2rem;color:var(--yellow);letter-spacing:-.02em;display:block;line-height:1;margin-bottom:4px;}
@@ -196,9 +217,12 @@
     .f-links{list-style:none;display:flex;flex-direction:column;gap:11px;}
     .f-links a{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.9rem;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.5);text-decoration:none;transition:color .15s;}
     .f-links a:hover{color:var(--yellow);}
- 
+
     @keyframes riseIn{from{opacity:0;transform:translateY(22px);}to{opacity:1;transform:translateY(0);}}
- 
+
+    @media(max-width:1100px){
+      .planks-grid{grid-template-columns:repeat(3,1fr);}
+    }
     @media(max-width:1024px){
       .hero{grid-template-columns:1fr;min-height:auto;}
       .hero-right{display:none;}
@@ -210,30 +234,28 @@
       .social-grid{grid-template-columns:repeat(2,1fr);}
       .footer-inner{grid-template-columns:1fr 1fr;}
       .section{padding:72px 32px;}
-      .press-bar{padding:20px 32px;}
     }
-    @media(max-width:580px){
-      .platform-grid,.why-grid,.events-grid,.involve-grid{grid-template-columns:1fr;}
+    @media(max-width:640px){
+      .planks-grid,.platform-grid,.why-grid,.events-grid,.involve-grid{grid-template-columns:1fr;}
       .footer-inner{grid-template-columns:1fr;}
     }
   </style>
 </head>
 <body>
- 
-<div class="ann-bar">Toronto deserves better — Mo is running to deliver it &nbsp;·&nbsp; Join the movement today</div>
- 
+
+<div class="ann-bar">Toronto is too slow. Mo will change that. &nbsp;·&nbsp; Join the movement today</div>
+
 <nav>
   <a class="nav-logo" href="index.html">Mo <span>for Toronto</span></a>
   <ul class="nav-links">
     <li><a href="#platform">Platform</a></li>
-    <li><a href="#why">Why Mo</a></li>
+    <li><a href="vision.html">Full vision</a></li>
     <li><a href="#events">Events</a></li>
     <li><a href="#involve">Get Involved</a></li>
-    <li><a href="#media">Media</a></li>
     <li><a href="donate.html" class="nav-cta">Donate</a></li>
   </ul>
 </nav>
- 
+
 <!-- HERO -->
 <section class="hero">
   <div class="hero-stripe">
@@ -242,7 +264,7 @@
     <span style="background:#E8291C;flex:1;"></span>
   </div>
   <div class="hero-bg-mo" aria-hidden="true">MO</div>
- 
+
   <div class="hero-left">
     <div class="hero-tag">Toronto 2026 Mayoral Campaign</div>
     <div class="hero-name-wrap">
@@ -253,27 +275,45 @@
       <span class="hero-for">for</span>
       <span class="hero-toronto">Toronto</span>
     </div>
-    <div class="hero-slogans">
-      <div class="hero-slogan"><span class="s-dash"></span>Freeze the rent</div>
-      <div class="hero-slogan"><span class="s-dash"></span>Free transit for students</div>
-      <div class="hero-slogan"><span class="s-dash"></span>City Hall for everyone</div>
-      <div class="hero-slogan"><span class="s-dash"></span>Safe streets, not just slogans</div>
+
+    <!-- Real platform promises as hero lines -->
+    <div class="hero-promises">
+      <div class="hero-promise">
+        <span class="hp-badge">30 days</span>
+        <span class="hp-text">Housing permit guarantee</span>
+      </div>
+      <div class="hero-promise">
+        <span class="hp-badge">48 hrs</span>
+        <span class="hp-text">Small business permit guarantee</span>
+      </div>
+      <div class="hero-promise">
+        <span class="hp-badge">20%</span>
+        <span class="hp-text">Local procurement mandate</span>
+      </div>
+      <div class="hero-promise">
+        <span class="hp-badge">24/7</span>
+        <span class="hp-text">Open city — real night economy</span>
+      </div>
+      <div class="hero-promise">
+        <span class="hp-badge">AI</span>
+        <span class="hp-text">City Hall at the speed of people</span>
+      </div>
     </div>
+
     <div class="hero-btns">
-      <a class="btn btn-yellow" href="#involve">Join the movement</a>
-      <a class="btn btn-ghost" href="#platform">Read the platform</a>
+      <a class="btn btn-yellow" href="vision.html">Read the full platform</a>
+      <a class="btn btn-ghost" href="#involve">Join the movement</a>
     </div>
     <div class="hero-langs">
       موفق باشید &nbsp;·&nbsp; நம்பிக்கை &nbsp;·&nbsp; 多伦多 &nbsp;·&nbsp;
       Manggagawa &nbsp;·&nbsp; Para todos &nbsp;·&nbsp; ਟੋਰਾਂਟੋ &nbsp;·&nbsp; তোমাদের জন্য
     </div>
   </div>
- 
-  <!-- Right: photo + stats -->
+
   <div class="hero-right">
     <div class="hero-photo-block">
       <div class="hero-photo">
-        <div class="hero-photo-placeholder">
+        <div>
           <div class="hero-photo-circle">📷</div>
           <div class="hero-photo-lbl">Add Mo's photo here</div>
         </div>
@@ -302,11 +342,11 @@
     </div>
   </div>
 </section>
- 
+
 <!-- PRESS BAR -->
-<div class="press-bar" id="media">
+<div class="press-bar">
   <div class="press-bar-inner">
-    <div class="press-bar-label">As seen in</div>
+    <div class="press-lbl">As seen in</div>
     <div class="press-logos">
       <span class="press-logo">Toronto Star</span>
       <span class="press-logo">CBC Toronto</span>
@@ -317,51 +357,198 @@
     </div>
   </div>
 </div>
- 
-<!-- PLATFORM -->
-<section class="section platform-section" id="platform">
+
+<!-- SIGNATURE PLANKS -->
+<section class="section planks-section" id="platform">
   <div class="section-inner">
-    <div class="platform-header">
+    <div class="planks-header">
       <div>
-        <span class="eyebrow">The platform</span>
-        <h2 class="section-title">What Mo<br>will do</h2>
+        <span class="eyebrow">The signature commitments</span>
+        <h2 class="section-title">Toronto is too slow.<br>Mo will fix that.</h2>
       </div>
-      <p class="section-body">Concrete actions, not campaign promises. Six priorities Mo will move on from day one at City Hall.</p>
+      <p class="section-body">Five concrete guarantees — with deadlines, accountability, and consequences if City Hall misses them. Not promises. Commitments.</p>
     </div>
-    <div class="platform-grid">
-      <div class="p-card"><div class="p-num">01</div><div class="p-title">Freeze the rent</div><p class="p-body">Cap rent increases at inflation, close renoviction loopholes, and create a tenant protection office that actually picks up the phone.</p></div>
-      <div class="p-card"><div class="p-num">02</div><div class="p-title">Fix the TTC</div><p class="p-body">Free transit for students and seniors. Faster service on the busiest routes. Real accountability for every delay and every cancelled bus.</p></div>
-      <div class="p-card"><div class="p-num">03</div><div class="p-title">Build housing fast</div><p class="p-body">Cut red tape on missing middle housing, end exclusionary zoning near transit, and open 10,000 affordable units in the first term.</p></div>
-      <div class="p-card"><div class="p-num">04</div><div class="p-title">Safe communities</div><p class="p-body">Invest in mental health crisis response, youth programming, and community safety — prevention over reaction, always.</p></div>
-      <div class="p-card"><div class="p-num">05</div><div class="p-title">Small biz first</div><p class="p-body">Cut licensing friction, create a dedicated small business desk at City Hall, and fight for commercial rent relief for shops being priced out.</p></div>
-      <div class="p-card"><div class="p-num">06</div><div class="p-title">Open City Hall</div><p class="p-body">Live-streamed council meetings. Multilingual services. A Mayor's office that shows up in Scarborough, Etobicoke, and every ward in between.</p></div>
+    <div class="planks-grid">
+      <div class="plank">
+        <div class="plank-guarantee">30</div>
+        <div class="plank-guarantee-unit">Day guarantee</div>
+        <div class="plank-title">Housing permit turnaround</div>
+        <p class="plank-body">Complete, compliant applications get an approval or deficiency list within 30 days. No more year-long waits.</p>
+      </div>
+      <div class="plank">
+        <div class="plank-guarantee">48</div>
+        <div class="plank-guarantee-unit">Hour guarantee</div>
+        <div class="plank-title">Small business permits</div>
+        <p class="plank-body">Signage, patios, minor renos, low-risk events — 48 hours or you get a fee rebate. Full stop.</p>
+      </div>
+      <div class="plank">
+        <div class="plank-guarantee">20</div>
+        <div class="plank-guarantee-unit">% mandate</div>
+        <div class="plank-title">Local procurement</div>
+        <p class="plank-body">20% of eligible City contracts go to Toronto startups and SMEs. City Hall becomes a platform for local firms.</p>
+      </div>
+      <div class="plank">
+        <div class="plank-guarantee">24</div>
+        <div class="plank-guarantee-unit">/7 city</div>
+        <div class="plank-title">Night economy reform</div>
+        <p class="plank-body">Designated zones with default extended hours. Toronto should be open for business and open for life.</p>
+      </div>
+      <div class="plank">
+        <div class="plank-guarantee">AI</div>
+        <div class="plank-guarantee-unit">Powered</div>
+        <div class="plank-title">City Hall modernization</div>
+        <p class="plank-body">AI speeds up permits, routes complaints, fixes potholes faster. Government at the speed of people, not bureaucracy.</p>
+      </div>
+    </div>
+    <div style="margin-top:32px;display:flex;gap:14px;flex-wrap:wrap;">
+      <a class="btn btn-yellow" href="vision.html">See the full platform</a>
+      <a class="btn btn-ghost" href="#involve">Get involved</a>
     </div>
   </div>
 </section>
- 
+
+<!-- PLATFORM DEEP DIVE -->
+<section class="section platform-section">
+  <div class="section-inner">
+    <div class="platform-header">
+      <div>
+        <span class="eyebrow">All policy areas</span>
+        <h2 class="section-title">The full<br>agenda</h2>
+      </div>
+      <p class="section-body">Eight interconnected policy areas, one underlying belief: Toronto should be faster, more open, and work for everyone — not just those who've always had a seat at the table.</p>
+    </div>
+    <div class="platform-grid">
+
+      <div class="p-card">
+        <div class="p-tag yellow">Housing</div>
+        <div class="p-title">Build faster, live better</div>
+        <p class="p-body">30-day permit guarantee for low-rise, multiplex, garden suites, and laneway suites. Pre-approved templates. Fee rebates for missed deadlines. Make it easy for homeowners to add floors, units, and suites.</p>
+        <div class="p-pills">
+          <span class="p-pill">Permit guarantee</span>
+          <span class="p-pill">Homeowner intensification</span>
+          <span class="p-pill">Student housing fast-track</span>
+        </div>
+      </div>
+
+      <div class="p-card">
+        <div class="p-tag">Local economy</div>
+        <div class="p-title">Keep money in Toronto</div>
+        <p class="p-body">20% of eligible City contracts go to local firms. Break large contracts into smaller pieces so startups can bid. A paid pilot pathway so local firms can prove their solutions and scale them citywide.</p>
+        <div class="p-pills">
+          <span class="p-pill">20% mandate</span>
+          <span class="p-pill">Contract unbundling</span>
+          <span class="p-pill">Startup pilot pathway</span>
+          <span class="p-pill">Procurement dashboard</span>
+        </div>
+      </div>
+
+      <div class="p-card">
+        <div class="p-tag yellow">Small business</div>
+        <div class="p-title">Easiest city to run a business in</div>
+        <p class="p-body">48-hour permit guarantee for low-risk applications. Every new city bylaw gets a small business impact review before passing. Make Toronto the easiest big city in North America to open, operate, and grow a business.</p>
+        <div class="p-pills">
+          <span class="p-pill">48-hour permits</span>
+          <span class="p-pill">Impact assessment</span>
+          <span class="p-pill">Bylaw simplification</span>
+        </div>
+      </div>
+
+      <div class="p-card">
+        <div class="p-tag red">Night economy</div>
+        <div class="p-title">Toronto After Dark</div>
+        <p class="p-body">Designated nightlife zones with default extended hours. Simpler permits for clubs, bars, and music venues. Late-night transit reliability. Noise mediation instead of purely punitive enforcement. A city that's actually alive.</p>
+        <div class="p-pills">
+          <span class="p-pill">Extended hours zones</span>
+          <span class="p-pill">Late-night transit</span>
+          <span class="p-pill">Arts & culture support</span>
+        </div>
+      </div>
+
+      <div class="p-card">
+        <div class="p-tag">AI & civic tech</div>
+        <div class="p-title">Government at the speed of people</div>
+        <p class="p-body">AI speeds up permit processing, routes complaints, and fixes potholes faster. Ward-by-ward civic innovation program. AI literacy for everyone — through libraries, colleges, and senior workshops. AI is not more important than potholes. It helps us get to potholes faster.</p>
+        <div class="p-pills">
+          <span class="p-pill">AI permit processing</span>
+          <span class="p-pill">Ward innovation program</span>
+          <span class="p-pill">Public AI literacy</span>
+        </div>
+      </div>
+
+      <div class="p-card">
+        <div class="p-tag yellow">Youth & students</div>
+        <div class="p-title">Build your life here</div>
+        <p class="p-body">Toronto should be the best city to start your life. Student housing fast-tracks with rent caps. Targeted transit affordability. Civic fellowships. Talent retention so Toronto stops training people for other cities.</p>
+        <div class="p-pills">
+          <span class="p-pill">Student housing</span>
+          <span class="p-pill">Talent retention</span>
+          <span class="p-pill">Civic fellowships</span>
+          <span class="p-pill">Transit affordability</span>
+        </div>
+      </div>
+
+      <div class="p-card">
+        <div class="p-tag black">City Hall reform</div>
+        <div class="p-title">Leaner, faster, accountable</div>
+        <p class="p-body">Cap administrative growth — not frontline cuts. Reduce consultant reliance. Digitize permits, licensing, and service requests. Outcome-based program reviews so nothing runs forever just because it always has.</p>
+        <div class="p-pills">
+          <span class="p-pill">Admin cap</span>
+          <span class="p-pill">Digitization</span>
+          <span class="p-pill">Performance dashboard</span>
+          <span class="p-pill">Outcome reviews</span>
+        </div>
+      </div>
+
+      <div class="p-card">
+        <div class="p-tag red">Safety & public life</div>
+        <div class="p-title">Safety plus opportunity</div>
+        <p class="p-body">Safety and liveliness are not opposites. Investment in mental health crisis response, youth programming, and well-lit public spaces. Stagnation is not safety. A city that's alive is a city that's safe.</p>
+        <div class="p-pills">
+          <span class="p-pill">Crisis response</span>
+          <span class="p-pill">Youth programming</span>
+          <span class="p-pill">Public space design</span>
+        </div>
+      </div>
+
+      <!-- Vision CTA card -->
+      <div class="p-card" style="background:var(--blue);border-color:var(--blue);display:flex;flex-direction:column;justify-content:space-between;">
+        <div>
+          <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--yellow);margin-bottom:12px;">Go deeper</div>
+          <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.6rem;text-transform:uppercase;color:white;margin-bottom:14px;letter-spacing:.02em;">Read the full vision</div>
+          <p style="font-size:.9rem;line-height:1.65;color:rgba(255,255,255,.55);">Every policy, every idea, every commitment — in full detail. The complete Mo for Toronto platform.</p>
+        </div>
+        <div style="margin-top:24px;">
+          <a class="btn btn-yellow" href="vision.html" style="display:block;text-align:center;">Read the vision →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 <!-- WHY MO -->
-<section class="section why-section" id="why">
+<section class="section why-section">
   <div class="section-inner">
     <div class="why-layout">
       <div>
         <span class="eyebrow">Why Mo</span>
-        <h2 class="section-title">Built for<br>this city</h2>
-        <p class="section-body">Mo understands affordability, transit, safety, and accountability — because he's lived them. A campaign built with students, workers, new Canadians, and the communities City Hall too often ignores.</p>
+        <h2 class="section-title" style="color:white;">Built for<br>this city</h2>
+        <p class="section-body" style="color:rgba(255,255,255,.5);">Mo understands affordability, transit, safety, and accountability — because he's lived them. A campaign built with students, workers, new Canadians, and the communities City Hall too often ignores.</p>
         <div style="margin-top:36px;display:flex;gap:14px;flex-wrap:wrap;">
-          <a class="btn btn-blue" href="#involve">Volunteer with Mo</a>
-          <a class="btn btn-outline" href="#involve">Meet Mo in your community</a>
+          <a class="btn btn-yellow" href="#involve">Volunteer with Mo</a>
+          <a class="btn btn-ghost" href="#events">Meet Mo in person</a>
         </div>
       </div>
       <div class="why-grid">
-        <div class="w-card"><div class="w-eyebrow">Students</div><div class="w-title">Campus to city</div><p class="w-body">Free transit, affordable housing near campuses, and a mayor who understands what it costs to start your life in Toronto right now.</p></div>
-        <div class="w-card"><div class="w-eyebrow">New Canadians</div><div class="w-title">New roots, new voice</div><p class="w-body">Multilingual services, fair access to housing, and representation that reflects the Toronto that actually exists today.</p></div>
-        <div class="w-card"><div class="w-eyebrow">Condo residents</div><div class="w-title">Your home, your city</div><p class="w-body">Stronger renter protections, transparent condo board rules, and a mayor who takes vertical communities seriously.</p></div>
-        <div class="w-card"><div class="w-eyebrow">Non-voters</div><div class="w-title">This one's different</div><p class="w-body">If you've tuned out because nobody runs for you — Mo is running for you. Real policy. Real presence. Real accountability.</p></div>
+        <div class="w-card"><div class="w-eyebrow">Students</div><div class="w-title">Campus to city</div><p class="w-body">Student housing fast-tracks, rent caps at campuses, transit affordability, and a city that doesn't force you into survival mode just to study.</p></div>
+        <div class="w-card"><div class="w-eyebrow">New Canadians</div><div class="w-title">New roots, new voice</div><p class="w-body">Multilingual services, fair access to housing and permits, and representation that reflects the Toronto that actually exists today.</p></div>
+        <div class="w-card"><div class="w-eyebrow">Condo residents</div><div class="w-title">Your home, your city</div><p class="w-body">Stronger renter protections, transparent condo rules, faster city services, and a mayor who treats vertical communities as first-class citizens.</p></div>
+        <div class="w-card"><div class="w-eyebrow">Non-voters</div><div class="w-title">This one's different</div><p class="w-body">Concrete guarantees with deadlines. A public performance dashboard. If City Hall misses targets, there are consequences. This is not more promises.</p></div>
       </div>
     </div>
   </div>
 </section>
- 
+
 <!-- EVENTS -->
 <section class="section events-section" id="events">
   <div class="section-inner">
@@ -370,38 +557,29 @@
         <span class="eyebrow">Upcoming events</span>
         <h2 class="section-title">Meet Mo<br>in person</h2>
       </div>
-      <a class="btn btn-ghost" href="#">See all events</a>
+      <a class="btn btn-outline" href="#">See all events</a>
     </div>
     <div class="events-grid">
       <div class="event-card">
-        <div class="event-date-block">
-          <div class="event-day">14</div>
-          <div class="event-month">May</div>
-        </div>
+        <div class="event-date-block"><div class="event-day">14</div><div class="event-month">May</div></div>
         <div class="event-body">
           <div class="event-type">Student town hall</div>
           <div class="event-title">Campus affordability forum</div>
           <div class="event-where">University of Toronto — Hart House, 7 Hart House Circle</div>
-          <div class="event-time">6:30 PM — Doors at 6:00 PM · Free entry</div>
+          <div class="event-time">6:30 PM · Free entry · Doors at 6:00 PM</div>
         </div>
       </div>
       <div class="event-card">
-        <div class="event-date-block">
-          <div class="event-day">19</div>
-          <div class="event-month">May</div>
-        </div>
+        <div class="event-date-block"><div class="event-day">19</div><div class="event-month">May</div></div>
         <div class="event-body">
           <div class="event-type">Community canvass</div>
           <div class="event-title">Scarborough door-knock day</div>
-          <div class="event-where">Meeting at Scarborough Civic Centre, 150 Borough Drive</div>
-          <div class="event-time">10:00 AM — All welcome · Lunch provided</div>
+          <div class="event-where">Scarborough Civic Centre, 150 Borough Drive</div>
+          <div class="event-time">10:00 AM · All welcome · Lunch provided</div>
         </div>
       </div>
       <div class="event-card">
-        <div class="event-date-block">
-          <div class="event-day">24</div>
-          <div class="event-month">May</div>
-        </div>
+        <div class="event-date-block"><div class="event-day">24</div><div class="event-month">May</div></div>
         <div class="event-body">
           <div class="event-type">Fundraiser</div>
           <div class="event-title">New Canadians for Mo — dinner</div>
@@ -412,7 +590,7 @@
     </div>
   </div>
 </section>
- 
+
 <!-- ENDORSEMENTS -->
 <section class="section endorse-section">
   <div class="section-inner">
@@ -420,13 +598,13 @@
     <h2 class="section-title">What Toronto<br>is saying</h2>
     <div class="endorse-layout">
       <div class="e-item"><p class="e-quote">"Mo actually listens — and shows up. That's rare for someone running citywide."</p><span class="e-who">Community organizer — Scarborough</span></div>
-      <div class="e-item"><p class="e-quote">"This campaign feels different. There's a real plan behind every promise."</p><span class="e-who">Small business owner — Kensington Market</span></div>
+      <div class="e-item"><p class="e-quote">"The 30-day permit guarantee alone would change everything for builders in this city. Nobody else is saying this."</p><span class="e-who">Housing developer — East York</span></div>
       <div class="e-item"><p class="e-quote">"As a student, I finally feel like someone running for mayor gets what we're actually dealing with."</p><span class="e-who">U of T student — Ward 11</span></div>
-      <div class="e-item"><p class="e-quote">"My family came here for opportunity. Mo's campaign was the first one that spoke to us in our language — and meant it."</p><span class="e-who">New Canadian resident — North York</span></div>
+      <div class="e-item"><p class="e-quote">"The 48-hour permit idea — I've been waiting three months for a patio permit. Three months. Mo gets it."</p><span class="e-who">Restaurant owner — Queen West</span></div>
     </div>
   </div>
 </section>
- 
+
 <!-- GET INVOLVED -->
 <section class="section involve-section" id="involve">
   <div class="section-inner">
@@ -443,7 +621,7 @@
     </div>
   </div>
 </section>
- 
+
 <!-- SOUNDTRACK -->
 <section class="section sound-section">
   <div class="section-inner">
@@ -469,8 +647,8 @@
     </div>
   </div>
 </section>
- 
-<!-- DONATE TEASER -->
+
+<!-- DONATE -->
 <section class="section donate-section" id="donate">
   <div class="section-inner">
     <div class="donate-layout">
@@ -491,7 +669,7 @@
     </div>
   </div>
 </section>
- 
+
 <!-- SOCIAL -->
 <section class="section social-section">
   <div class="section-inner">
@@ -510,7 +688,7 @@
     </div>
   </div>
 </section>
- 
+
 <!-- FOOTER -->
 <footer>
   <div class="footer-inner">
@@ -524,11 +702,10 @@
       <div class="f-col-title">Quick links</div>
       <ul class="f-links">
         <li><a href="#platform">Platform</a></li>
-        <li><a href="#why">Why Mo</a></li>
+        <li><a href="vision.html">Full vision</a></li>
         <li><a href="#events">Events</a></li>
         <li><a href="#involve">Get involved</a></li>
         <li><a href="donate.html">Donate</a></li>
-        <li><a href="#">Media</a></li>
       </ul>
     </div>
     <div>
@@ -542,6 +719,6 @@
     </div>
   </div>
 </footer>
- 
+
 </body>
 </html>
