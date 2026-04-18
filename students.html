@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Students for Mo — Mo for Toronto</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,700;0,900;1,900&family=Barlow:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="shared.css">
+  <style>
+    .student-hero{background:var(--black);}
+    .student-hero .page-title{color:white;}
+    .student-hero .page-title span{color:var(--yellow);}
+    .student-hero::before{background-image:radial-gradient(circle,rgba(245,200,0,.04) 1px,transparent 1px);}
+
+    .issues-section{background:var(--paper);}
+    .issues-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:48px;}
+    .issue-card{background:white;border:1.5px solid #dedad0;border-radius:6px;padding:28px 24px;}
+    .issue-num{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:3rem;color:var(--yellow);line-height:1;margin-bottom:8px;-webkit-text-stroke:2px var(--black);}
+    .issue-title{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.2rem;text-transform:uppercase;letter-spacing:.03em;margin-bottom:10px;}
+    .issue-body{font-size:.9rem;line-height:1.65;color:var(--muted);}
+
+    .policy-section{background:var(--blue);}
+    .policy-section .eyebrow{color:var(--yellow);}
+    .policy-section .section-title{color:white;}
+    .policy-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:48px;}
+    .policy-card{background:rgba(255,255,255,.07);border:1.5px solid rgba(255,255,255,.12);border-radius:6px;padding:26px 22px;}
+    .policy-card:hover{border-color:var(--yellow);}
+    .policy-eyebrow{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;color:var(--yellow);margin-bottom:8px;}
+    .policy-title{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.15rem;text-transform:uppercase;color:white;margin-bottom:10px;}
+    .policy-body{font-size:.88rem;line-height:1.65;color:rgba(255,255,255,.48);}
+
+    .chapters-section{background:var(--yellow);}
+    .chapters-section .eyebrow{color:var(--blue);}
+    .chapters-section .section-title{color:var(--black);}
+    .chapters-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:48px;}
+    .chapter-card{background:white;border:2px solid var(--black);border-radius:5px;padding:20px 18px;}
+    .chapter-school{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1rem;text-transform:uppercase;letter-spacing:.03em;margin-bottom:4px;}
+    .chapter-status{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--blue);}
+    .chapter-status.forming{color:var(--muted);}
+
+    .signup-section{background:var(--black);}
+    .signup-section .eyebrow{color:var(--yellow);}
+    .signup-section .section-title{color:white;}
+    .signup-layout{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start;}
+    .signup-card{background:white;border-radius:6px;padding:36px 32px;}
+    .signup-card-title{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.3rem;text-transform:uppercase;margin-bottom:22px;padding-bottom:14px;border-bottom:2px solid var(--paper);}
+    .submit-btn{width:100%;padding:17px;border:none;border-radius:4px;background:var(--black);color:var(--yellow);font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.15rem;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;transition:background .15s;margin-top:8px;}
+    .submit-btn:hover{background:#222;}
+    .signup-side{display:flex;flex-direction:column;gap:16px;}
+    .ss-card{background:rgba(255,255,255,.06);border:1.5px solid rgba(255,255,255,.12);border-radius:6px;padding:22px 20px;}
+    .ss-title{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1rem;text-transform:uppercase;color:white;margin-bottom:8px;}
+    .ss-body{font-size:.87rem;line-height:1.6;color:rgba(255,255,255,.42);}
+
+    @media(max-width:900px){.issues-grid,.policy-grid{grid-template-columns:1fr 1fr;}.chapters-grid{grid-template-columns:1fr 1fr;}.signup-layout{grid-template-columns:1fr;}}
+    @media(max-width:580px){.issues-grid,.policy-grid,.chapters-grid{grid-template-columns:1fr;}}
+  </style>
+</head>
+<body>
+<div class="ann-bar">Toronto deserves better — Mo is running to deliver it &nbsp;·&nbsp; <a href="donate.html" style="color:var(--black);font-weight:900;">Donate now</a></div>
+<nav class="site-nav">
+  <a class="nav-logo" href="index.html">Mo <span>for Toronto</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html#platform">Platform</a></li>
+    <li><a href="vision.html">Full vision</a></li>
+    <li><a href="events.html">Events</a></li>
+    <li><a href="involve.html">Get Involved</a></li>
+    <li><a href="media.html">Media</a></li>
+    <li><a href="donate.html" class="nav-cta">Donate</a></li>
+  </ul>
+</nav>
+
+<div class="page-hero student-hero">
+  <div class="page-hero-stripe">
+    <span style="background:#111;flex:5;"></span><span style="background:#F5C800;flex:2;"></span><span style="background:#E8291C;flex:1;"></span>
+  </div>
+  <div class="page-hero-inner">
+    <a class="page-back" href="index.html">← Back to campaign</a>
+    <div class="page-tag">Campus movement</div>
+    <h1 class="page-title">Students<br><span>for Mo</span></h1>
+    <p class="page-intro" style="color:rgba(255,255,255,.58);">Toronto should be the best city in the world to start your life. Right now, it's not. Students are in survival mode — squeezed by rent, food costs, transit, and a city that wasn't designed with you in mind. Mo will change that.</p>
+  </div>
+</div>
+
+<!-- THE REAL ISSUES -->
+<section class="section issues-section">
+  <div class="section-inner">
+    <span class="eyebrow">The real issues</span>
+    <h2 class="section-title">Why this matters<br>for students</h2>
+    <div class="issues-grid">
+      <div class="issue-card">
+        <div class="issue-num">01</div>
+        <div class="issue-title">Rent is impossible</div>
+        <p class="issue-body">Average rent for a one-bedroom in Toronto is over $2,400/month. Students are working two jobs just to study. The city has to stop pretending this is normal.</p>
+      </div>
+      <div class="issue-card">
+        <div class="issue-num">02</div>
+        <div class="issue-title">Transit is too expensive</div>
+        <p class="issue-body">$3.30 per ride adds up fast. Students who can't afford a monthly pass are choosing between transit and food. This is not acceptable in a world-class city.</p>
+      </div>
+      <div class="issue-card">
+        <div class="issue-num">03</div>
+        <div class="issue-title">The city is too closed</div>
+        <p class="issue-body">Nightlife, arts, culture, experimentation — the things that make cities worth living in — are being choked by permits, bylaws, and a city that closes at 11pm.</p>
+      </div>
+      <div class="issue-card">
+        <div class="issue-num">04</div>
+        <div class="issue-title">Nobody is hiring locally</div>
+        <p class="issue-body">Toronto startups and local firms can't get City contracts. The city buys from outsiders while students look for work. A 20% local procurement mandate changes that.</p>
+      </div>
+      <div class="issue-card">
+        <div class="issue-num">05</div>
+        <div class="issue-title">Talent leaves</div>
+        <p class="issue-body">Toronto trains some of the best graduates in the world — and watches them move to Toronto, Austin, London, or New York. The city needs to make staying realistic.</p>
+      </div>
+      <div class="issue-card">
+        <div class="issue-num">06</div>
+        <div class="issue-title">City Hall ignores you</div>
+        <p class="issue-body">Students are a massive constituency and almost entirely absent from city decision-making. Mo will change who's in the room when decisions are made.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MO'S STUDENT PLATFORM -->
+<section class="section policy-section">
+  <div class="section-inner">
+    <span class="eyebrow eyebrow-white">Mo's commitments to students</span>
+    <h2 class="section-title">What Mo<br>will do</h2>
+    <div class="policy-grid">
+      <div class="policy-card">
+        <div class="policy-eyebrow">Housing</div>
+        <div class="policy-title">Student housing fast-track</div>
+        <p class="policy-body">Fast-track approvals and reduced development charges for universities and colleges that commit to rent freezes or strict below-market caps. Students should not be forced into survival mode just to study.</p>
+      </div>
+      <div class="policy-card">
+        <div class="policy-eyebrow">Transit</div>
+        <div class="policy-title">Targeted transit affordability</div>
+        <p class="policy-body">Targeted fare models, off-peak passes, and a "build here" transit retention pass for students, apprentices, and new grads. The goal is to reduce burden and make staying in Toronto realistic.</p>
+      </div>
+      <div class="policy-card">
+        <div class="policy-eyebrow">Jobs & economy</div>
+        <div class="policy-title">20% local procurement mandate</div>
+        <p class="policy-body">20% of eligible City contracts go to Toronto companies. That means more local jobs, more local startups, and more reasons to build your career in Toronto instead of leaving for somewhere else.</p>
+      </div>
+      <div class="policy-card">
+        <div class="policy-eyebrow">Civic tech</div>
+        <div class="policy-title">Ward-level civic innovation program</div>
+        <p class="policy-body">A citywide innovation challenge tied to real paid pilot opportunities. Students and new grads can solve city problems and get paid to deploy them. City Hall becomes a platform for your ideas.</p>
+      </div>
+      <div class="policy-card">
+        <div class="policy-eyebrow">Night economy</div>
+        <div class="policy-title">Toronto After Dark</div>
+        <p class="policy-body">Extended hours zones. Simpler permits for arts, culture, and nightlife venues. A city that's actually alive — because students, artists, and young workers deserve a city that doesn't close at 11pm.</p>
+      </div>
+      <div class="policy-card">
+        <div class="policy-eyebrow">AI literacy</div>
+        <div class="policy-title">AI for everyone, not just elites</div>
+        <p class="policy-body">Public AI education through libraries, colleges, and universities. Mo's view: AI will define the next economy. Every student should have access to the tools and training to compete.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CAMPUS CHAPTERS -->
+<section class="section chapters-section">
+  <div class="section-inner">
+    <span class="eyebrow">Campus chapters</span>
+    <h2 class="section-title">Students for Mo<br>across the city</h2>
+    <p class="section-body" style="max-width:560px;">Eight active campus chapters and counting. Start one at your school in under 24 hours — we'll send materials, support, and connect you with the broader network.</p>
+    <div class="chapters-grid">
+      <div class="chapter-card"><div class="chapter-school">University of Toronto</div><div class="chapter-status">Active — 340 members</div></div>
+      <div class="chapter-card"><div class="chapter-school">York University</div><div class="chapter-status">Active — 215 members</div></div>
+      <div class="chapter-card"><div class="chapter-school">Ryerson / Toronto Met</div><div class="chapter-status">Active — 290 members</div></div>
+      <div class="chapter-card"><div class="chapter-school">OCAD University</div><div class="chapter-status">Active — 88 members</div></div>
+      <div class="chapter-card"><div class="chapter-school">Seneca College</div><div class="chapter-status">Active — 175 members</div></div>
+      <div class="chapter-card"><div class="chapter-school">Humber College</div><div class="chapter-status">Active — 140 members</div></div>
+      <div class="chapter-card"><div class="chapter-school">George Brown College</div><div class="chapter-status">Active — 122 members</div></div>
+      <div class="chapter-card"><div class="chapter-school">Your school</div><div class="chapter-status forming">Start a chapter →</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SIGN UP -->
+<section class="section signup-section">
+  <div class="section-inner">
+    <span class="eyebrow eyebrow-white">Get involved</span>
+    <h2 class="section-title">Join Students<br>for Mo</h2>
+    <div class="signup-layout">
+      <div class="signup-card">
+        <div class="signup-card-title">Sign up for your campus chapter</div>
+        <div class="form-row-2">
+          <div class="form-group"><label class="form-label">First name</label><input class="form-input" type="text" placeholder="Jane"/></div>
+          <div class="form-group"><label class="form-label">Last name</label><input class="form-input" type="text" placeholder="Smith"/></div>
+        </div>
+        <div class="form-group"><label class="form-label">Email address</label><input class="form-input" type="email" placeholder="jane@university.ca"/></div>
+        <div class="form-group"><label class="form-label">School / Campus</label>
+          <select class="form-select">
+            <option value="">Select your school</option>
+            <option>University of Toronto</option>
+            <option>York University</option>
+            <option>Toronto Metropolitan University</option>
+            <option>OCAD University</option>
+            <option>Seneca College</option>
+            <option>Humber College</option>
+            <option>George Brown College</option>
+            <option>Other — start a chapter</option>
+          </select>
+        </div>
+        <div class="form-group"><label class="form-label">Program / Faculty (optional)</label><input class="form-input" type="text" placeholder="e.g. Engineering, Law, Social Work..."/></div>
+        <div class="form-group"><label class="form-label">How do you want to help?</label>
+          <select class="form-select">
+            <option>Join my campus chapter</option>
+            <option>Start a chapter at my school</option>
+            <option>Organize a campus event</option>
+            <option>Help with social media</option>
+            <option>All of the above</option>
+          </select>
+        </div>
+        <button class="submit-btn">Join Students for Mo</button>
+      </div>
+      <div class="signup-side">
+        <div class="ss-card"><div class="ss-title">What you get</div><p class="ss-body">Campaign materials, a chapter toolkit, access to the Students for Mo network, direct contact with campaign organizers, and a seat at the table when student policy is being shaped.</p></div>
+        <div class="ss-card"><div class="ss-title">Start a chapter</div><p class="ss-body">Don't see your school? You can start a chapter in 24 hours. Select "start a chapter" in the form and we'll walk you through everything — materials, training, and support included.</p></div>
+        <div class="ss-card"><div class="ss-title">Coming to campus</div><p class="ss-body">Mo is visiting campuses throughout the campaign. Want to bring him to your school? Request a campus visit through your chapter or email us directly.</p></div>
+        <div class="ss-card" style="background:rgba(245,200,0,.08);border-color:rgba(245,200,0,.3);">
+          <div class="ss-title" style="color:var(--yellow);">Share this page</div>
+          <p class="ss-body">The more students who sign up, the stronger the campaign's voice on student issues. Share with your residence floor, your group chat, your faculty.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="site-footer-top">
+      <div class="footer-brand">
+        <span class="f-logo">Mo</span>
+        <span class="f-sub">for Toronto · 2026</span>
+        <div class="f-bar"></div>
+        <p class="f-note">Authorized by the Mo Khan Mayoralty Campaign.<br>Contributions subject to Toronto municipal campaign finance rules.</p>
+      </div>
+      <div>
+        <div class="footer-col-title">Campaign</div>
+        <ul class="footer-links">
+          <li><a href="index.html#platform">Platform</a></li>
+          <li><a href="vision.html">Full vision</a></li>
+          <li><a href="events.html">Events</a></li>
+          <li><a href="involve.html">Get involved</a></li>
+          <li><a href="students.html">Students for Mo</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Support</div>
+        <ul class="footer-links">
+          <li><a href="donate.html">Donate online</a></li>
+          <li><a href="involve.html">Volunteer</a></li>
+          <li><a href="involve.html">Host a fundraiser</a></li>
+          <li><a href="involve.html">Endorse Mo</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Contact</div>
+        <ul class="footer-links">
+          <li><a href="mailto:info@mofortoronto.ca">info@mofortoronto.ca</a></li>
+          <li><a href="media.html">Press inquiries</a></li>
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">TikTok</a></li>
+          <li><a href="#">X / Twitter</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="site-footer-bottom">
+      <span class="footer-bottom-note">© 2026 Mo Khan Mayoralty Campaign · All rights reserved · Toronto, Ontario</span>
+      <span class="footer-langs">موفق باشید · நம்பிக்கை · 多伦多 · Para todos · ਟੋਰਾਂਟੋ · তোমাদের জন্য</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
