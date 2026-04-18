@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Get Involved — Mo for Toronto</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,700;0,900;1,900&family=Barlow:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="shared.css">
+  <style>
+    .ways-section{background:var(--paper);}
+    .ways-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:48px;}
+    .way-card{background:white;border:1.5px solid #dedad0;border-radius:6px;padding:28px 24px;cursor:pointer;transition:border-color .2s,transform .15s;}
+    .way-card:hover,.way-card.selected{border-color:var(--blue);transform:translateY(-2px);}
+    .way-card.selected{background:#E6F1FB;}
+    .way-icon{font-size:2rem;margin-bottom:14px;display:block;}
+    .way-title{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.2rem;text-transform:uppercase;letter-spacing:.03em;margin-bottom:8px;}
+    .way-body{font-size:.9rem;line-height:1.65;color:var(--muted);}
+
+    .form-section{background:var(--blue);padding:96px 48px;}
+    .form-section .eyebrow{color:var(--yellow);}
+    .form-section .section-title{color:white;}
+    .form-section .section-body{color:rgba(255,255,255,.52);}
+    .form-layout{display:grid;grid-template-columns:1fr 1fr;gap:64px;margin-top:52px;align-items:start;}
+    .form-card{background:white;border-radius:6px;padding:40px 36px;}
+    .form-card-title{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.3rem;text-transform:uppercase;letter-spacing:.04em;margin-bottom:24px;padding-bottom:16px;border-bottom:2px solid var(--paper);}
+    .form-card .form-label{color:var(--muted);}
+    .form-card .form-input,.form-card .form-select,.form-card .form-textarea{background:var(--paper);}
+    .submit-btn{width:100%;padding:17px;border:none;border-radius:4px;background:var(--blue);color:var(--yellow);font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.15rem;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;transition:background .15s,transform .12s;margin-top:8px;}
+    .submit-btn:hover{background:#0D4FAF;transform:translateY(-2px);}
+
+    .form-side{display:flex;flex-direction:column;gap:16px;}
+    .side-card{background:rgba(255,255,255,.07);border:1.5px solid rgba(255,255,255,.12);border-radius:6px;padding:24px 22px;}
+    .side-card-title{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1rem;text-transform:uppercase;letter-spacing:.04em;color:white;margin-bottom:8px;}
+    .side-card-body{font-size:.88rem;line-height:1.6;color:rgba(255,255,255,.45);}
+
+    .pledge-section{background:var(--yellow);}
+    .pledge-section .eyebrow{color:var(--blue);}
+    .pledge-section .section-title{color:var(--black);}
+    .pledge-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:48px;}
+    .pledge-card{background:white;border:2px solid var(--black);border-radius:5px;padding:26px 22px;text-align:center;}
+    .pledge-num{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:3rem;color:var(--blue);line-height:1;margin-bottom:4px;}
+    .pledge-lbl{font-family:'Barlow Condensed',sans-serif;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);}
+
+    .checkbox-group{display:flex;flex-direction:column;gap:10px;margin-bottom:16px;}
+    .checkbox-item{display:flex;align-items:center;gap:10px;font-size:.9rem;color:var(--black);cursor:pointer;}
+    .checkbox-item input{width:18px;height:18px;accent-color:var(--blue);flex-shrink:0;}
+
+    @media(max-width:900px){.ways-grid,.form-layout,.pledge-grid{grid-template-columns:1fr 1fr;}.form-section{padding:64px 24px;}}
+    @media(max-width:580px){.ways-grid,.form-layout,.pledge-grid{grid-template-columns:1fr;}}
+  </style>
+</head>
+<body>
+<div class="ann-bar">Toronto deserves better — Mo is running to deliver it &nbsp;·&nbsp; <a href="donate.html" style="color:var(--black);font-weight:900;">Donate now</a></div>
+<nav class="site-nav">
+  <a class="nav-logo" href="index.html">Mo <span>for Toronto</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html#platform">Platform</a></li>
+    <li><a href="vision.html">Full vision</a></li>
+    <li><a href="events.html">Events</a></li>
+    <li><a href="involve.html" class="active">Get Involved</a></li>
+    <li><a href="media.html">Media</a></li>
+    <li><a href="donate.html" class="nav-cta">Donate</a></li>
+  </ul>
+</nav>
+
+<div class="page-hero">
+  <div class="page-hero-stripe">
+    <span style="background:#0A3D8F;flex:5;"></span><span style="background:#F5C800;flex:2;"></span><span style="background:#E8291C;flex:1;"></span>
+  </div>
+  <div class="page-hero-inner">
+    <a class="page-back" href="index.html">← Back to campaign</a>
+    <div class="page-tag">Join the movement</div>
+    <h1 class="page-title">This city<br><span>needs you</span></h1>
+    <p class="page-intro">Campaigns are won by people, not ads. Whether you have one hour or one hundred, there's a place for you in this movement. Pick your role and let's get to work.</p>
+  </div>
+</div>
+
+<!-- WAYS TO GET INVOLVED -->
+<section class="section ways-section">
+  <div class="section-inner">
+    <span class="eyebrow">How you can help</span>
+    <h2 class="section-title">Pick your role</h2>
+    <p class="section-body">Every action counts. The campaign is built on people doing what they can, where they are, with what they have.</p>
+    <div class="ways-grid">
+      <div class="way-card"><span class="way-icon">🚪</span><div class="way-title">Knock doors</div><p class="way-body">The single most powerful thing you can do. Join a canvass team in your ward and talk to real voters about real issues.</p></div>
+      <div class="way-card"><span class="way-icon">📞</span><div class="way-title">Phone bank</div><p class="way-body">Call from anywhere — your couch, your office, your kitchen. We'll give you the script, the list, and the training.</p></div>
+      <div class="way-card"><span class="way-icon">🏠</span><div class="way-title">Host a house party</div><p class="way-body">Invite your neighbours, we'll send a speaker and materials. Your home, your community, your impact.</p></div>
+      <div class="way-card"><span class="way-icon">📣</span><div class="way-title">Share on social</div><p class="way-body">Post, share, repost, remix. Every person you reach is a potential voter. Tag us @mofortoronto.</p></div>
+      <div class="way-card"><span class="way-icon">🎓</span><div class="way-title">Campus organizing</div><p class="way-body">Students for Mo — organize at your university, college, or school. We'll support you with materials, speakers, and training.</p></div>
+      <div class="way-card"><span class="way-icon">💰</span><div class="way-title">Fundraise</div><p class="way-body">Host a fundraiser, or just share the donate page with your network. Every dollar funds organizing in your ward.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- PLEDGE STATS -->
+<section class="section pledge-section">
+  <div class="section-inner">
+    <span class="eyebrow">The movement so far</span>
+    <h2 class="section-title">Toronto is showing up</h2>
+    <div class="pledge-grid">
+      <div class="pledge-card"><div class="pledge-num">2,400+</div><div class="pledge-lbl">Supporters signed up</div></div>
+      <div class="pledge-card"><div class="pledge-num">120+</div><div class="pledge-lbl">Events held across the city</div></div>
+      <div class="pledge-card"><div class="pledge-num">47</div><div class="pledge-lbl">Wards visited by Mo</div></div>
+      <div class="pledge-card"><div class="pledge-num">8</div><div class="pledge-lbl">Campus chapters active</div></div>
+      <div class="pledge-card"><div class="pledge-num">15+</div><div class="pledge-lbl">Languages spoken in the campaign</div></div>
+      <div class="pledge-card"><div class="pledge-num">1,240</div><div class="pledge-lbl">Individual donors</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SIGN UP FORM -->
+<div class="form-section">
+  <div class="section-inner">
+    <span class="eyebrow eyebrow-white">Sign up</span>
+    <h2 class="section-title" style="color:white;">Join the<br>campaign</h2>
+    <div class="form-layout">
+      <div class="form-card">
+        <div class="form-card-title">Volunteer sign-up</div>
+        <div class="form-row-2">
+          <div class="form-group"><label class="form-label">First name</label><input class="form-input" type="text" placeholder="Jane"/></div>
+          <div class="form-group"><label class="form-label">Last name</label><input class="form-input" type="text" placeholder="Smith"/></div>
+        </div>
+        <div class="form-group"><label class="form-label">Email address</label><input class="form-input" type="email" placeholder="jane@email.com"/></div>
+        <div class="form-group"><label class="form-label">Phone number</label><input class="form-input" type="tel" placeholder="416-555-0100"/></div>
+        <div class="form-group"><label class="form-label">Your ward or neighbourhood</label><input class="form-input" type="text" placeholder="e.g. Ward 11, Etobicoke, Scarborough..."/></div>
+        <div class="form-group">
+          <label class="form-label">How do you want to help?</label>
+          <div class="checkbox-group">
+            <label class="checkbox-item"><input type="checkbox" checked/> Knock doors / canvass</label>
+            <label class="checkbox-item"><input type="checkbox"/> Phone banking</label>
+            <label class="checkbox-item"><input type="checkbox"/> Host a house party or event</label>
+            <label class="checkbox-item"><input type="checkbox"/> Campus organizing</label>
+            <label class="checkbox-item"><input type="checkbox"/> Social media &amp; content</label>
+            <label class="checkbox-item"><input type="checkbox"/> Translation / multilingual outreach</label>
+            <label class="checkbox-item"><input type="checkbox"/> Fundraising</label>
+            <label class="checkbox-item"><input type="checkbox"/> Professional skills (legal, design, tech...)</label>
+          </div>
+        </div>
+        <div class="form-group"><label class="form-label">Anything else? (optional)</label><textarea class="form-textarea" placeholder="Tell us about yourself, your community, or how you'd like to contribute..."></textarea></div>
+        <button class="submit-btn">Join the movement</button>
+      </div>
+
+      <div class="form-side">
+        <div class="side-card">
+          <div class="side-card-title">What happens next</div>
+          <p class="side-card-body">A campaign organizer will reach out within 48 hours to connect you with your local team, answer questions, and get you started. We will never spam you.</p>
+        </div>
+        <div class="side-card">
+          <div class="side-card-title">Students for Mo</div>
+          <p class="side-card-body">Organizing on campus? We have a dedicated student chapter program with materials, speakers, and support. Visit the Students for Mo page for more.</p>
+          <div style="margin-top:14px;"><a class="btn btn-ghost" href="students.html" style="font-size:.82rem;padding:10px 18px;">Students for Mo →</a></div>
+        </div>
+        <div class="side-card">
+          <div class="side-card-title">Community leaders & endorsements</div>
+          <p class="side-card-body">If you represent a community organization, union, business association, or civic group and want to formally endorse Mo, reach out directly.</p>
+          <div style="margin-top:14px;"><a class="btn btn-ghost" href="mailto:info@mofortoronto.ca" style="font-size:.82rem;padding:10px 18px;">Email us →</a></div>
+        </div>
+        <div class="side-card">
+          <div class="side-card-title">Prefer to donate?</div>
+          <p class="side-card-body">Every dollar funds organizing, canvassing, and community events. No corporate money — just neighbours funding neighbours.</p>
+          <div style="margin-top:14px;"><a class="btn btn-yellow" href="donate.html" style="font-size:.82rem;padding:10px 18px;">Donate to Mo →</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="site-footer-top">
+      <div class="footer-brand">
+        <span class="f-logo">Mo</span>
+        <span class="f-sub">for Toronto · 2026</span>
+        <div class="f-bar"></div>
+        <p class="f-note">Authorized by the Mo Khan Mayoralty Campaign.<br>Contributions subject to Toronto municipal campaign finance rules.</p>
+      </div>
+      <div>
+        <div class="footer-col-title">Campaign</div>
+        <ul class="footer-links">
+          <li><a href="index.html#platform">Platform</a></li>
+          <li><a href="vision.html">Full vision</a></li>
+          <li><a href="events.html">Events</a></li>
+          <li><a href="involve.html">Get involved</a></li>
+          <li><a href="students.html">Students for Mo</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Support</div>
+        <ul class="footer-links">
+          <li><a href="donate.html">Donate online</a></li>
+          <li><a href="involve.html">Volunteer</a></li>
+          <li><a href="involve.html">Host a fundraiser</a></li>
+          <li><a href="involve.html">Endorse Mo</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Contact</div>
+        <ul class="footer-links">
+          <li><a href="mailto:info@mofortoronto.ca">info@mofortoronto.ca</a></li>
+          <li><a href="media.html">Press inquiries</a></li>
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">TikTok</a></li>
+          <li><a href="#">X / Twitter</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="site-footer-bottom">
+      <span class="footer-bottom-note">© 2026 Mo Khan Mayoralty Campaign · All rights reserved · Toronto, Ontario</span>
+      <span class="footer-langs">موفق باشید · நம்பிக்கை · 多伦多 · Para todos · ਟੋਰਾਂਟੋ · তোমাদের জন্য</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
