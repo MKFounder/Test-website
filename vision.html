@@ -4,65 +4,54 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>The Vision — Mo for Toronto</title>
+  <meta name="description" content="The full Mo for Toronto platform — 8 policy areas, 5 signature commitments, and the philosophy behind a campaign to make Toronto faster, more open, and fairer for everyone."/>
+  <meta property="og:title" content="The Vision — Mo for Toronto"/>
+  <meta property="og:description" content="30-day housing permits, 48-hour business permits, 20% local procurement, a 24/7 city, and AI-powered City Hall. The full platform."/>
+  <meta property="og:type" content="website"/>
+  <meta name="twitter:card" content="summary_large_image"/>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,700;0,900;1,900&family=Barlow:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="shared.css">
   <style>
-    :root{--blue:#0A3D8F;--blue2:#0D4FAF;--yellow:#F5C800;--red:#E8291C;--black:#111111;--paper:#F4F1E8;--muted:#5a5a5a;--max:1100px;}
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-    html{scroll-behavior:smooth;}
-    body{font-family:'Barlow',sans-serif;background:var(--paper);color:var(--black);overflow-x:hidden;}
-
-    /* NAV */
-    nav{background:var(--blue);display:flex;align-items:center;justify-content:space-between;padding:0 48px;height:64px;position:sticky;top:0;z-index:100;}
-    .nav-logo{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.9rem;color:var(--yellow);text-decoration:none;line-height:1;display:flex;align-items:center;gap:10px;}
-    .nav-logo span{color:rgba(255,255,255,.5);font-weight:400;font-size:.82rem;letter-spacing:.15em;text-transform:uppercase;}
-    .nav-links{display:flex;gap:32px;list-style:none;align-items:center;}
-    .nav-links a{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.85rem;letter-spacing:.13em;text-transform:uppercase;color:rgba(255,255,255,.65);text-decoration:none;transition:color .15s;}
-    .nav-links a:hover{color:var(--yellow);}
-    .nav-cta{background:var(--yellow)!important;color:var(--black)!important;padding:10px 22px;border-radius:3px;}
-    .nav-cta:hover{background:white!important;color:var(--blue)!important;}
-    @media(max-width:768px){.nav-links{display:none;}nav{padding:0 24px;}}
-
-    /* VISION HERO */
-    .v-hero{background:var(--blue);padding:96px 48px 80px;position:relative;overflow:hidden;}
+    .v-hero{background:var(--blue);padding:80px 48px 0;position:relative;overflow:hidden;border-bottom:1px solid rgba(255,255,255,.08);}
     .v-hero::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,.055) 1px,transparent 1px);background-size:26px 26px;pointer-events:none;}
     .v-hero-stripe{position:absolute;top:0;left:0;right:0;height:8px;display:flex;}
     .v-hero-inner{max-width:var(--max);margin:0 auto;position:relative;z-index:2;}
-    .v-back{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.4);text-decoration:none;display:inline-flex;align-items:center;gap:8px;margin-bottom:32px;transition:color .15s;}
+    .v-back{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.4);text-decoration:none;display:inline-flex;align-items:center;gap:8px;margin-bottom:28px;transition:color .15s;}
     .v-back:hover{color:var(--yellow);}
-    .v-tag{display:inline-block;background:var(--yellow);color:var(--black);font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;padding:6px 16px;border-radius:2px;margin-bottom:22px;}
-    .v-title{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(52px,7vw,100px);line-height:.88;letter-spacing:-.02em;text-transform:uppercase;color:white;margin-bottom:24px;}
+    .v-tag{display:inline-block;background:var(--yellow);color:var(--black);font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;padding:6px 16px;border-radius:2px;margin-bottom:18px;}
+    .v-title{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(52px,7vw,96px);line-height:.88;letter-spacing:-.02em;text-transform:uppercase;color:white;margin-bottom:20px;}
     .v-title span{color:var(--yellow);}
-    .v-intro{font-size:1.15rem;line-height:1.78;color:rgba(255,255,255,.6);max-width:680px;margin-bottom:36px;}
-    .v-philosophy{display:grid;grid-template-columns:repeat(5,1fr);gap:2px;background:rgba(255,255,255,.08);border-radius:6px;overflow:hidden;margin-top:48px;}
+    .v-intro{font-size:1.1rem;line-height:1.78;color:rgba(255,255,255,.58);max-width:680px;margin-bottom:36px;}
+    .v-philosophy{display:grid;grid-template-columns:repeat(5,1fr);gap:2px;background:rgba(255,255,255,.08);border-radius:6px 6px 0 0;overflow:hidden;margin-top:48px;}
     .v-phil{background:rgba(10,61,143,.9);padding:22px 18px;border:1px solid rgba(255,255,255,.06);}
-    .v-phil-num{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.8rem;color:var(--yellow);opacity:.4;line-height:1;margin-bottom:6px;}
+    .v-phil-num{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.8rem;color:var(--yellow);opacity:.35;line-height:1;margin-bottom:6px;}
     .v-phil-title{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1rem;text-transform:uppercase;letter-spacing:.03em;color:var(--yellow);margin-bottom:6px;}
-    .v-phil-body{font-size:.82rem;line-height:1.6;color:rgba(255,255,255,.48);}
+    .v-phil-body{font-size:.82rem;line-height:1.6;color:rgba(255,255,255,.45);}
 
-    /* TOC SIDEBAR LAYOUT */
     .v-body{padding:0 48px 96px;max-width:var(--max);margin:0 auto;}
     .v-layout{display:grid;grid-template-columns:220px 1fr;gap:64px;padding-top:64px;}
 
-    /* Sticky TOC */
     .v-toc{position:sticky;top:80px;height:fit-content;}
-    .v-toc-title{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:16px;}
+    .v-toc-title{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:14px;}
     .v-toc-links{list-style:none;display:flex;flex-direction:column;gap:2px;}
     .v-toc-links a{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.88rem;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);text-decoration:none;padding:8px 10px;border-radius:3px;display:block;transition:background .15s,color .15s;border-left:3px solid transparent;}
     .v-toc-links a:hover{background:white;color:var(--blue);}
     .v-toc-links a.active{border-left-color:var(--blue);color:var(--blue);background:white;}
 
-    /* CONTENT */
-    .v-content{}
     .v-section{margin-bottom:72px;padding-bottom:72px;border-bottom:2px solid #e4e0d6;}
     .v-section:last-child{border-bottom:none;}
     .v-section-label{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;color:var(--blue);display:block;margin-bottom:10px;}
     .v-section-title{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(32px,4vw,52px);line-height:.92;letter-spacing:-.01em;text-transform:uppercase;margin-bottom:20px;}
-    .v-section-lead{font-size:1.08rem;line-height:1.78;color:var(--muted);margin-bottom:28px;max-width:620px;}
+    .v-section-lead{font-size:1.05rem;line-height:1.78;color:var(--muted);margin-bottom:28px;max-width:620px;}
 
-    /* policy items */
-    .v-policies{display:flex;flex-direction:column;gap:20px;}
+    .v-guarantee{background:var(--blue);border-radius:5px;padding:20px 22px;margin-bottom:20px;display:flex;align-items:center;gap:20px;}
+    .v-guarantee-num{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:3rem;color:var(--yellow);line-height:1;flex-shrink:0;}
+    .v-guarantee-title{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.1rem;text-transform:uppercase;color:white;margin-bottom:4px;}
+    .v-guarantee-desc{font-size:.88rem;color:rgba(255,255,255,.55);line-height:1.5;}
+
+    .v-policies{display:flex;flex-direction:column;gap:16px;}
     .v-policy{background:white;border:1.5px solid #dedad0;border-radius:5px;padding:24px 22px;}
     .v-policy-header{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:10px;}
     .v-policy-title{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.15rem;text-transform:uppercase;letter-spacing:.03em;}
@@ -75,40 +64,20 @@
     .v-policy-bullets li{display:flex;align-items:flex-start;gap:10px;font-size:.88rem;color:var(--muted);line-height:1.55;}
     .v-policy-bullets li::before{content:'—';color:var(--blue);font-weight:700;flex-shrink:0;margin-top:1px;}
 
-    /* guarantee callout */
-    .v-guarantee{background:var(--blue);border-radius:5px;padding:20px 22px;margin-bottom:20px;display:flex;align-items:center;gap:20px;}
-    .v-guarantee-num{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:3rem;color:var(--yellow);line-height:1;flex-shrink:0;}
-    .v-guarantee-body{}
-    .v-guarantee-title{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.1rem;text-transform:uppercase;color:white;margin-bottom:4px;}
-    .v-guarantee-desc{font-size:.88rem;color:rgba(255,255,255,.55);line-height:1.5;}
-
-    /* philosophy statement */
-    .v-statement{background:var(--black);border-radius:5px;padding:28px 24px;margin-top:16px;}
+    .v-statement{background:var(--black);border-radius:5px;padding:26px 24px;margin-top:16px;}
     .v-statement-text{font-family:'Barlow Condensed',sans-serif;font-style:italic;font-size:1.3rem;line-height:1.45;color:white;margin-bottom:10px;}
     .v-statement-attr{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--yellow);}
 
-    /* BOTTOM CTA */
     .v-cta-bar{background:var(--red);padding:64px 48px;text-align:center;}
     .v-cta-title{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(36px,5vw,64px);line-height:.92;text-transform:uppercase;color:white;margin-bottom:16px;}
     .v-cta-body{font-size:1rem;color:rgba(255,255,255,.65);max-width:480px;margin:0 auto 32px;line-height:1.7;}
     .v-cta-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
 
-    .btn{display:inline-block;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.95rem;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;padding:14px 30px;border-radius:3px;border:2px solid transparent;cursor:pointer;transition:transform .12s,background .15s,color .15s;line-height:1;}
-    .btn:hover{transform:translateY(-2px);}
-    .btn-yellow{background:var(--yellow);color:var(--black);border-color:var(--yellow);}
-    .btn-yellow:hover{background:white;border-color:white;}
-    .btn-ghost{background:transparent;color:white;border-color:rgba(255,255,255,.45);}
-    .btn-ghost:hover{background:white;color:var(--blue);}
-
-    footer{background:var(--blue);padding:40px 48px;text-align:center;}
-    .f-logo{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:2.4rem;color:var(--yellow);letter-spacing:-.02em;display:block;margin-bottom:8px;}
-    .f-note{font-size:.78rem;color:rgba(255,255,255,.3);line-height:1.8;}
-
     @media(max-width:900px){
       .v-layout{grid-template-columns:1fr;}
       .v-toc{display:none;}
       .v-body{padding:0 24px 72px;}
-      .v-hero{padding:64px 24px 56px;}
+      .v-hero{padding:60px 24px 0;}
       .v-philosophy{grid-template-columns:1fr 1fr;}
       .v-cta-bar{padding:48px 24px;}
     }
@@ -117,33 +86,37 @@
 </head>
 <body>
 
-<nav>
+<div class="ann-bar">Toronto is too slow. Mo will change that. &nbsp;·&nbsp; <a href="donate.html" style="color:var(--black);font-weight:900;">Donate now →</a></div>
+
+<nav class="site-nav">
   <a class="nav-logo" href="index.html">Mo <span>for Toronto</span></a>
   <ul class="nav-links">
-    <li><a href="index.html">← Home</a></li>
-    <li><a href="index.html#events">Events</a></li>
-    <li><a href="index.html#involve">Get Involved</a></li>
+    <li><a href="index.html#platform">Platform</a></li>
+    <li><a href="vision.html" class="active">Full vision</a></li>
+    <li><a href="events.html">Events</a></li>
+    <li><a href="involve.html">Get Involved</a></li>
+    <li><a href="students.html">Students</a></li>
+    <li><a href="media.html">Media</a></li>
     <li><a href="donate.html" class="nav-cta">Donate</a></li>
   </ul>
 </nav>
 
-<!-- HERO -->
 <div class="v-hero">
   <div class="v-hero-stripe">
-    <span style="background:#0A3D8F;flex:5;"></span>
-    <span style="background:#F5C800;flex:2;"></span>
-    <span style="background:#E8291C;flex:1;"></span>
+    <span style="background:#0A3D8F;flex:5;"></span><span style="background:#F5C800;flex:2;"></span><span style="background:#E8291C;flex:1;"></span>
   </div>
   <div class="v-hero-inner">
     <a class="v-back" href="index.html">← Back to campaign</a>
     <div class="v-tag">Full platform · 2026</div>
     <h1 class="v-title">The Mo for<br><span>Toronto</span> vision</h1>
-    <p class="v-intro">Toronto is too slow. Too closed. Too expensive to build in, live in, and start a business in. This platform is not a collection of promises — it is a set of concrete commitments with deadlines, accountability, and consequences if City Hall fails to deliver. Every policy here is designed around one belief: every Torontonian deserves dignity, opportunity, and a city that works at the speed of real life.</p>
-
-    <!-- Five campaign philosophies -->
+    <p class="v-intro">Toronto is too slow. Too closed. Too expensive to build in, live in, and start a business in. This platform is a set of concrete commitments with deadlines, accountability, and consequences if City Hall fails to deliver. Every policy is designed around one belief: every Torontonian deserves dignity, opportunity, and a city that works at the speed of real life.</p>
+    <div style="display:flex;gap:14px;flex-wrap:wrap;margin-bottom:48px;">
+      <a class="btn btn-yellow" href="involve.html">Join the movement</a>
+      <a class="btn btn-ghost" href="donate.html">Donate to Mo</a>
+    </div>
     <div class="v-philosophy">
       <div class="v-phil"><div class="v-phil-num">1</div><div class="v-phil-title">Too slow</div><p class="v-phil-body">Housing approvals, business permits, service requests — Toronto moves at bureaucratic speed, not human speed.</p></div>
-      <div class="v-phil"><div class="v-phil-num">2</div><div class="v-phil-title">Survival mode</div><p class="v-phil-body">Students, renters, founders, and workers are not thriving — they are surviving. That is not what a great city looks like.</p></div>
+      <div class="v-phil"><div class="v-phil-num">2</div><div class="v-phil-title">Survival mode</div><p class="v-phil-body">Students, renters, founders, and workers are not thriving. They are surviving. That is not what a great city looks like.</p></div>
       <div class="v-phil"><div class="v-phil-num">3</div><div class="v-phil-title">Platform, not barrier</div><p class="v-phil-body">City Hall should buy from local firms, pilot local ideas, and enable people to build — not get in the way.</p></div>
       <div class="v-phil"><div class="v-phil-num">4</div><div class="v-phil-title">Open city</div><p class="v-phil-body">Open to business, culture, nightlife, opportunity, and experimentation. Toronto should be alive at every hour.</p></div>
       <div class="v-phil"><div class="v-phil-num">5</div><div class="v-phil-title">Dignity through speed</div><p class="v-phil-body">Modernization is not just efficiency. It is human dignity — more housing, more beauty, less friction, more possibility.</p></div>
@@ -151,11 +124,8 @@
   </div>
 </div>
 
-<!-- BODY: TOC + CONTENT -->
 <div class="v-body">
   <div class="v-layout">
-
-    <!-- TOC -->
     <nav class="v-toc" aria-label="Platform sections">
       <div class="v-toc-title">Platform</div>
       <ul class="v-toc-links">
@@ -169,32 +139,26 @@
         <li><a href="#safety">08 · Safety & dignity</a></li>
         <li><a href="#stretch">Further ideas</a></li>
       </ul>
+      <div style="margin-top:32px;border-top:1px solid #e4e0d6;padding-top:24px;display:flex;flex-direction:column;gap:10px;">
+        <a class="btn btn-blue" href="donate.html" style="text-align:center;font-size:.82rem;padding:11px 16px;">Donate →</a>
+        <a class="btn btn-outline" href="involve.html" style="text-align:center;font-size:.82rem;padding:11px 16px;">Get involved →</a>
+      </div>
     </nav>
 
-    <!-- CONTENT -->
     <div class="v-content">
 
-      <!-- 01 HOUSING -->
       <div class="v-section" id="housing">
         <span class="v-section-label">01 — Core commitment</span>
         <h2 class="v-section-title">Housing acceleration</h2>
         <p class="v-section-lead">Toronto's housing crisis is partly a supply crisis and largely a speed crisis. Permits take months. Templates don't exist. Homeowners who want to add a suite can't figure out how. Mo will fix the machinery.</p>
-
         <div class="v-guarantee">
           <div class="v-guarantee-num">30</div>
-          <div class="v-guarantee-body">
-            <div class="v-guarantee-title">Day permit guarantee</div>
-            <div class="v-guarantee-desc">Complete, compliant applications for low-rise, multiplex, garden suites, laneway suites, additions, and basement rental legalization get an approval or deficiency list within 30 days — or the City pays a fee rebate.</div>
-          </div>
+          <div><div class="v-guarantee-title">Day permit guarantee</div><div class="v-guarantee-desc">Complete, compliant applications for low-rise, multiplex, garden suites, laneway suites, additions, and basement rental legalization get an approval or deficiency list within 30 days — or the City pays a fee rebate.</div></div>
         </div>
-
         <div class="v-policies">
           <div class="v-policy">
-            <div class="v-policy-header">
-              <div class="v-policy-title">Make it easier to build up and build more</div>
-              <span class="v-policy-tag tag-core">Core</span>
-            </div>
-            <p class="v-policy-body">Homeowners should be able to add floors, add units, build suites, and create small-scale housing. The goal is to increase supply, help homeowners generate income, allow young people to stay in Toronto, and expand the tax base over time.</p>
+            <div class="v-policy-header"><div class="v-policy-title">Make it easier to build up and build more</div><span class="v-policy-tag tag-core">Core</span></div>
+            <p class="v-policy-body">Homeowners should be able to add floors, add units, build suites, and create small-scale housing — increasing supply, helping homeowners generate income, and allowing young people to stay in Toronto.</p>
             <ul class="v-policy-bullets">
               <li>Pre-approved building templates so homeowners don't start from scratch</li>
               <li>Full digital tracking of permit status — no more calling and waiting</li>
@@ -203,11 +167,8 @@
             </ul>
           </div>
           <div class="v-policy">
-            <div class="v-policy-header">
-              <div class="v-policy-title">Student housing fast-track</div>
-              <span class="v-policy-tag tag-core">Core</span>
-            </div>
-            <p class="v-policy-body">Make it easier for universities and colleges to build student housing — in exchange for rent freezes or strict below-market rent commitments. Students should not be forced into survival mode just to study.</p>
+            <div class="v-policy-header"><div class="v-policy-title">Student housing fast-track</div><span class="v-policy-tag tag-core">Core</span></div>
+            <p class="v-policy-body">Make it easier for universities and colleges to build student housing in exchange for rent freezes or strict below-market rent commitments. Students should not be forced into survival mode just to study.</p>
             <ul class="v-policy-bullets">
               <li>Fast-track approvals and reduced development charges for compliant projects</li>
               <li>Density incentives tied to affordable rent commitments</li>
@@ -217,304 +178,181 @@
         </div>
       </div>
 
-      <!-- 02 LOCAL ECONOMY -->
       <div class="v-section" id="economy">
         <span class="v-section-label">02 — Core commitment</span>
         <h2 class="v-section-title">Local economic growth &amp; procurement reform</h2>
         <p class="v-section-lead">Toronto spends billions on city contracts — and most of that money leaves the local ecosystem. Mo will fix the flow. City Hall should be a platform for local firms, not a closed buyer.</p>
-
         <div class="v-guarantee">
           <div class="v-guarantee-num">20%</div>
-          <div class="v-guarantee-body">
-            <div class="v-guarantee-title">Local procurement mandate</div>
-            <div class="v-guarantee-desc">20% of eligible City contracts — professional services, software, consulting, maintenance, cultural programming, and SME-accessible work — go to Toronto startups and companies that keep money in the local ecosystem.</div>
-          </div>
+          <div><div class="v-guarantee-title">Local procurement mandate</div><div class="v-guarantee-desc">20% of eligible City contracts — professional services, software, consulting, maintenance, cultural programming, and SME-accessible work — go to Toronto startups and companies that keep money in the local ecosystem.</div></div>
         </div>
-
         <div class="v-policies">
-          <div class="v-policy">
-            <div class="v-policy-header">
-              <div class="v-policy-title">Contract unbundling</div>
-              <span class="v-policy-tag tag-core">Core</span>
-            </div>
-            <p class="v-policy-body">Break large City contracts into smaller pieces so startups, SMEs, and local firms can actually bid and win. The current system favours large incumbents by default.</p>
-          </div>
-          <div class="v-policy">
-            <div class="v-policy-header">
-              <div class="v-policy-title">Paid pilot pathway</div>
-              <span class="v-policy-tag tag-core">Core</span>
-            </div>
-            <p class="v-policy-body">Create a city-startup pathway where local firms can pilot solutions with the City and then scale them. Winning ideas get integrated into city operations and supported for growth.</p>
-          </div>
-          <div class="v-policy">
-            <div class="v-policy-header">
-              <div class="v-policy-title">Procurement transparency dashboard</div>
-              <span class="v-policy-tag tag-core">Core</span>
-            </div>
-            <p class="v-policy-body">A public dashboard showing where City dollars go, the local share of spending, vendor performance, and procurement outcomes. Sunlight is the best accountability mechanism.</p>
-          </div>
+          <div class="v-policy"><div class="v-policy-header"><div class="v-policy-title">Contract unbundling</div><span class="v-policy-tag tag-core">Core</span></div><p class="v-policy-body">Break large City contracts into smaller pieces so startups, SMEs, and local firms can actually bid and win. The current system favours large incumbents by default.</p></div>
+          <div class="v-policy"><div class="v-policy-header"><div class="v-policy-title">Paid pilot pathway</div><span class="v-policy-tag tag-core">Core</span></div><p class="v-policy-body">Create a city-startup pathway where local firms can pilot solutions with the City and then scale them. Winning ideas get integrated into city operations.</p></div>
+          <div class="v-policy"><div class="v-policy-header"><div class="v-policy-title">Procurement transparency dashboard</div><span class="v-policy-tag tag-core">Core</span></div><p class="v-policy-body">A public dashboard showing where City dollars go, the local share of spending, vendor performance, and procurement outcomes. Sunlight is the best accountability mechanism.</p></div>
         </div>
       </div>
 
-      <!-- 03 SMALL BIZ -->
       <div class="v-section" id="smallbiz">
         <span class="v-section-label">03 — Core commitment</span>
         <h2 class="v-section-title">Small business platform</h2>
         <p class="v-section-lead">Small businesses are squeezed by rent, insurance, bylaw complexity, and permit delays — and the city keeps making it harder. Mo will make Toronto the easiest big city in North America to open, operate, and grow a small business.</p>
-
         <div class="v-guarantee">
           <div class="v-guarantee-num">48</div>
-          <div class="v-guarantee-body">
-            <div class="v-guarantee-title">Hour permit guarantee</div>
-            <div class="v-guarantee-desc">Low-risk small business permits — signage, patios, minor interior renovations, low-risk event permits, basic operational approvals — approved within 48 hours or the applicant gets a fee rebate. No more months-long waits for a patio licence.</div>
-          </div>
+          <div><div class="v-guarantee-title">Hour permit guarantee</div><div class="v-guarantee-desc">Low-risk small business permits — signage, patios, minor interior renovations, low-risk event permits, basic operational approvals — approved within 48 hours or the applicant gets a fee rebate.</div></div>
         </div>
-
         <div class="v-policies">
-          <div class="v-policy">
-            <div class="v-policy-header">
-              <div class="v-policy-title">Small business impact assessment</div>
-              <span class="v-policy-tag tag-core">Core</span>
-            </div>
-            <p class="v-policy-body">Any new City policy or bylaw must include a small business impact review before passing. No more regulation that looks good on paper and destroys local commerce in practice.</p>
-          </div>
-          <div class="v-policy">
-            <div class="v-policy-header">
-              <div class="v-policy-title">Small business resilience strategy</div>
-              <span class="v-policy-tag tag-core">Core</span>
-            </div>
-            <p class="v-policy-body">Acknowledge the real pressures on small businesses — wage increases, insurance, construction disruption, bylaw complexity — and reduce friction across the board. This is not anti-worker. It is pro-business and pro-neighbourhood.</p>
-          </div>
+          <div class="v-policy"><div class="v-policy-header"><div class="v-policy-title">Small business impact assessment</div><span class="v-policy-tag tag-core">Core</span></div><p class="v-policy-body">Any new City policy or bylaw must include a small business impact review before passing. No more regulation that looks good on paper and destroys local commerce in practice.</p></div>
+          <div class="v-policy"><div class="v-policy-header"><div class="v-policy-title">Small business resilience strategy</div><span class="v-policy-tag tag-core">Core</span></div><p class="v-policy-body">Reduce friction across the board — bylaw complexity, permit delays, and administrative burden. This is not anti-worker. It is pro-business and pro-neighbourhood.</p></div>
         </div>
-
-        <div class="v-statement">
-          <p class="v-statement-text">"Make Toronto the easiest big city in North America to open, operate, and grow a business."</p>
-          <span class="v-statement-attr">Mo's commitment to small business owners</span>
-        </div>
+        <div class="v-statement"><p class="v-statement-text">"Make Toronto the easiest big city in North America to open, operate, and grow a business."</p><span class="v-statement-attr">Mo's commitment to small business owners</span></div>
       </div>
 
-      <!-- 04 NIGHT ECONOMY -->
       <div class="v-section" id="nightlife">
         <span class="v-section-label">04 — Core commitment</span>
         <h2 class="v-section-title">Managed 24/7 city &amp; night economy</h2>
-        <p class="v-section-lead">Toronto is too closed. The night economy — hospitality workers, artists, musicians, cultural workers, clubs, bars, events — is being strangled by a system designed for a different era. Mo will build a managed, safe, open city.</p>
-
+        <p class="v-section-lead">Toronto is too closed. The night economy is being strangled by a system designed for a different era. Mo will build a managed, safe, open city.</p>
         <div class="v-guarantee">
           <div class="v-guarantee-num">24/7</div>
-          <div class="v-guarantee-body">
-            <div class="v-guarantee-title">Toronto After Dark strategy</div>
-            <div class="v-guarantee-desc">Designated nightlife and entertainment zones with default extended hours — not special one-off permits. A managed night economy policy, not a chaos policy. Toronto should be open for business and open for life.</div>
-          </div>
+          <div><div class="v-guarantee-title">Toronto After Dark strategy</div><div class="v-guarantee-desc">Designated nightlife and entertainment zones with default extended hours. A managed night economy policy, not a chaos policy. Toronto should be open for business and open for life.</div></div>
         </div>
-
         <div class="v-policies">
-          <div class="v-policy">
-            <div class="v-policy-header">
-              <div class="v-policy-title">Extended hours zones</div>
-              <span class="v-policy-tag tag-core">Core</span>
-            </div>
-            <p class="v-policy-body">Designated nightlife zones where extended hours are the norm, not the exception. Simpler permitting for clubs, bars, events, and music venues. Lighting and safety infrastructure built into the design of night economy zones.</p>
-          </div>
-          <div class="v-policy">
-            <div class="v-policy-header">
-              <div class="v-policy-title">Safety-integrated night economy</div>
-              <span class="v-policy-tag tag-core">Core</span>
-            </div>
-            <p class="v-policy-body">Late-night transit reliability. Noise mediation instead of purely punitive enforcement. Integration with crisis response and public safety planning. A city that's alive is not a city that's unsafe — it's one that's designed well.</p>
-          </div>
+          <div class="v-policy"><div class="v-policy-header"><div class="v-policy-title">Extended hours zones</div><span class="v-policy-tag tag-core">Core</span></div><p class="v-policy-body">Designated nightlife zones where extended hours are the norm. Simpler permitting for clubs, bars, events, and music venues. Lighting and safety infrastructure built into the design of night economy zones.</p></div>
+          <div class="v-policy"><div class="v-policy-header"><div class="v-policy-title">Safety-integrated night economy</div><span class="v-policy-tag tag-core">Core</span></div><p class="v-policy-body">Late-night transit reliability. Noise mediation instead of purely punitive enforcement. Integration with crisis response and public safety planning. A city that's alive is a city designed well.</p></div>
         </div>
       </div>
 
-      <!-- 05 AI -->
       <div class="v-section" id="ai">
         <span class="v-section-label">05 — Core commitment</span>
         <h2 class="v-section-title">AI modernization &amp; civic tech</h2>
-        <p class="v-section-lead">AI is not a buzzword. It is a tool. Mo will use it to make City Hall faster, more responsive, and more accountable — and make sure every Torontonian, not just the tech-connected, can benefit from it.</p>
-
-        <div class="v-statement" style="background:var(--blue);margin-bottom:20px;">
-          <p class="v-statement-text">"AI is not more important than potholes. It helps us get to potholes faster."</p>
-          <span class="v-statement-attr">Mo's AI policy philosophy</span>
-        </div>
-
+        <p class="v-section-lead">AI is a tool. Mo will use it to make City Hall faster, more responsive, and more accountable — and make sure every Torontonian, not just the tech-connected, can benefit.</p>
+        <div class="v-statement" style="background:var(--blue);margin-bottom:20px;"><p class="v-statement-text">"AI is not more important than potholes. It helps us get to potholes faster."</p><span class="v-statement-attr">Mo's AI policy philosophy</span></div>
         <div class="v-policies">
-          <div class="v-policy">
-            <div class="v-policy-header">
-              <div class="v-policy-title">AI modernization of City Hall</div>
-              <span class="v-policy-tag tag-core">Core</span>
-            </div>
-            <p class="v-policy-body">Deploy AI to speed up permit processing, improve service routing, improve pothole and infrastructure response, triage complaints, improve FOI handling, and reduce administrative delays across every city department.</p>
-          </div>
-          <div class="v-policy">
-            <div class="v-policy-header">
-              <div class="v-policy-title">Ward-level civic innovation program</div>
-              <span class="v-policy-tag tag-core">Core</span>
-            </div>
-            <p class="v-policy-body">Ward-by-ward civic problem-solving, culminating in a citywide challenge or summit. Winning ideas tied to paid pilot pathways. Real problems, real money, real deployment — not a hackathon that goes nowhere.</p>
-          </div>
-          <div class="v-policy">
-            <div class="v-policy-header">
-              <div class="v-policy-title">AI literacy for all Torontonians</div>
-              <span class="v-policy-tag tag-core">Core</span>
-            </div>
-            <p class="v-policy-body">Public-facing AI education through libraries, universities, colleges, senior workshops, small business training, and workforce programs. Everyone should be able to use AI — not just elites.</p>
-          </div>
+          <div class="v-policy"><div class="v-policy-header"><div class="v-policy-title">AI modernization of City Hall</div><span class="v-policy-tag tag-core">Core</span></div><p class="v-policy-body">Deploy AI to speed up permit processing, improve service routing, improve pothole and infrastructure response, triage complaints, improve FOI handling, and reduce administrative delays across every city department.</p></div>
+          <div class="v-policy"><div class="v-policy-header"><div class="v-policy-title">Ward-level civic innovation program</div><span class="v-policy-tag tag-core">Core</span></div><p class="v-policy-body">Ward-by-ward civic problem-solving, culminating in a citywide challenge or summit. Winning ideas tied to paid pilot pathways. Real problems, real money, real deployment.</p></div>
+          <div class="v-policy"><div class="v-policy-header"><div class="v-policy-title">AI literacy for all Torontonians</div><span class="v-policy-tag tag-core">Core</span></div><p class="v-policy-body">Public-facing AI education through libraries, universities, colleges, senior workshops, small business training, and workforce programs. Everyone should be able to use AI — not just elites.</p></div>
         </div>
       </div>
 
-      <!-- 06 YOUTH -->
       <div class="v-section" id="youth">
         <span class="v-section-label">06 — Core commitment</span>
         <h2 class="v-section-title">Youth, students &amp; talent retention</h2>
-        <p class="v-section-lead">Toronto trains some of the best talent in the world — then watches it leave. Students are in survival mode. Young professionals can't afford to stay. Mo will build the systems that make it realistic to build your life here.</p>
-
-        <div class="v-statement" style="margin-bottom:20px;">
-          <p class="v-statement-text">"Toronto should be the best city in the world to start your life."</p>
-          <span class="v-statement-attr">Mo's commitment to youth and students</span>
-        </div>
-
+        <p class="v-section-lead">Toronto trains some of the best talent in the world — then watches it leave. Mo will build the systems that make it realistic to build your life here.</p>
+        <div class="v-statement" style="margin-bottom:20px;"><p class="v-statement-text">"Toronto should be the best city in the world to start your life."</p><span class="v-statement-attr">Mo's commitment to youth and students</span></div>
         <div class="v-policies">
-          <div class="v-policy">
-            <div class="v-policy-header">
-              <div class="v-policy-title">Student-focused affordability</div>
-              <span class="v-policy-tag tag-core">Core</span>
-            </div>
-            <p class="v-policy-body">Student housing fast-tracks tied to rent freezes and below-market commitments. Policy designed to ensure students have a step up — not to force them to live only to survive.</p>
-          </div>
-          <div class="v-policy">
-            <div class="v-policy-header">
-              <div class="v-policy-title">Talent retention doctrine</div>
-              <span class="v-policy-tag tag-core">Core</span>
-            </div>
-            <p class="v-policy-body">The city should stop training talent and losing it. Targeted programs for students, young professionals, founders, creators, and builders to stay, grow, and contribute to the Toronto economy.</p>
-          </div>
-          <div class="v-policy">
-            <div class="v-policy-header">
-              <div class="v-policy-title">Student transit affordability</div>
-              <span class="v-policy-tag tag-goal">Ambitious goal</span>
-            </div>
-            <p class="v-policy-body">Targeted fare models, off-peak passes, and a "build here" transit retention pass for students, apprentices, and new graduates — reducing burden, retaining talent, and encouraging transit habits that stay for life.</p>
-          </div>
-          <div class="v-policy">
-            <div class="v-policy-header">
-              <div class="v-policy-title">Civic fellowships and youth pipelines</div>
-              <span class="v-policy-tag tag-core">Core</span>
-            </div>
-            <p class="v-policy-body">Targeted civic fellowships connecting young talent to city operations — modernization roles, youth advisory positions, and city talent pipelines that give young Torontonians a reason and a path to stay.</p>
-          </div>
+          <div class="v-policy"><div class="v-policy-header"><div class="v-policy-title">Student-focused affordability</div><span class="v-policy-tag tag-core">Core</span></div><p class="v-policy-body">Student housing fast-tracks tied to rent freezes and below-market commitments. Policy designed to ensure students have a step up — not to force them to live only to survive.</p></div>
+          <div class="v-policy"><div class="v-policy-header"><div class="v-policy-title">Talent retention doctrine</div><span class="v-policy-tag tag-core">Core</span></div><p class="v-policy-body">The city should stop training talent and losing it. Targeted programs for students, young professionals, founders, creators, and builders to stay, grow, and contribute to the Toronto economy.</p></div>
+          <div class="v-policy"><div class="v-policy-header"><div class="v-policy-title">Student transit affordability</div><span class="v-policy-tag tag-goal">Ambitious goal</span></div><p class="v-policy-body">Targeted fare models, off-peak passes, and a "build here" transit retention pass for students, apprentices, and new graduates — reducing burden and making staying in Toronto realistic.</p></div>
+          <div class="v-policy"><div class="v-policy-header"><div class="v-policy-title">Civic fellowships and youth pipelines</div><span class="v-policy-tag tag-core">Core</span></div><p class="v-policy-body">Targeted civic fellowships connecting young talent to city operations — modernization roles, youth advisory positions, and city talent pipelines that give young Torontonians a reason to stay.</p></div>
         </div>
       </div>
 
-      <!-- 07 CITY HALL REFORM -->
       <div class="v-section" id="cityhall">
         <span class="v-section-label">07 — Supporting platform</span>
         <h2 class="v-section-title">City Hall productivity reform</h2>
-        <p class="v-section-lead">City Hall has grown its administrative layer while frontline services stagnate. Consulting bills keep rising. Processes remain paper-based. Mo will modernize the engine of city government.</p>
-
+        <p class="v-section-lead">City Hall has grown its administrative layer while frontline services stagnate. Mo will modernize the engine of city government.</p>
         <div class="v-policies">
-          <div class="v-policy">
-            <div class="v-policy-header">
-              <div class="v-policy-title">Cap administrative growth</div>
-              <span class="v-policy-tag tag-core">Core</span>
-            </div>
-            <p class="v-policy-body">Restrain administrative expansion without cutting frontline services. Reduce consultant reliance and build internal capacity instead. Stop paying outsiders to do what City staff should be empowered to do.</p>
-          </div>
-          <div class="v-policy">
-            <div class="v-policy-header">
-              <div class="v-policy-title">Full digitization of city processes</div>
-              <span class="v-policy-tag tag-core">Core</span>
-            </div>
-            <p class="v-policy-body">Permits, licensing, service requests, FOI responses, and complaint tracking — all modernized, all trackable, all digital. No more faxes. No more in-person-only processes. Government should work like 2026.</p>
-          </div>
-          <div class="v-policy">
-            <div class="v-policy-header">
-              <div class="v-policy-title">Outcome-based program review</div>
-              <span class="v-policy-tag tag-core">Core</span>
-            </div>
-            <p class="v-policy-body">Programs — especially social, youth, and community initiatives — should not run forever just because they exist. Every program should be reviewed based on outcomes, impact, and measurable performance.</p>
-          </div>
-          <div class="v-policy">
-            <div class="v-policy-header">
-              <div class="v-policy-title">Public service standards dashboard</div>
-              <span class="v-policy-tag tag-core">Core</span>
-            </div>
-            <p class="v-policy-body">A public-facing dashboard showing permit turnaround times, licensing turnaround times, service request responsiveness, and key operational metrics. If Mo misses the targets, Torontonians will know. That is the point.</p>
-          </div>
+          <div class="v-policy"><div class="v-policy-header"><div class="v-policy-title">Cap administrative growth</div><span class="v-policy-tag tag-core">Core</span></div><p class="v-policy-body">Restrain administrative expansion without cutting frontline services. Reduce consultant reliance and build internal capacity. Stop paying outsiders to do what City staff should be empowered to do.</p></div>
+          <div class="v-policy"><div class="v-policy-header"><div class="v-policy-title">Full digitization of city processes</div><span class="v-policy-tag tag-core">Core</span></div><p class="v-policy-body">Permits, licensing, service requests, FOI responses, and complaint tracking — all modernized, all trackable, all digital. Government should work like 2026.</p></div>
+          <div class="v-policy"><div class="v-policy-header"><div class="v-policy-title">Outcome-based program review</div><span class="v-policy-tag tag-core">Core</span></div><p class="v-policy-body">Every program should be reviewed based on outcomes, impact, and measurable performance. Nothing runs forever just because it always has.</p></div>
+          <div class="v-policy"><div class="v-policy-header"><div class="v-policy-title">Public service standards dashboard</div><span class="v-policy-tag tag-core">Core</span></div><p class="v-policy-body">A public-facing dashboard showing permit turnaround times, licensing turnaround, service request responsiveness, and key operational metrics. If Mo misses targets, Torontonians will know. That is the point.</p></div>
         </div>
       </div>
 
-      <!-- 08 SAFETY -->
       <div class="v-section" id="safety">
         <span class="v-section-label">08 — Values layer</span>
         <h2 class="v-section-title">Safety, dignity &amp; lived experience</h2>
-        <p class="v-section-lead">Mo is not anti-safety. The model is safety plus opportunity, safety plus liveliness, safety plus systems design. Stagnation is not safety. A city that's alive is a city that's safe.</p>
-
+        <p class="v-section-lead">Mo is not anti-safety. The model is safety plus opportunity, safety plus liveliness, safety plus systems design. Stagnation is not safety.</p>
         <div class="v-policies">
-          <div class="v-policy">
-            <div class="v-policy-header">
-              <div class="v-policy-title">Safety through better systems</div>
-              <span class="v-policy-tag tag-core">Core</span>
-            </div>
-            <p class="v-policy-body">Investment in mental health crisis response, youth programming, and community-based prevention alongside enforcement. In nightlife, transit, public space, and youth programming — the view is always: better design, better outcomes.</p>
-          </div>
-          <div class="v-policy">
-            <div class="v-policy-header">
-              <div class="v-policy-title">Beauty and dignity as policy</div>
-              <span class="v-policy-tag tag-core">Values</span>
-            </div>
-            <p class="v-policy-body">Every human deserves dignity, respect, and a chance to build a purposeful life. This means vibrant public spaces, well-lit streets, cultural energy, nightlife, and city design that feels alive — not deadened. Hope and beauty are not luxuries. They are what a great city provides.</p>
-          </div>
+          <div class="v-policy"><div class="v-policy-header"><div class="v-policy-title">Safety through better systems</div><span class="v-policy-tag tag-core">Core</span></div><p class="v-policy-body">Investment in mental health crisis response, youth programming, and community-based prevention alongside enforcement. Better design produces better outcomes.</p></div>
+          <div class="v-policy"><div class="v-policy-header"><div class="v-policy-title">Beauty and dignity as policy</div><span class="v-policy-tag tag-core">Values</span></div><p class="v-policy-body">Every human deserves dignity, respect, and a chance to build a purposeful life. Vibrant public spaces, well-lit streets, cultural energy, nightlife, and city design that feels alive — not deadened. Hope and beauty are not luxuries. They are what a great city provides.</p></div>
         </div>
       </div>
 
-      <!-- STRETCH IDEAS -->
       <div class="v-section" id="stretch">
         <span class="v-section-label">Further ideas under development</span>
         <h2 class="v-section-title">The full idea bank</h2>
-        <p class="v-section-lead">These ideas are part of the full platform conversation — some are ambitious, some need stronger design, and some may be refined or piloted before full commitment. They reflect the scale of Mo's ambition for Toronto.</p>
-
+        <p class="v-section-lead">These ideas are part of the full platform conversation — ambitious, in need of stronger design, or being refined before full commitment. They reflect the scale of Mo's ambition for Toronto.</p>
         <div class="v-policies">
-          <div class="v-policy">
-            <div class="v-policy-header">
-              <div class="v-policy-title">$1 student fares</div>
-              <span class="v-policy-tag tag-stretch">Exploratory</span>
-            </div>
-            <p class="v-policy-body">A strong student mobilization idea with potential for viral resonance. Likely requiring targeting, phase-in, off-peak limitations, or a pilot. The underlying principle — transit should not be a barrier to staying in Toronto — is non-negotiable.</p>
-          </div>
-          <div class="v-policy">
-            <div class="v-policy-header">
-              <div class="v-policy-title">Civic innovation fund</div>
-              <span class="v-policy-tag tag-goal">Ambitious goal</span>
-            </div>
-            <p class="v-policy-body">Milestone-based civic innovation grants for Toronto startups solving city problems. Prototype funding, city problem categories, and integration into the paid pilot pathway. Not startup cheques — earned capital tied to outcomes.</p>
-          </div>
-          <div class="v-policy">
-            <div class="v-policy-header">
-              <div class="v-policy-title">Revenue expansion</div>
-              <span class="v-policy-tag tag-goal">Ambitious goal</span>
-            </div>
-            <p class="v-policy-body">Toronto has enormous underused economic capacity. Significantly grow the tax base through housing growth, local business activity, modernization, and new economic participation — without relying only on property tax increases.</p>
-          </div>
+          <div class="v-policy"><div class="v-policy-header"><div class="v-policy-title">$1 student fares</div><span class="v-policy-tag tag-stretch">Exploratory</span></div><p class="v-policy-body">A strong student mobilization idea with viral potential. Likely requiring targeting, phase-in, or off-peak limitations. The underlying principle — transit should not be a barrier to staying in Toronto — is non-negotiable.</p></div>
+          <div class="v-policy"><div class="v-policy-header"><div class="v-policy-title">Civic innovation fund</div><span class="v-policy-tag tag-goal">Ambitious goal</span></div><p class="v-policy-body">Milestone-based civic innovation grants for Toronto startups solving city problems. Prototype funding tied to paid pilot pathways — not startup cheques, but earned capital tied to outcomes.</p></div>
+          <div class="v-policy"><div class="v-policy-header"><div class="v-policy-title">Revenue expansion</div><span class="v-policy-tag tag-goal">Ambitious goal</span></div><p class="v-policy-body">Toronto has enormous underused economic capacity. Significantly grow the tax base through housing growth, local business activity, and modernization — without relying only on property tax increases.</p></div>
         </div>
       </div>
 
-    </div><!-- end v-content -->
-  </div><!-- end v-layout -->
-</div><!-- end v-body -->
-
-<!-- CTA BAR -->
-<div class="v-cta-bar">
-  <h2 class="v-cta-title">Convinced?<br>Join the movement.</h2>
-  <p class="v-cta-body">This platform only becomes reality if people show up. Volunteer, donate, knock doors, or just share this page with someone who needs to see it.</p>
-  <div class="v-cta-btns">
-    <a class="btn btn-yellow" href="donate.html">Donate to Mo</a>
-    <a class="btn btn-ghost" href="index.html#involve">Get involved</a>
+    </div>
   </div>
 </div>
 
-<footer>
-  <span class="f-logo">Mo for Toronto</span>
-  <p class="f-note">Authorized by the Mo Khan Mayoralty Campaign · Contributions subject to Toronto municipal campaign finance rules</p>
+<div class="v-cta-bar">
+  <h2 class="v-cta-title">Convinced?<br>Join the movement.</h2>
+  <p class="v-cta-body">This platform only becomes reality if people show up. Volunteer, donate, knock doors, or share this page with someone who needs to see it.</p>
+  <div class="v-cta-btns">
+    <a class="btn btn-yellow" href="donate.html">Donate to Mo</a>
+    <a class="btn btn-ghost" href="involve.html">Get involved</a>
+    <a class="btn btn-ghost" href="events.html">See upcoming events</a>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="site-footer-top">
+      <div class="footer-brand">
+        <span class="f-logo">Mo</span>
+        <span class="f-sub">for Toronto · 2026</span>
+        <div class="f-bar"></div>
+        <p class="f-note">Authorized by the Mo Khan Mayoralty Campaign.<br>Contributions subject to Toronto municipal campaign finance rules.</p>
+      </div>
+      <div>
+        <div class="footer-col-title">Campaign</div>
+        <ul class="footer-links">
+          <li><a href="index.html#platform">Platform</a></li>
+          <li><a href="vision.html">Full vision</a></li>
+          <li><a href="events.html">Events</a></li>
+          <li><a href="involve.html">Get involved</a></li>
+          <li><a href="students.html">Students for Mo</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Support</div>
+        <ul class="footer-links">
+          <li><a href="donate.html">Donate online</a></li>
+          <li><a href="involve.html">Volunteer</a></li>
+          <li><a href="involve.html">Host a fundraiser</a></li>
+          <li><a href="involve.html">Endorse Mo</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Contact</div>
+        <ul class="footer-links">
+          <li><a href="mailto:info@mofortoronto.ca">info@mofortoronto.ca</a></li>
+          <li><a href="media.html">Press inquiries</a></li>
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">TikTok</a></li>
+          <li><a href="#">X / Twitter</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="site-footer-bottom">
+      <span class="footer-bottom-note">© 2026 Mo Khan Mayoralty Campaign · All rights reserved · Toronto, Ontario</span>
+      <span class="footer-langs">موفق باشید · நம்பிக்கை · 多伦多 · Para todos · ਟੋਰਾਂਟੋ · তোমাদের জন্য</span>
+    </div>
+  </div>
 </footer>
 
+<script>
+  const sections = document.querySelectorAll('.v-section');
+  const links = document.querySelectorAll('.v-toc-links a');
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if(e.isIntersecting){
+        links.forEach(l => l.classList.remove('active'));
+        const active = document.querySelector(`.v-toc-links a[href="#${e.target.id}"]`);
+        if(active) active.classList.add('active');
+      }
+    });
+  },{rootMargin:'-30% 0px -60% 0px'});
+  sections.forEach(s => obs.observe(s));
+</script>
 </body>
 </html>
