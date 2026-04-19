@@ -1,0 +1,1603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="description" content="An investigation into the City of Toronto's shelter system: racial harassment, a 3am forced transfer, falsified records, and a discharge into −30°C. 454 pages of City-disclosed records.">
+<meta property="og:title" content="The Khan Files — Toronto Shelter System Exposed">
+<meta property="og:description" content="Called the N-word. Punched at 5am. Interrogated while concussed. Transferred at 3am. Discharged into −30°C. The City's own records prove it all.">
+<meta property="og:type" content="article">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The Khan Files — Toronto Shelter System Exposed">
+<meta name="twitter:description" content="Called the N-word. Punched at 5am. Interrogated while concussed. Transferred at 3am. Discharged into −30°C. 454 pages of City-disclosed records.">
+<meta name="theme-color" content="#0B0907">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>The Khan Files — Toronto Shelter System Exposed</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=JetBrains+Mono:wght@400;500;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --red:#D41E2C;--red-dark:#9A0012;--red-deep:#5E0008;
+  --yellow:#F5C518;--yellow-deep:#B8900A;
+  --ink:#0B0907;--ink-2:#17120D;--ink-3:#2A2018;
+  --paper:#F5F0E6;--paper-2:#EAE3D2;--paper-3:#DCD1B8;
+  --cream:#FDFAF1;
+  --muted:#6B5C44;--muted-2:#8A7A5E;
+  --line:#D9CEB2;--line-2:#C8BB9A;
+  --blue:#0A2F5C;--blue-mid:#1E5BA8;--blue-ice:#4A9FD4;
+  --teal:#0F6B5E;--orange:#C94800;--purple:#4B2480;
+  --ok:#1F7A4B;
+}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+@media(max-width:600px){html{scroll-padding-top:90px}}
+body{font-family:'Source Serif 4',Georgia,serif;background:var(--paper);color:var(--ink);-webkit-font-smoothing:antialiased;line-height:1.6;overflow-x:hidden}
+::selection{background:var(--yellow);color:var(--ink)}
+img,svg{display:block;max-width:100%}
+button{font:inherit;cursor:pointer;border:0;background:transparent;color:inherit}
+
+/* ============ NOISE + GRID BACKDROP ============ */
+.grain{position:fixed;inset:0;pointer-events:none;z-index:1000;opacity:.06;mix-blend-mode:multiply;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.8 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>")}
+
+/* ============ PROGRESS STACK (top) ============ */
+.topbar{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(11,9,7,0.96);backdrop-filter:saturate(140%) blur(10px);border-bottom:1px solid #2a2018}
+.progress-track{height:3px;background:#1a130c;position:relative;overflow:hidden}
+.progress-fill{height:100%;width:0%;background:linear-gradient(90deg,var(--red) 0%,var(--yellow) 100%);transition:width .1s linear;box-shadow:0 0 12px rgba(245,197,24,.5)}
+.topbar-in{max-width:1400px;margin:0 auto;padding:10px 22px;display:grid;grid-template-columns:auto 1fr auto;gap:22px;align-items:center}
+.brand{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:2px;color:#fff;display:flex;align-items:center;gap:8px}
+.brand .dot{width:8px;height:8px;background:var(--red);border-radius:50%;animation:pulse 2s ease-in-out infinite}
+.brand span{color:var(--yellow)}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.55;transform:scale(1.3)}}
+.section-ind{font-family:'JetBrains Mono',monospace;font-size:11px;color:#8a7a5e;letter-spacing:.5px;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.section-ind b{color:var(--yellow);font-weight:600}
+.topbar-actions{display:flex;gap:6px;align-items:center}
+.tb-btn{font-family:'JetBrains Mono',monospace;font-size:10px;color:#aaa;background:#1a130c;border:1px solid #2a2018;padding:6px 10px;border-radius:3px;letter-spacing:.5px;text-transform:uppercase;transition:.15s;display:flex;align-items:center;gap:6px}
+.tb-btn:hover{background:#2a2018;color:var(--yellow);border-color:var(--yellow-deep)}
+.tb-btn.on{background:var(--yellow);color:var(--ink);border-color:var(--yellow)}
+.tb-btn svg{width:12px;height:12px}
+@media(max-width:600px){
+  .topbar-in{grid-template-columns:auto auto;gap:10px}
+  .section-ind{display:none}
+  .topbar-actions{gap:4px}
+  .tb-btn{padding:5px 7px;font-size:9px;letter-spacing:0}
+  .brand{font-size:17px;letter-spacing:1px}
+}
+
+/* ============ MARQUEE ============ */
+.ticker-wrap{margin-top:54px;background:var(--red);overflow:hidden;padding:9px 0;border-bottom:2px solid var(--red-deep);position:relative}
+.ticker{display:flex;animation:tick 80s linear infinite;width:max-content}
+.ticker:hover{animation-play-state:paused}
+.ti{font-family:'Bebas Neue',sans-serif;font-size:14px;color:#fff;letter-spacing:2.5px;padding:0 40px;white-space:nowrap;display:flex;align-items:center;gap:14px}
+.ti::before{content:'◆';color:var(--yellow);font-size:10px}
+@keyframes tick{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+@media(max-width:600px){.ti{font-size:12px;letter-spacing:1.5px;padding:0 24px}}
+
+/* ============ MASTHEAD ============ */
+.mast{background:var(--ink);color:#fff;border-bottom:3px solid var(--yellow);position:relative;overflow:hidden}
+.mast::before{content:'';position:absolute;inset:0;background-image:repeating-linear-gradient(0deg,transparent 0 29px,rgba(255,255,255,0.02) 29px 30px);pointer-events:none}
+.mast-in{max-width:1400px;margin:0 auto;padding:32px 24px 22px;display:grid;grid-template-columns:1fr auto;gap:24px;align-items:end;position:relative}
+@media(max-width:640px){.mast-in{grid-template-columns:1fr;gap:12px}.pm{text-align:left}.pub{font-size:clamp(38px,10vw,72px)}}
+.pub{font-family:'Playfair Display',serif;font-weight:900;font-size:clamp(48px,7vw,92px);color:#fff;line-height:.9;letter-spacing:-1.5px}
+.pub em{font-style:italic;color:var(--yellow);font-weight:900}
+.pub-sub{font-family:'JetBrains Mono',monospace;font-size:11px;color:#8a7a5e;margin-top:10px;letter-spacing:1.5px;text-transform:uppercase}
+.pub-sub .divider{margin:0 10px;color:#3a2a18}
+.pm{text-align:right;font-family:'JetBrains Mono',monospace}
+.pm .iss{font-size:10px;color:#6b5c44;letter-spacing:1.5px;text-transform:uppercase}
+.pm .vol{font-family:'Bebas Neue',sans-serif;font-size:18px;color:var(--yellow);letter-spacing:1.5px;margin-top:3px}
+.pm .date{font-size:11px;color:#aaa;margin-top:4px}
+.pm .files{font-size:10px;color:#8a7a5e;margin-top:6px;letter-spacing:.5px}
+
+/* ============ ANCHOR NAV ============ */
+.anchors{background:#0a0705;border-bottom:1px solid #2a2018;position:sticky;top:57px;z-index:90;backdrop-filter:blur(10px)}
+.anchors-in{max-width:1400px;margin:0 auto;padding:0 24px;display:flex;overflow-x:auto;scrollbar-width:thin;-webkit-overflow-scrolling:touch}
+.anchors-in::-webkit-scrollbar{height:0}
+.anchors a{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:500;color:#8a7a5e;text-decoration:none;padding:11px 14px;white-space:nowrap;text-transform:uppercase;letter-spacing:1.2px;border-bottom:2px solid transparent;transition:.15s;display:flex;align-items:center;gap:6px}
+.anchors a:hover{color:#fff}
+.anchors a.active{color:var(--yellow);border-bottom-color:var(--yellow)}
+.anchors a .n{font-family:'Bebas Neue',sans-serif;font-size:12px;color:#4a3a28}
+.anchors a.active .n{color:var(--red)}
+@media(max-width:600px){.anchors a{padding:11px 10px;font-size:9px;letter-spacing:.5px;gap:4px}.anchors a .n{font-size:10px}}
+
+/* ============ HERO ============ */
+.hero{background:linear-gradient(180deg,var(--ink) 0%,var(--ink-2) 100%);color:#fff;padding:60px 0 40px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-200px;right:-200px;width:600px;height:600px;background:radial-gradient(circle,rgba(212,30,44,.15) 0%,transparent 70%);pointer-events:none}
+.hero::after{content:'454';position:absolute;right:-20px;bottom:-60px;font-family:'Playfair Display',serif;font-weight:900;font-size:380px;color:rgba(245,197,24,.035);line-height:.8;letter-spacing:-10px;pointer-events:none;font-style:italic}
+.hero-in{max-width:1400px;margin:0 auto;padding:0 24px;position:relative}
+.kicker{display:flex;align-items:center;gap:14px;margin-bottom:24px}
+.ktag{font-family:'Bebas Neue',sans-serif;font-size:11px;background:var(--red);color:#fff;padding:6px 14px;letter-spacing:3px;display:flex;align-items:center;gap:8px}
+.ktag .live-dot{width:6px;height:6px;background:var(--yellow);border-radius:50%;animation:pulse 1.5s infinite}
+.kfile{font-family:'JetBrains Mono',monospace;font-size:10px;color:#6b5c44;letter-spacing:1px}
+.kline{flex:1;height:1px;background:linear-gradient(90deg,#2a2018,transparent)}
+.hero h1{font-family:'Playfair Display',serif;font-weight:900;font-size:clamp(40px,5.6vw,84px);line-height:.98;color:#fff;margin-bottom:26px;max-width:1100px;letter-spacing:-1.5px;text-wrap:balance}
+.hero h1 .y{color:var(--yellow);font-style:italic}
+.hero h1 .r{color:var(--red);font-style:italic}
+.hero h1 .u{text-decoration:underline;text-decoration-color:var(--red);text-decoration-thickness:3px;text-underline-offset:8px}
+.hdeck{font-family:'Source Serif 4',serif;font-size:19px;line-height:1.55;color:#C5B89C;max-width:820px;margin-bottom:32px;text-wrap:pretty}
+.hdeck strong{color:#fff;font-weight:600}
+@media(max-width:600px){
+  .hero{padding:40px 0 28px}
+  .hero h1{font-size:clamp(32px,8vw,56px);line-height:1.0;letter-spacing:-.5px;margin-bottom:18px}
+  .hdeck{font-size:16px;margin-bottom:22px}
+  .kicker{flex-wrap:wrap;gap:8px;margin-bottom:16px}
+  .kfile{display:none}
+  .kline{display:none}
+}
+
+.hero-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:#2a2018;border:1px solid #2a2018;margin-bottom:32px}
+@media(max-width:720px){.hero-stats{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:400px){.hero-stats{grid-template-columns:1fr 1fr}}
+.hstat{background:var(--ink);padding:18px 20px;position:relative;overflow:hidden;transition:.2s}
+.hstat:hover{background:var(--ink-2)}
+.hstat .hsn{font-family:'Playfair Display',serif;font-weight:900;font-size:44px;color:var(--yellow);line-height:1;letter-spacing:-1.5px}
+.hstat .hsn.red{color:var(--red)}
+.hstat .hsn.ice{color:var(--blue-ice)}
+.hstat .hsl{font-family:'JetBrains Mono',monospace;font-size:10px;color:#8a7a5e;margin-top:8px;letter-spacing:.5px;text-transform:uppercase;line-height:1.4}
+@media(max-width:600px){.hstat{padding:14px 12px}.hstat .hsn{font-size:32px;letter-spacing:-.5px}.hstat .hsl{font-size:9px}}
+
+.hero-actions{display:flex;gap:10px;flex-wrap:wrap}
+@media(max-width:600px){.hero-actions{gap:8px}.pill{font-size:10px;padding:9px 14px}}
+.pill{font-family:'JetBrains Mono',monospace;font-size:11px;color:#aaa;background:#17120D;border:1px solid #2a2018;padding:10px 16px;border-radius:99px;letter-spacing:1px;text-transform:uppercase;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:.15s}
+.pill:hover{background:#2a2018;color:#fff;border-color:var(--yellow-deep)}
+.pill.y{background:var(--yellow);color:var(--ink);border-color:var(--yellow);font-weight:600}
+.pill.y:hover{background:#fff}
+
+/* ============ ALERT BAND (cold) ============ */
+.alert{background:#081a35;background-image:linear-gradient(180deg,#081a35 0%,#0a2446 100%);border-top:1px solid #1e3a5f;border-bottom:3px solid var(--blue-ice);position:relative;overflow:hidden}
+.alert::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:repeating-linear-gradient(90deg,var(--blue-ice) 0 14px,transparent 14px 28px);opacity:.4}
+.alert-in{max-width:1400px;margin:0 auto;padding:24px;display:grid;grid-template-columns:auto 1px 1fr auto;gap:28px;align-items:center}
+@media(max-width:900px){.alert-in{grid-template-columns:1fr;gap:14px}.alert-in .alert-div{display:none}}
+.alert-temp{font-family:'Playfair Display',serif;font-weight:900;font-size:88px;line-height:.85;color:var(--blue-ice);letter-spacing:-4px}
+.alert-temp-sub{font-family:'JetBrains Mono',monospace;font-size:10px;color:#7AB8D8;margin-top:4px;letter-spacing:1px;text-transform:uppercase}
+.alert-div{width:1px;background:#1E3A5F;align-self:stretch}
+.alert-body h2{font-family:'Playfair Display',serif;font-weight:700;font-size:22px;color:#E8F4FB;line-height:1.3;margin-bottom:8px;text-wrap:balance}
+.alert-body p{font-family:'Source Serif 4',serif;font-size:14px;color:#A8C8E0;line-height:1.6;max-width:720px}
+.alert-body strong{color:#fff}
+.alert-badge{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--blue-ice);background:rgba(74,159,212,.1);border:1px solid #1E3A5F;padding:8px 14px;border-radius:3px;letter-spacing:1px;text-transform:uppercase}
+@media(max-width:600px){
+  .alert-temp{font-size:60px;letter-spacing:-2px}
+  .alert-body h2{font-size:17px}
+  .alert-body p{font-size:13px}
+  .alert-badge{display:none}
+}
+
+/* ============ MAIN LAYOUT ============ */
+.main{max-width:1400px;margin:0 auto;padding:60px 24px}
+@media(max-width:600px){.main{padding:32px 16px}}
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:56px;align-items:start}
+@media(max-width:1080px){.layout{grid-template-columns:1fr}}
+.content{min-width:0}
+
+/* ============ SECTION SHELL ============ */
+.sec{margin-bottom:56px;padding-bottom:44px;border-bottom:1px solid var(--line);position:relative;scroll-margin-top:110px}
+.sec:last-child{border:0}
+.sec-head{display:grid;grid-template-columns:auto 1fr;gap:20px;align-items:end;margin-bottom:28px;padding-bottom:16px;border-bottom:3px double var(--ink-3)}
+.snum{font-family:'Playfair Display',serif;font-weight:900;font-size:88px;color:var(--red);line-height:.85;font-style:italic;letter-spacing:-3px}
+.stw .slabel{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:2.5px;color:var(--red);margin-bottom:6px}
+.stw .stitle{font-family:'Playfair Display',serif;font-size:clamp(26px,3vw,40px);font-weight:700;color:var(--ink);line-height:1.08;letter-spacing:-.8px;text-wrap:balance}
+.sec-meta{display:flex;gap:14px;margin-top:10px;align-items:center;flex-wrap:wrap}
+@media(max-width:600px){
+  .snum{font-size:56px;letter-spacing:-1px}
+  .sec-head{gap:12px}
+  .sec{margin-bottom:40px;padding-bottom:32px;scroll-margin-top:90px}
+}
+.rtime{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:.5px;text-transform:uppercase;display:flex;align-items:center;gap:5px}
+.rtime .tdot{width:5px;height:5px;border-radius:50%;background:var(--red)}
+.sec-bookmark{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--muted);border:1px solid var(--line-2);padding:5px 10px;border-radius:3px;letter-spacing:.5px;text-transform:uppercase;transition:.15s;display:inline-flex;align-items:center;gap:5px}
+.sec-bookmark:hover{border-color:var(--ink);color:var(--ink)}
+.sec-bookmark.on{background:var(--ink);color:var(--yellow);border-color:var(--ink)}
+.sec-bookmark svg{width:10px;height:10px}
+
+/* ============ PROSE ============ */
+.ap{font-family:'Source Serif 4',serif;font-size:17px;line-height:1.75;color:var(--ink-2);margin-bottom:16px;max-width:72ch;text-wrap:pretty}
+.ap.lead{font-size:19px}
+.ap.lead::first-letter{float:left;font-family:'Playfair Display',serif;font-weight:900;font-size:88px;line-height:.82;padding:8px 14px 0 0;color:var(--red);font-style:italic}
+.ap strong{font-weight:700;color:var(--ink);background:linear-gradient(180deg,transparent 62%,rgba(245,197,24,.5) 62%)}
+.ap em{font-style:italic}
+@media(max-width:600px){
+  .ap{font-size:15.5px;line-height:1.72}
+  .ap.lead{font-size:16.5px}
+  .ap.lead::first-letter{font-size:58px;padding:4px 10px 0 0}
+}
+
+.subh{font-family:'Bebas Neue',sans-serif;font-size:24px;color:var(--ink);margin:32px 0 12px;padding-left:14px;border-left:5px solid var(--red);letter-spacing:1.5px}
+
+/* ============ PULL QUOTE ============ */
+.pq{margin:32px 0;padding:26px 30px 26px 38px;background:var(--cream);border-left:6px solid var(--red);position:relative;box-shadow:0 1px 0 rgba(0,0,0,.04),0 8px 24px -12px rgba(154,0,18,.15)}
+.pq::before{content:'"';position:absolute;left:10px;top:-12px;font-family:'Playfair Display',serif;font-weight:900;font-size:90px;color:var(--red);line-height:1;font-style:italic}
+.pq p{font-family:'Playfair Display',serif;font-size:22px;font-style:italic;color:var(--ink);line-height:1.4;margin-bottom:12px;font-weight:500;text-wrap:pretty}
+.pq cite{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1.2px;font-style:normal;display:block;padding-top:10px;border-top:1px solid var(--line)}
+@media(max-width:600px){
+  .pq{padding:18px 16px 18px 28px;margin:22px 0}
+  .pq p{font-size:17px}
+  .pq::before{font-size:60px;top:-8px;left:6px}
+}
+
+/* ============ EXHIBIT CARD ============ */
+.exhibit{margin:28px 0;background:#FFFDF2;border:1px solid var(--paper-3);border-top:4px solid var(--yellow);padding:0;position:relative;overflow:hidden;box-shadow:0 1px 0 rgba(0,0,0,.03),0 12px 32px -18px rgba(184,144,10,.3)}
+.exhibit::before{content:'';position:absolute;top:4px;right:0;width:80px;height:80px;background:repeating-linear-gradient(45deg,rgba(245,197,24,.1) 0 6px,transparent 6px 12px);pointer-events:none}
+.ex-head{padding:12px 20px;border-bottom:1px dashed var(--line-2);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;background:rgba(245,197,24,.06)}
+.ex-head .elabel{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:#8A6B00;display:flex;align-items:center;gap:8px}
+.ex-head .elabel::before{content:'EXHIBIT';background:var(--ink);color:var(--yellow);padding:3px 8px;font-weight:700;letter-spacing:2px}
+.ex-stamp{font-family:'Bebas Neue',sans-serif;font-size:14px;color:var(--red);border:2px solid var(--red);padding:3px 10px;letter-spacing:2px;transform:rotate(-2deg);opacity:.85}
+.ex-body{padding:20px}
+.etext{font-family:'Source Serif 4',serif;font-size:14px;font-style:italic;color:var(--ink-2);line-height:1.7;margin-bottom:10px}
+.esrc{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:.5px;padding-top:10px;border-top:1px solid var(--line)}
+
+/* ============ CALLOUT BOXES ============ */
+.co{border-radius:0;padding:20px 24px;margin:24px 0;position:relative;border-left:5px solid}
+.co-h{font-family:'Bebas Neue',sans-serif;font-size:15px;letter-spacing:2px;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.co p,.co li{font-family:'Source Serif 4',serif;font-size:14.5px;line-height:1.65;color:var(--ink-2)}
+.co li{margin-left:22px;margin-bottom:6px}
+.co.red{background:#FFF0F1;border-color:var(--red)}.co.red .co-h{color:var(--red-dark)}
+.co.yellow{background:#FFF9E0;border-color:var(--yellow)}.co.yellow .co-h{color:#7A5C00}
+.co.blue{background:#E6F1FB;border-color:var(--blue-mid)}.co.blue .co-h{color:var(--blue)}
+.co.teal{background:#E1F5EE;border-color:var(--teal)}.co.teal .co-h{color:var(--teal)}
+.co.orange{background:#FFF0E0;border-color:var(--orange)}.co.orange .co-h{color:#A03800}
+.co.purple{background:#EDE7F6;border-color:var(--purple)}.co.purple .co-h{color:var(--purple)}
+
+/* ============ DARK FEATURE BLOCKS ============ */
+.feat{background:var(--ink);color:#fff;padding:34px 36px;margin:32px 0;position:relative;overflow:hidden;border-top:3px solid var(--red)}
+.feat::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:repeating-linear-gradient(90deg,var(--red) 0 12px,transparent 12px 24px);opacity:.5}
+.feat.y{border-top-color:var(--yellow)}.feat.y::before{background:repeating-linear-gradient(90deg,var(--yellow) 0 12px,transparent 12px 24px)}
+.feat-label{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:2.5px;color:var(--yellow);margin-bottom:14px}
+.feat.y .feat-label{color:var(--red)}
+.feat h3{font-family:'Playfair Display',serif;font-size:24px;font-weight:700;color:#fff;line-height:1.25;margin-bottom:16px;text-wrap:balance}
+.feat p{font-family:'Source Serif 4',serif;font-size:15px;color:#C5B89C;line-height:1.75;margin-bottom:12px;max-width:72ch}
+.feat strong{color:#fff;font-weight:600}
+.feat .sub-q{font-family:'Bebas Neue',sans-serif;font-size:16px;color:var(--yellow);letter-spacing:2px;margin:20px 0 8px;padding-top:16px;border-top:1px solid #2a2018}
+.feat .slur-note{font-family:'JetBrains Mono',monospace;font-size:10px;font-style:italic;color:#6b5c44;border-top:1px solid #2a2018;padding-top:12px;margin-top:18px;letter-spacing:.5px;line-height:1.6}
+@media(max-width:600px){.feat{padding:22px 18px;margin:22px 0}.feat h3{font-size:19px}.feat p{font-size:14px}}
+
+/* ============ JOURNEY / TIMELINE ============ */
+.journey{margin:32px 0;display:flex;flex-direction:column}
+.jstop{display:grid;grid-template-columns:52px 1fr;gap:0;cursor:pointer}
+.jrail{display:flex;flex-direction:column;align-items:center;position:relative}
+.jdot{width:20px;height:20px;border-radius:50%;margin-top:6px;position:relative;z-index:2;box-shadow:0 0 0 4px var(--paper)}
+.jdot::after{content:'';position:absolute;inset:-8px;border-radius:50%;border:1px solid currentColor;opacity:.3}
+.jconn{width:2px;flex:1;background:repeating-linear-gradient(180deg,var(--line-2) 0 6px,transparent 6px 10px);margin:4px 0}
+.jstop:last-child .jconn{display:none}
+.jbody{padding:0 0 30px 20px;position:relative}
+.jbody::before{content:'';position:absolute;left:20px;top:16px;width:12px;height:1px;background:var(--line-2)}
+.jstage{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:4px}
+.jname{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--ink);margin-bottom:4px}
+.jdates{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted);margin-bottom:10px;letter-spacing:.5px}
+.jdesc{font-family:'Source Serif 4',serif;font-size:14.5px;color:var(--ink-2);line-height:1.7;margin-bottom:10px;max-width:68ch}
+.jtags{display:flex;flex-wrap:wrap;gap:4px}
+.stag{font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:600;padding:4px 8px;letter-spacing:.5px;text-transform:uppercase;border-radius:2px}
+.tag-r{background:#FFEDED;color:var(--red-dark)}
+.tag-o{background:#FFF0E0;color:#A03800}
+.tag-b{background:#E6F1FB;color:var(--blue)}
+.tag-t{background:#E1F5EE;color:var(--teal)}
+.tag-y{background:#FFF9E0;color:#7A5C00}
+.tag-p{background:#EDE7F6;color:var(--purple)}
+@media(max-width:600px){
+  .jstop{grid-template-columns:38px 1fr}
+  .jdot{width:16px;height:16px}
+  .jbody{padding:0 0 24px 14px}
+  .jbody::before{left:14px;width:8px}
+  .jname{font-size:17px}
+  .jdesc{font-size:13.5px}
+  .jstage{font-size:9px;letter-spacing:1px}
+}
+
+/* ============ CONVERGENCE LIST ============ */
+.conv{margin:28px 0;border:1px solid var(--line);background:#FFFDF5}
+.conv-hd{font-family:'Bebas Neue',sans-serif;font-size:15px;letter-spacing:2px;color:var(--red);padding:14px 20px;background:var(--ink);color:var(--yellow);display:flex;justify-content:space-between;align-items:center}
+.conv-hd .counter{font-family:'JetBrains Mono',monospace;font-size:10px;color:#8a7a5e;letter-spacing:1px}
+.ci{display:grid;grid-template-columns:110px 1fr;border-bottom:1px dashed var(--line);transition:.15s;cursor:pointer}
+.ci:last-child{border-bottom:0}
+.ci:hover{background:#FFF7D9}
+.ci-d{font-family:'Bebas Neue',sans-serif;font-size:15px;color:var(--red-dark);padding:16px 12px 16px 20px;line-height:1.25;border-right:1px dashed var(--line);background:rgba(245,197,24,.08)}
+.ci-b{padding:16px 20px}
+.ci-t{font-family:'Source Serif 4',serif;font-size:15px;font-weight:600;color:var(--ink);margin-bottom:4px}
+.ci-s{font-family:'Source Serif 4',serif;font-size:13.5px;color:var(--muted);line-height:1.55}
+@media(max-width:600px){
+  .ci{grid-template-columns:76px 1fr}
+  .ci-d{font-size:12px;padding:12px 8px 12px 14px}
+  .ci-b{padding:12px 14px}
+  .ci-t{font-size:13.5px}
+  .ci-s{font-size:12.5px}
+  .conv-hd{padding:12px 14px;font-size:13px}
+}
+
+/* ============ DOCUMENT DROPZONE — the core sticky feature ============ */
+.dropzone{margin:32px 0;background:linear-gradient(180deg,#fdfaf1 0%,#f5efd9 100%);border:2px dashed var(--line-2);border-radius:4px;padding:0;position:relative;transition:.2s;overflow:hidden}
+.dropzone.drag{border-color:var(--red);background:#fff4d4;border-style:solid}
+.dz-head{padding:14px 20px;border-bottom:1px dashed var(--line-2);display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;background:rgba(245,197,24,.08)}
+.dz-title{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:600;color:#8A6B00;letter-spacing:2px;text-transform:uppercase;display:flex;align-items:center;gap:8px}
+.dz-title::before{content:'';width:8px;height:8px;border-radius:50%;background:var(--red);animation:pulse 2s infinite}
+.dz-count{font-family:'Bebas Neue',sans-serif;font-size:14px;color:var(--ink);letter-spacing:1.5px}
+.dz-count b{color:var(--red)}
+.dz-body{padding:20px;min-height:100px;display:flex;flex-direction:column;gap:10px}
+.dz-empty{text-align:center;padding:18px 12px;border:1px dashed var(--line);border-radius:3px;background:rgba(255,255,255,0.5)}
+.dz-empty svg{width:32px;height:32px;color:var(--muted);margin:0 auto 10px}
+.dz-empty .em-t{font-family:'Bebas Neue',sans-serif;font-size:18px;color:var(--ink);letter-spacing:1.5px;margin-bottom:4px}
+.dz-empty .em-s{font-family:'Source Serif 4',serif;font-size:13px;color:var(--muted);font-style:italic;margin-bottom:12px}
+.dz-btn{display:inline-flex;align-items:center;gap:8px;font-family:'JetBrains Mono',monospace;font-size:11px;color:#fff;background:var(--ink);padding:8px 16px;border-radius:3px;letter-spacing:1px;text-transform:uppercase;border:0;transition:.15s}
+.dz-btn:hover{background:var(--red)}
+.dz-btn svg{width:12px;height:12px}
+.dz-foot{padding:10px 20px;border-top:1px dashed var(--line-2);display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;background:rgba(0,0,0,0.02)}
+.dz-hint{font-family:'JetBrains Mono',monospace;font-size:9.5px;color:var(--muted);letter-spacing:.5px;text-transform:uppercase}
+.dz-foot .dz-btn{background:transparent;color:var(--ink);border:1px solid var(--line-2);padding:6px 12px;font-size:10px}
+.dz-foot .dz-btn:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
+@media(max-width:600px){
+  .dropzone{margin:22px 0}
+  .dz-head{padding:10px 14px}
+  .dz-body{padding:14px;min-height:70px}
+  .dz-empty{padding:14px 8px}
+  .dz-empty .em-t{font-size:15px}
+  .dz-foot{padding:8px 14px}
+  .dz-hint{display:none}
+  .dz-btn{width:100%;justify-content:center}
+  .dz-foot .dz-btn{width:auto}
+}
+
+/* file card inside dropzone */
+.doc{display:grid;grid-template-columns:52px 1fr auto;gap:12px;align-items:center;padding:10px 12px;background:#fff;border:1px solid var(--line);border-left:4px solid var(--red);border-radius:3px;animation:slideIn .4s ease;box-shadow:0 1px 0 rgba(0,0,0,.03)}
+@keyframes slideIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.doc-icon{width:44px;height:54px;background:#fef7d8;border:1px solid var(--line-2);border-radius:2px;position:relative;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;color:#8A6B00;letter-spacing:.5px}
+.doc-icon::after{content:'';position:absolute;top:0;right:0;border-style:solid;border-width:0 10px 10px 0;border-color:transparent #d9ceb2 transparent transparent}
+.doc-info{min-width:0}
+.doc-name{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--ink);font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-bottom:3px}
+.doc-meta{font-family:'JetBrains Mono',monospace;font-size:9.5px;color:var(--muted);letter-spacing:.3px;display:flex;gap:8px;flex-wrap:wrap}
+.doc-meta .verified{color:var(--ok);font-weight:600;display:inline-flex;align-items:center;gap:3px}
+.doc-x{font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--muted);padding:4px 8px;border:1px solid var(--line);border-radius:2px;letter-spacing:.5px;text-transform:uppercase;flex-shrink:0}
+.doc-x:hover{background:var(--red);color:#fff;border-color:var(--red)}
+@media(max-width:600px){.doc{grid-template-columns:36px 1fr auto;gap:8px}.doc-icon{width:34px;height:42px;font-size:8px}.doc-name{font-size:11px}}
+
+/* ============ SIDEBAR ============ */
+.sidebar{display:flex;flex-direction:column;gap:20px;position:sticky;top:100px;max-height:calc(100vh - 120px);overflow-y:auto;padding-right:4px;scrollbar-width:thin}
+.sidebar::-webkit-scrollbar{width:4px}
+.sidebar::-webkit-scrollbar-thumb{background:var(--line-2)}
+@media(max-width:1080px){.sidebar{position:static;max-height:none}}
+
+.sbc{background:#fff;border:1px solid var(--line);border-radius:3px;overflow:hidden;box-shadow:0 1px 0 rgba(0,0,0,.02)}
+.sbc-h{padding:10px 14px;display:flex;align-items:center;gap:8px;border-bottom:1px solid var(--line)}
+.sbc-h h3{font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:2px}
+.sbc-b{padding:14px}
+
+.cbox{background:linear-gradient(135deg,var(--red) 0%,var(--red-dark) 100%);color:#fff;padding:20px;position:relative;overflow:hidden;border-radius:3px}
+.cbox::before{content:'';position:absolute;top:-20px;right:-20px;width:100px;height:100px;background:radial-gradient(circle,rgba(245,197,24,.3) 0%,transparent 70%)}
+.cbox h3{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:1.5px;margin-bottom:4px;position:relative}
+.cbox .available{font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--yellow);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;gap:6px;position:relative}
+.cbox .available::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--yellow);animation:pulse 1.5s infinite}
+.cbox p{font-family:'Source Serif 4',serif;font-size:13px;color:rgba(255,255,255,.9);margin-bottom:14px;position:relative;line-height:1.55}
+.cbox a{font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:600;color:var(--yellow);text-decoration:none;display:flex;align-items:center;gap:6px;padding:8px 0;border-top:1px solid rgba(255,255,255,.15);position:relative;letter-spacing:.5px}
+.cbox a:hover{color:#fff}
+.cbox a:first-of-type{border-top-color:rgba(255,255,255,.15);border-top:1px solid rgba(255,255,255,.15)}
+
+.sbstats{display:grid;grid-template-columns:1fr 1fr;gap:4px;padding:4px}
+.sbs{background:var(--ink);padding:14px 10px;text-align:center;border-radius:2px;position:relative;overflow:hidden}
+.sbs-n{font-family:'Playfair Display',serif;font-weight:900;font-size:30px;color:var(--yellow);line-height:1;letter-spacing:-.5px}
+.sbs-l{font-family:'JetBrains Mono',monospace;font-size:9px;color:#8a7a5e;margin-top:4px;line-height:1.3;letter-spacing:.3px;text-transform:uppercase}
+.sbs.bl{background:#081a35}.sbs.bl .sbs-n{color:var(--blue-ice)}.sbs.bl .sbs-l{color:#7AB8D8}
+.sbs.rd{background:var(--red-dark)}.sbs.rd .sbs-n{color:var(--yellow)}.sbs.rd .sbs-l{color:#FFBDBD}
+
+.tli{display:grid;grid-template-columns:56px 1fr;gap:10px;padding:10px 0;border-bottom:1px dashed var(--line)}
+.tli:last-child{border-bottom:0}
+.tli.cold-i{background:#EBF5FC;margin:4px -14px;padding:10px 14px;border-left:3px solid var(--blue-ice)}
+.tld{font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;color:var(--red);line-height:1.4;text-transform:uppercase;letter-spacing:.5px}
+.tli.cold-i .tld{color:var(--blue)}
+.tlt{font-family:'Source Serif 4',serif;font-size:12.5px;font-weight:600;color:var(--ink);margin-bottom:2px;line-height:1.35}
+.tls{font-family:'Source Serif 4',serif;font-size:11.5px;color:var(--muted);line-height:1.45}
+
+.act{display:grid;grid-template-columns:32px 1fr;gap:10px;padding:8px 0;border-bottom:1px dashed var(--line);align-items:start}
+.act:last-child{border-bottom:0}
+.av{width:32px;height:32px;border-radius:50%;background:var(--ink);font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;color:var(--yellow);display:flex;align-items:center;justify-content:center;letter-spacing:.5px}
+.an{font-family:'Source Serif 4',serif;font-size:12.5px;font-weight:600;color:var(--ink);margin-bottom:2px}
+.ar{font-family:'JetBrains Mono',monospace;font-size:9.5px;color:var(--muted);line-height:1.45;letter-spacing:.2px}
+
+.pi{display:grid;grid-template-columns:10px 1fr;gap:8px;padding:10px 0;border-bottom:1px dashed var(--line);align-items:start;font-family:'Source Serif 4',serif;font-size:12.5px;color:var(--ink);line-height:1.5}
+.pi:last-child{border-bottom:0}
+.pd{width:8px;height:8px;border-radius:50%;background:var(--red);margin-top:6px;flex-shrink:0}
+
+.gt{padding:10px 0;border-bottom:1px dashed var(--line)}
+.gt:last-child{border-bottom:0}
+.gtw{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;color:var(--ink);letter-spacing:.3px;margin-bottom:3px}
+.gtd{font-family:'Source Serif 4',serif;font-size:12px;color:var(--muted);line-height:1.5}
+
+/* ============ FLOATING READER TOOLS ============ */
+.floater{position:fixed;right:18px;bottom:18px;z-index:95;display:flex;flex-direction:column;gap:8px}
+.fbtn{width:46px;height:46px;border-radius:50%;background:var(--ink);color:var(--yellow);display:flex;align-items:center;justify-content:center;box-shadow:0 4px 14px rgba(0,0,0,.25),0 1px 3px rgba(0,0,0,.15);transition:.15s;position:relative;border:1px solid #2a2018}
+.fbtn:hover{background:var(--red);color:#fff;transform:translateY(-2px)}
+.fbtn svg{width:18px;height:18px}
+.fbtn .badge{position:absolute;top:-4px;right:-4px;background:var(--red);color:#fff;font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;padding:2px 5px;border-radius:10px;min-width:16px;text-align:center}
+@media(max-width:600px){
+  .floater{right:12px;bottom:12px;gap:6px}
+  .fbtn{width:44px;height:44px}
+}
+
+/* ============ QUOTE SHARE POPUP ============ */
+.qshare{position:absolute;background:var(--ink);color:#fff;padding:8px 12px;border-radius:4px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.5px;text-transform:uppercase;display:flex;align-items:center;gap:8px;box-shadow:0 8px 20px rgba(0,0,0,.3);z-index:200;opacity:0;pointer-events:none;transform:translateY(4px);transition:.2s;white-space:nowrap}
+.qshare.on{opacity:1;pointer-events:auto;transform:translateY(0)}
+.qshare::after{content:'';position:absolute;top:100%;left:20px;border:5px solid transparent;border-top-color:var(--ink)}
+.qshare button{color:var(--yellow);letter-spacing:.5px}
+.qshare button:hover{color:#fff}
+.qshare .sep{color:#444;margin:0 4px}
+@media(max-width:768px){.qshare{display:none}}
+
+/* ============ TOAST ============ */
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--ink);color:#fff;padding:12px 20px;border-radius:4px;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.5px;box-shadow:0 10px 30px rgba(0,0,0,.3);z-index:300;opacity:0;pointer-events:none;transition:.25s;display:flex;align-items:center;gap:10px;border-left:4px solid var(--yellow);max-width:calc(100vw - 32px)}
+.toast.on{opacity:1;transform:translateX(-50%) translateY(0)}
+.toast svg{width:16px;height:16px;color:var(--yellow);flex-shrink:0}
+@media(max-width:600px){.toast{bottom:16px;font-size:11px;padding:10px 14px}}
+
+/* ============ FOOTER ============ */
+.footer{background:var(--ink);color:#fff;padding:44px 24px;border-top:4px solid var(--yellow);position:relative;overflow:hidden}
+.footer::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:repeating-linear-gradient(90deg,var(--red) 0 20px,var(--yellow) 20px 40px)}
+.footer-in{max-width:1400px;margin:0 auto;display:grid;grid-template-columns:1fr auto;gap:20px;align-items:center}
+@media(max-width:720px){.footer-in{grid-template-columns:1fr;text-align:center}}
+.fp{font-family:'Playfair Display',serif;font-weight:900;font-size:38px;letter-spacing:-.5px}
+.fp em{color:var(--yellow);font-style:italic}
+.fm{font-family:'JetBrains Mono',monospace;font-size:11px;color:#8a7a5e;text-align:right;line-height:1.8;letter-spacing:.3px}
+.fm a{color:var(--yellow);text-decoration:none}
+@media(max-width:720px){.fm{text-align:center}}
+@media(max-width:600px){.footer{padding:28px 16px}.fp{font-size:28px}.fm{font-size:10px;line-height:1.7}}
+
+/* ============ MODAL ============ */
+.modal{position:fixed;inset:0;background:rgba(11,9,7,.85);z-index:500;display:none;align-items:flex-end;justify-content:center;padding:0;backdrop-filter:blur(6px)}
+@media(min-width:600px){.modal{align-items:center;padding:24px}}
+.modal.on{display:flex}
+.modal-in{background:var(--cream);max-width:560px;width:100%;max-height:90vh;overflow-y:auto;border-radius:4px 4px 0 0;position:relative;box-shadow:0 30px 80px rgba(0,0,0,.5)}
+@media(min-width:600px){.modal-in{border-radius:4px}}
+.modal-head{padding:16px 20px;background:var(--ink);color:#fff;display:flex;justify-content:space-between;align-items:center;border-bottom:3px solid var(--yellow);position:sticky;top:0;z-index:1}
+.modal-head h3{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:2px}
+.modal-close{color:#fff;font-family:'JetBrains Mono',monospace;font-size:10px;background:rgba(255,255,255,.1);padding:8px 12px;border-radius:3px;letter-spacing:1px}
+.modal-close:hover{background:var(--red)}
+.modal-body{padding:24px}
+.modal-body h4{font-family:'Playfair Display',serif;font-size:20px;margin-bottom:10px;color:var(--ink)}
+.modal-body p{font-family:'Source Serif 4',serif;font-size:14px;color:var(--ink-2);margin-bottom:12px;line-height:1.65}
+.modal-body code{font-family:'JetBrains Mono',monospace;font-size:11px;background:var(--ink);color:var(--yellow);padding:2px 6px;border-radius:2px}
+@media(max-width:600px){.modal-body{padding:18px}.modal-body h4{font-size:17px}.modal-body p{font-size:13px}}
+
+/* ============ HIGHLIGHT (read sections) ============ */
+.sec.read .snum{color:var(--muted-2);opacity:.4}
+.sec.read::after{content:'✓ READ';position:absolute;top:-8px;right:0;font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;color:var(--ok);letter-spacing:1.5px;background:#fff;padding:3px 8px;border:1px solid var(--ok)}
+@media(max-width:600px){.sec.read::after{display:none}}
+
+/* ============ CALLOUT BOXES MOBILE ============ */
+@media(max-width:600px){.co{padding:14px 16px;margin:16px 0}.co-h{font-size:13px;letter-spacing:1px}}
+</style>
+</head>
+<body>
+<div class="grain"></div>
+
+<!-- ================= TOP BAR ================= -->
+<div class="topbar">
+  <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+  <div class="topbar-in">
+    <div class="brand"><span class="dot"></span>THE KHAN<span>FILES</span></div>
+    <div class="section-ind" id="sectionInd">Reading · <b id="curSection">The Investigation</b> · <span id="progPct">0%</span></div>
+    <div class="topbar-actions">
+      <button class="tb-btn" id="evidenceBtn" title="Your uploaded documents">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>
+        EVIDENCE · <b id="evidenceCount">0</b>
+      </button>
+      <button class="tb-btn" id="glossaryBtn">GLOSSARY</button>
+      <button class="tb-btn" id="shareBtn">SHARE</button>
+    </div>
+  </div>
+</div>
+
+<!-- ================= TICKER ================= -->
+<div class="ticker-wrap">
+  <div class="ticker">
+    <span class="ti">EXCLUSIVE INVESTIGATION</span>
+    <span class="ti">N-WORD AND F-WORD HURLED AT SHELTER RESIDENT — HOMES FIRST STAFF DID NOTHING</span>
+    <span class="ti">ASSAULTED AT 5AM — INTERROGATED SAME MORNING WHILE CONCUSSED</span>
+    <span class="ti">3AM FORCED TRANSFER — CITY CODES IT "VOLUNTARY"</span>
+    <span class="ti">DISCHARGED INTO −30°C WINDCHILL WITH HRTO APPLICATION PENDING</span>
+    <span class="ti">CITY LEGAL TOLD TRIBUNAL "NO NOTICE" — 7 MINUTES AFTER HIS OWN SOLICITOR ACKNOWLEDGED THE FILE</span>
+    <span class="ti">454 PAGES OF THE CITY'S OWN RECORDS PROVE IT ALL</span>
+    <span class="ti">OSAP USED AS A DISCHARGE WEAPON — TWICE, TWO YEARS APART</span>
+    <span class="ti">FOUR OVERSIGHT BODIES ACTIVE SIMULTANEOUSLY AT TIME OF DISCHARGE</span>
+    <span class="ti">EXCLUSIVE INVESTIGATION</span>
+    <span class="ti">N-WORD AND F-WORD HURLED AT SHELTER RESIDENT — HOMES FIRST STAFF DID NOTHING</span>
+    <span class="ti">ASSAULTED AT 5AM — INTERROGATED SAME MORNING WHILE CONCUSSED</span>
+    <span class="ti">3AM FORCED TRANSFER — CITY CODES IT "VOLUNTARY"</span>
+    <span class="ti">DISCHARGED INTO −30°C WINDCHILL WITH HRTO APPLICATION PENDING</span>
+    <span class="ti">CITY LEGAL TOLD TRIBUNAL "NO NOTICE" — 7 MINUTES AFTER HIS OWN SOLICITOR ACKNOWLEDGED THE FILE</span>
+    <span class="ti">454 PAGES OF THE CITY'S OWN RECORDS PROVE IT ALL</span>
+  </div>
+</div>
+
+<!-- ================= MASTHEAD ================= -->
+<header class="mast">
+  <div class="mast-in">
+    <div>
+      <h1 class="pub">The Khan<em>Files</em></h1>
+      <div class="pub-sub">Independent Investigative Journalism<span class="divider">·</span>Toronto<span class="divider">·</span>Public Interest</div>
+    </div>
+    <div class="pm">
+      <div class="iss">Issue No. 001 · Ongoing</div>
+      <div class="vol">VOL I — THE SHELTER FILE</div>
+      <div class="date">Published April 17, 2026 · Updated continuously</div>
+      <div class="files">CV-25-00754505-0000 · HRTO 2026-65086-I · AP-2026-00032</div>
+    </div>
+  </div>
+</header>
+
+<!-- ================= ANCHOR NAV ================= -->
+<nav class="anchors" id="anchors">
+  <div class="anchors-in">
+    <a href="#intro" data-id="intro"><span class="n">00</span>Start</a>
+    <a href="#journey" data-id="journey"><span class="n">01</span>The Journey</a>
+    <a href="#racism" data-id="racism"><span class="n">02</span>Racial Harassment</a>
+    <a href="#assault" data-id="assault"><span class="n">03</span>The Assault</a>
+    <a href="#discharge" data-id="discharge"><span class="n">04</span>The Discharge</a>
+    <a href="#smis" data-id="smis"><span class="n">05</span>The Secret File</a>
+    <a href="#osap" data-id="osap"><span class="n">06</span>OSAP Weaponized</a>
+    <a href="#legal" data-id="legal"><span class="n">07</span>Legal Conduct</a>
+    <a href="#coldday" data-id="coldday"><span class="n">08</span>−30°C Discharge</a>
+    <a href="#angles" data-id="angles"><span class="n">09</span>For the Press</a>
+  </div>
+</nav>
+
+<!-- ================= HERO ================= -->
+<section class="hero" id="intro">
+  <div class="hero-in">
+    <div class="kicker">
+      <span class="ktag"><span class="live-dot"></span>EXCLUSIVE INVESTIGATION</span>
+      <span class="kline"></span>
+      <span class="kfile">ONTARIO SUPERIOR COURT · HRTO · IPC · OMBUDSMAN TORONTO</span>
+    </div>
+    <h1>Called the <span class="r">N-word</span> in a City shelter.<br>Punched at 5am. Interrogated while <span class="y">concussed</span>.<br>Transferred at <span class="u">3am</span>. Discharged into −30°C.</h1>
+    <p class="hdeck">Mohammad Khan is a University of Toronto student who entered Toronto's shelter system in 2023. What followed — documented in <strong>454 pages of the City's own MFIPPA-disclosed records</strong> — is a story about racial harassment, institutional retaliation, falsified files, and a system that turned its machinery against the person it was supposed to protect. <strong>Five shelters. Three years. One continuous pattern.</strong></p>
+
+    <div class="hero-stats">
+      <div class="hstat"><div class="hsn">454</div><div class="hsl">Pages of City-Disclosed MFIPPA Records</div></div>
+      <div class="hstat"><div class="hsn">189</div><div class="hsl">Paragraph Statement of Claim, Ontario Superior Court</div></div>
+      <div class="hstat"><div class="hsn red">4</div><div class="hsl">Active Oversight Proceedings, Parallel</div></div>
+      <div class="hstat"><div class="hsn ice">−30°C</div><div class="hsl">Windchill the Day of Discharge</div></div>
+    </div>
+
+    <div class="hero-actions">
+      <a href="#journey" class="pill y">▼ BEGIN THE INVESTIGATION</a>
+      <a href="#coldday" class="pill">JUMP TO DISCHARGE DAY</a>
+      <a href="#angles" class="pill">FOR JOURNALISTS</a>
+      <button class="pill" id="uploadAllBtn">↑ UPLOAD EVIDENCE</button>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ALERT BAND ================= -->
+<div class="alert">
+  <div class="alert-in">
+    <div>
+      <div class="alert-temp">−30°C</div>
+      <div class="alert-temp-sub">WINDCHILL · 30 JAN 2026</div>
+    </div>
+    <div class="alert-div"></div>
+    <div class="alert-body">
+      <h2>The temperature on the day the City of Toronto discharged Mohammad Khan from emergency shelter.</h2>
+      <p><strong>His Human Rights Tribunal application for an emergency order was still pending.</strong> The only housing benefit the City had been managing for him had closed nine days earlier. Four separate oversight bodies were actively reviewing his case. The City discharged him anyway — using records he had never been shown and entries in a database he could not access.</p>
+    </div>
+    <div class="alert-badge">◉ LIVE FILE</div>
+  </div>
+</div>
+
+<!-- ================= MAIN ================= -->
+<div class="main">
+  <div class="layout">
+
+    <!-- ============ CONTENT ============ -->
+    <div class="content">
+
+      <!-- SEC 01 -->
+      <section class="sec" id="journey" data-title="The Shelter Journey">
+        <div class="sec-head">
+          <div class="snum">01</div>
+          <div class="stw">
+            <div class="slabel">The shelter journey</div>
+            <div class="stitle">Five shelters. Three years. One worsening story.</div>
+            <div class="sec-meta">
+              <span class="rtime"><span class="tdot"></span>5 min read</span>
+              <button class="sec-bookmark" data-sec="journey">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+                BOOKMARK
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <p class="ap lead">Mohammad Khan entered Toronto's emergency shelter system in June 2023. He was homeless, preparing to start university, and depending on a system that is supposed to provide not just a roof but a genuine pathway to stable housing. What he found instead was a network of facilities where his complaints were ignored, his records were constructed against him, and his attempts to assert his rights were met with escalating punishment. By January 30, 2026, with a windchill of −30°C and four separate legal proceedings pending, the City of Toronto discharged him into the street.</p>
+        <p class="ap">This is the documented journey across five facilities — all drawn from the City's own 454 pages of MFIPPA-disclosed records and the 189-paragraph amended Statement of Claim filed in Ontario Superior Court (CV-25-00754505-0000).</p>
+
+        <div class="journey">
+          <div class="jstop">
+            <div class="jrail"><div class="jdot" style="background:var(--red)"></div><div class="jconn"></div></div>
+            <div class="jbody">
+              <div class="jstage" style="color:var(--red)">STOP 01 · HOMES FIRST SOCIETY</div>
+              <div class="jname">4117 Lawrence Avenue East</div>
+              <div class="jdates">JULY — NOVEMBER 2023</div>
+              <div class="jdesc">Khan's first placement. Within weeks, residents began subjecting him to repeated racial and homophobic harassment — including the N-word and F-word, repeatedly, to his face. He made numerous complaints to staff and emailed management. Staff dismissed the concerns, warned him that physically defending himself could lead to <em>his own</em> discharge (not the harassers'), and prevented him from documenting incidents. Management was unresponsive until Khan escalated directly to the Homes First CEO. A leave-related SMIS entry characterized his absence as a "mental health break" — the first unsupported notation to enter his file, capable of propagating to every downstream shelter.</div>
+              <div class="jtags"><span class="stag tag-r">N-word + F-word hurled</span><span class="stag tag-o">Staff dismissed complaints</span><span class="stag tag-y">First unsupported SMIS label</span></div>
+            </div>
+          </div>
+          <div class="jstop">
+            <div class="jrail"><div class="jdot" style="background:var(--orange)"></div><div class="jconn"></div></div>
+            <div class="jbody">
+              <div class="jstage" style="color:var(--orange)">STOP 02 · HOMES FIRST SOCIETY</div>
+              <div class="jname">101 Placer Court</div>
+              <div class="jdates">NOVEMBER 2023 — APRIL 2024</div>
+              <div class="jdesc">Khan was transferred — not the harassers. At Placer Court, a roommate stood over his bed at night, pretended to photograph him, became intoxicated and screamed at him, and heated narcotics in the shared room. Staff took no meaningful action. The site manager laughed at his concerns when he raised them in a meeting, discouraged documentation, and blamed him for "causing problems." More SMIS entries were generated that would follow Khan to every subsequent facility.</div>
+              <div class="jtags"><span class="stag tag-o">Open-flame drug use in room</span><span class="stag tag-r">Manager laughed at complaints</span><span class="stag tag-y">SMIS record grows</span></div>
+            </div>
+          </div>
+          <div class="jstop">
+            <div class="jrail"><div class="jdot" style="background:var(--blue-mid)"></div><div class="jconn"></div></div>
+            <div class="jbody">
+              <div class="jstage" style="color:var(--blue-mid)">STOP 03 · CITY OF TORONTO</div>
+              <div class="jname">Fort York Residence</div>
+              <div class="jdates">APRIL — SEPTEMBER 2024</div>
+              <div class="jdesc">At intake, staff recorded that a previous SMIS note listed ADHD and PTSD — conditions Khan never disclosed and denied. The source assessment form was not attached. Khan filed at least eight complaints about a roommate who set alarms at 2–4am, followed him toward shower areas, and whose harassment escalated until, on July 3 at 5am, he physically assaulted Khan — striking him multiple times in the head. Staff refused to call 911. Khan called himself. He was diagnosed with a concussion at St. Michael's Hospital. He returned that same morning and was immediately summoned to a meeting used to build a case for his removal.</div>
+              <div class="jtags"><span class="stag tag-b">8+ complaints ignored</span><span class="stag tag-r">Assaulted at 5am</span><span class="stag tag-r">Interrogated while concussed</span></div>
+            </div>
+          </div>
+          <div class="jstop">
+            <div class="jrail"><div class="jdot" style="background:var(--teal)"></div><div class="jconn"></div></div>
+            <div class="jbody">
+              <div class="jstage" style="color:var(--teal)">STOP 04 · SALVATION ARMY</div>
+              <div class="jname">Maxwell Meighen Centre</div>
+              <div class="jdates">SEPTEMBER 5 — OCTOBER 2024</div>
+              <div class="jdesc">Transferred at 1:30am under threat of full system discharge. Khan arrived to no intake staff, a bedbug-infested room, non-functioning washrooms, residents smoking substances indoors, and a comment that the facility was "for troublemakers" — reinforcing the inference that adverse characterizations from Fort York had been shared. Staff accused Khan of bringing in the bedbugs. They refused to provide bus fare or food for school. They enforced a 10pm curfew incompatible with university attendance. He missed classes. The City's records described his departure from Fort York as a "voluntary transfer."</div>
+              <div class="jtags"><span class="stag tag-r">3am punitive transfer</span><span class="stag tag-o">Bedbug-infested room</span><span class="stag tag-y">University access blocked</span></div>
+            </div>
+          </div>
+          <div class="jstop">
+            <div class="jrail"><div class="jdot" style="background:var(--purple)"></div><div class="jconn"></div></div>
+            <div class="jbody">
+              <div class="jstage" style="color:var(--purple)">STOP 05 · CITY OF TORONTO</div>
+              <div class="jname">Travellers Hostel (Seaton House)</div>
+              <div class="jdates">JULY 2025 — JANUARY 30, 2026</div>
+              <div class="jdesc">Khan re-entered the shelter system after employment in Alberta was terminated and he could not afford housing in Toronto. At intake: no mental health concerns, no diagnosis, no safety issues. Four months later, his Individualized Service Plan asserted a "mental health condition" limiting his housing engagement — with no assessment, no diagnosis, and no clinical event in between. He disputed records, sought corrections, engaged four oversight bodies. The response: discharge at −30°C, with his Human Rights Tribunal interim remedy still pending and no housing pathway in place.</div>
+              <div class="jtags"><span class="stag tag-p">Diagnosis fabricated in ISP</span><span class="stag tag-r">−30°C discharge</span><span class="stag tag-b">4 proceedings active</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- DROPZONE 01 -->
+        <div class="dropzone" data-section="journey">
+          <div class="dz-head">
+            <div class="dz-title">Evidence locker · Section 01 · The Journey</div>
+            <div class="dz-count"><b class="dz-n">0</b>/∞ FILES</div>
+          </div>
+          <div class="dz-body">
+            <div class="dz-empty">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+              <div class="em-t">DROP SHELTER RECORDS HERE</div>
+              <div class="em-s">SMIS entries · intake forms · transfer letters · complaint emails</div>
+              <button class="dz-btn" data-upload="journey">+ UPLOAD FILE</button>
+            </div>
+          </div>
+          <div class="dz-foot">
+            <span class="dz-hint">Accepted · PDF · PNG · JPG · DOCX · TXT · max 20MB</span>
+            <button class="dz-btn" data-upload="journey">+ ADD FILE</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- SEC 02 -->
+      <section class="sec" id="racism" data-title="Racial Harassment">
+        <div class="sec-head">
+          <div class="snum">02</div>
+          <div class="stw">
+            <div class="slabel">Racial &amp; homophobic harassment</div>
+            <div class="stitle">The N-word. The F-word. Homes First said nothing could be done.</div>
+            <div class="sec-meta">
+              <span class="rtime"><span class="tdot"></span>4 min read</span>
+              <button class="sec-bookmark" data-sec="racism"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>BOOKMARK</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="feat">
+          <div class="feat-label">Pleaded in Ontario Superior Court · CV-25-00754505-0000 · Paragraphs 6–7 + 91–92</div>
+          <h3>Between July and November 2023, residents at 4117 Lawrence Avenue East subjected Mohammad Khan to repeated racial and homophobic harassment — including slurs such as the N-word and F-word, and other degrading abuse. Staff told him there was nothing they could do.</h3>
+          <p>The amended Statement of Claim pleads that Khan "made numerous complaints to staff and emailed management." The response from Homes First staff: they <strong>dismissed or minimized his concerns</strong>, warned him that defending himself physically could lead to <strong>his own discharge</strong> — not the harassers' — <strong>prevented him from documenting incidents</strong>, and failed to investigate or intervene.</p>
+          <p>The claim further pleads at paragraph 92 that "the discriminatory and retaliatory patterns the Plaintiff experienced at Homes First, including <strong>repeated exposure to racial and homophobic slurs such as the 'N word' and 'F word,' staff stating that nothing could be done about this conduct</strong>, form part of the factual context relevant to the Defendants' breach of their duty of care." Khan's litigation hold notice describes the period as one of <strong>"repeated racial epithets ('N----' and 'F----') and intimidation by a group of residents, management inaction until Homes First CEO was emailed."</strong></p>
+          <p>A City supervisor — Richard Brown at Travellers Hostel — later acknowledged in writing that Khan had been subjected to <strong>"racialized targeting, name-calling, and physical assault."</strong> His response was to redirect Khan to the same disputed case management channel. No investigation was initiated. No human rights referral was made. No incident report was generated. The claim pleads this as Charter section 15 and negligence, and that the supervisor's written acknowledgment without follow-up constitutes <strong>"institutional ratification of discriminatory treatment."</strong></p>
+          <div class="slur-note">Note: The slurs are described using conventional dashes in this publication. The full words are pleaded verbatim in the Statement of Claim filed in Ontario Superior Court (CV-25-00754505-0000) and in the litigation hold notice (MFIPPA AP-2026-00032, p. 397).</div>
+        </div>
+
+        <p class="ap">This pattern — where the person who complains faces consequences, not the person who caused the harm — repeats across every facility. At Lawrence Avenue, staff warned <em>Khan</em> about consequences. At Placer Court, the manager blamed <em>Khan</em>. At Fort York, staff encouraged <em>Khan</em> to move rather than addressing the roommate he had complained about for weeks. That roommate later assaulted him.</p>
+
+        <div class="co teal">
+          <div class="co-h">◆ WHAT THE TORONTO SHELTER STANDARDS REQUIRE</div>
+          <p>The Toronto Shelter Standards impose mandatory obligations regarding non-discrimination, client safety, and fair complaint handling. The claim pleads that every operator named as a defendant breached these standards. At Homes First, the pleading at paragraph 91 states that "Homes First's conduct breached the standard of care and reflected discriminatory and reprisal-based treatment contrary to the principles underlying the Ontario Human Rights Code, including by failing to respond appropriately to racial and homophobic harassment directed at the Plaintiff and by discouraging him from asserting his rights."</p>
+        </div>
+
+        <div class="dropzone" data-section="racism">
+          <div class="dz-head">
+            <div class="dz-title">Evidence locker · Section 02 · Racial Harassment</div>
+            <div class="dz-count"><b class="dz-n">0</b>/∞ FILES</div>
+          </div>
+          <div class="dz-body">
+            <div class="dz-empty">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+              <div class="em-t">DROP HARASSMENT EVIDENCE HERE</div>
+              <div class="em-s">CEO emails · staff complaints · incident logs · witness notes</div>
+              <button class="dz-btn" data-upload="racism">+ UPLOAD FILE</button>
+            </div>
+          </div>
+          <div class="dz-foot">
+            <span class="dz-hint">Accepted · PDF · PNG · JPG · DOCX · TXT · max 20MB</span>
+            <button class="dz-btn" data-upload="racism">+ ADD FILE</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- SEC 03 -->
+      <section class="sec" id="assault" data-title="The Assault">
+        <div class="sec-head">
+          <div class="snum">03</div>
+          <div class="stw">
+            <div class="slabel">July 3, 2024 · Fort York Residence</div>
+            <div class="stitle">Punched at 5am. Staff refused 911. Interrogated that same morning.</div>
+            <div class="sec-meta">
+              <span class="rtime"><span class="tdot"></span>4 min read</span>
+              <button class="sec-bookmark" data-sec="assault"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>BOOKMARK</button>
+            </div>
+          </div>
+        </div>
+
+        <p class="ap lead">On July 3, 2024, at approximately 5:00 a.m., the roommate Mohammad Khan had been complaining about for weeks physically assaulted him, striking him multiple times in the head. The assailant admitted the assault to staff. Staff refused to call 911. Khan called himself. Paramedics transported him to St. Michael's Hospital, where he was diagnosed with a concussion. He returned to Fort York the same morning. He was immediately summoned to a meeting.</p>
+        <p class="ap">Despite Khan having just returned from hospital with a diagnosed concussion, supervisor Sean Shipley pressed ahead with the meeting. Colleague Julio Castillo was present. Khan's request to bring a notebook was refused. His request to postpone was refused.</p>
+
+        <div class="co red">
+          <div class="co-h">⚠ DOCUMENTED THREAT · ON THE RECORD</div>
+          <p>During the meeting, Sean Shipley made statements the Plaintiff understood as threatening: words to the effect that staff would <strong>"take care of" Khan "in a different way"</strong> — while looking directly at him. Julio Castillo then repeated: <strong>"yeah, we're going to take care of you in a different way"</strong> — while typing at a computer. Khan did not know notes were being created in real time, without his knowledge, for use in future administrative decisions affecting his shelter access.</p>
+        </div>
+
+        <p class="ap">The incident report authored that morning — by Janelle Brathwaite — described Khan as "irate," "ranting," and staring at staff. It classified causation as <strong>"Undetected mental health for both clients"</strong> — treating the assault victim identically to his attacker in the same field. It recommended a 30-day Restriction of Service against Khan. Although dated July 3, the report referenced a July 4 follow-up — indicating it was supplemented after the fact, then presented as a contemporaneous record.</p>
+
+        <div class="exhibit">
+          <div class="ex-head">
+            <span class="elabel">SMIS Incident Report · Fort York · July 3, 2024</span>
+            <span class="ex-stamp">EVIDENCE A</span>
+          </div>
+          <div class="ex-body">
+            <div class="etext">Causation/Prevention field: "Undetected mental health for both clients." Recommendation: 30 days ROS [Restriction of Service]. Report dated July 3 contains reference to July 4 counsellor follow-up — indicating retroactive supplementation while being presented as a contemporaneous record.</div>
+            <div class="esrc">CITY-DISCLOSED · MFIPPA AP-2026-00032 · PAGES 348–360</div>
+          </div>
+        </div>
+
+        <p class="ap">The claim pleads that this assault was foreseeable. Khan had filed at least eight prior complaints about this specific roommate. Staff had repeatedly failed to act. When the foreseeable violence occurred, the institutional response was to interrogate the victim while constructing records framing him as the problem — records that would then be used to justify removing him from the program.</p>
+
+        <div class="pq">
+          <p>Instead of neutrally investigating the assault and accommodating the Plaintiff's medical condition, Fort York staff created and maintained records that framed the Plaintiff as the problem and laid groundwork for his removal from the program.</p>
+          <cite>— Fresh Amended Statement of Claim, ¶ 61 · Ontario Superior Court CV-25-00754505-0000</cite>
+        </div>
+
+        <div class="dropzone" data-section="assault">
+          <div class="dz-head">
+            <div class="dz-title">Evidence locker · Section 03 · The Assault</div>
+            <div class="dz-count"><b class="dz-n">0</b>/∞ FILES</div>
+          </div>
+          <div class="dz-body">
+            <div class="dz-empty">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+              <div class="em-t">DROP MEDICAL + INCIDENT RECORDS</div>
+              <div class="em-s">St. Michael's concussion record · 911 log · incident report · prior complaints</div>
+              <button class="dz-btn" data-upload="assault">+ UPLOAD FILE</button>
+            </div>
+          </div>
+          <div class="dz-foot">
+            <span class="dz-hint">Accepted · PDF · PNG · JPG · DOCX · TXT · max 20MB</span>
+            <button class="dz-btn" data-upload="assault">+ ADD FILE</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- SEC 04 -->
+      <section class="sec" id="discharge" data-title="The Discharge Letter">
+        <div class="sec-head">
+          <div class="snum">04</div>
+          <div class="stw">
+            <div class="slabel">September 4, 2024</div>
+            <div class="stitle">The backdated letter. "1:30." The 3am transfer coded as voluntary.</div>
+            <div class="sec-meta">
+              <span class="rtime"><span class="tdot"></span>4 min read</span>
+              <button class="sec-bookmark" data-sec="discharge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>BOOKMARK</button>
+            </div>
+          </div>
+        </div>
+
+        <p class="ap">Two months after the assault, Khan attended a meeting with Leianne Spiteri and Sean Shipley. For the first time, he was presented with a discharge letter. The letter was dated September 3 — the day before the meeting at which it was handed to him. It had been retroactively predated before the meeting itself.</p>
+
+        <div class="exhibit">
+          <div class="ex-head">
+            <span class="elabel">Discharge Letter · Leianne Spiteri · Presented Sep 4, Dated Sep 3, 2024</span>
+            <span class="ex-stamp">EVIDENCE B</span>
+          </div>
+          <div class="ex-body">
+            <div class="etext">"As of June 2024 you were no longer employed and you had elected to pursue full time education... You have remained unemployed for the remainder of your time in our program, with no savings to show. We established at that time that you have made yourself ineligible for the program... your present discharge date is September 3rd 2024 as previously discussed."</div>
+            <div class="esrc">CITY-DISCLOSED · MFIPPA AP-2026-00032 · THE WORDS "CONCUSSION," "ASSAULT," AND "JULY 3" APPEAR NOWHERE IN THIS LETTER</div>
+          </div>
+        </div>
+
+        <p class="ap">The letter made no mention of the concussion sustained two months earlier — the injury that disrupted employment. It cited Khan's pursuit of a University of Toronto education and receipt of OSAP (Ontario's student financial aid) as evidence he had made himself ineligible. The claim pleads that Spiteri's discharge documentation "treated his post-assault unemployment and academic transition as disqualifying, failed to fairly account for the effect of the assault and concussion on his employment and housing situation, and used OSAP-supported student status as part of an adverse discharge rationale."</p>
+
+        <div class="subh">THE DELIBERATE "1:30" AMBIGUITY</div>
+        <p class="ap">During the September 4 meeting, Shipley asked how long it would take Khan to move "if you had to leave at 1:30." Khan understood 1:30 p.m. Neither Shipley nor Spiteri specified a.m. At 1:30 a.m. the following morning — less than 24 hours later — shelter staff directed Khan to pack immediately for transfer to Maxwell Meighen Centre. Refusal meant discharge from the entire Toronto shelter system. Khan had been told weeks earlier he would not be transferred until October. He had provided his university timetable in good faith based on that assurance. His university classes the next morning were missed.</p>
+        <p class="ap">He arrived at Maxwell Meighen to no intake staff, a bedbug-infested room, non-functioning washrooms, residents smoking substances indoors, and a staff comment that the facility was "for troublemakers." The City's records logged his departure from Fort York as a "voluntary transfer."</p>
+
+        <div class="co teal">
+          <div class="co-h">◆ MISFEASANCE IN PUBLIC OFFICE · TWO NAMED INDIVIDUAL DEFENDANTS</div>
+          <p>Sean Shipley and Leianne Spiteri are named individually for misfeasance in public office — a tort requiring knowing or reckless unlawful exercise of public authority causing harm. Spiteri is pleaded to have created records attributing blame for the assault to Khan, prepared a discharge letter with a retroactive date, and used her recordkeeping authority adversely. Shipley is pleaded to have conducted an adversarial record-producing meeting with a concussed resident, made coercive threats, and contributed to a punitive overnight transfer.</p>
+        </div>
+
+        <div class="dropzone" data-section="discharge">
+          <div class="dz-head">
+            <div class="dz-title">Evidence locker · Section 04 · The Discharge Letter</div>
+            <div class="dz-count"><b class="dz-n">0</b>/∞ FILES</div>
+          </div>
+          <div class="dz-body">
+            <div class="dz-empty">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+              <div class="em-t">DROP DISCHARGE DOCUMENTS HERE</div>
+              <div class="em-s">Spiteri letter · Sept 4 meeting notes · transfer logs · Maxwell Meighen intake</div>
+              <button class="dz-btn" data-upload="discharge">+ UPLOAD FILE</button>
+            </div>
+          </div>
+          <div class="dz-foot">
+            <span class="dz-hint">Accepted · PDF · PNG · JPG · DOCX · TXT · max 20MB</span>
+            <button class="dz-btn" data-upload="discharge">+ ADD FILE</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- SEC 05 -->
+      <section class="sec" id="smis" data-title="The Secret File">
+        <div class="sec-head">
+          <div class="snum">05</div>
+          <div class="stw">
+            <div class="slabel">The secret file</div>
+            <div class="stitle">The database that follows residents — invisible to them, used against them.</div>
+            <div class="sec-meta">
+              <span class="rtime"><span class="tdot"></span>5 min read</span>
+              <button class="sec-bookmark" data-sec="smis"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>BOOKMARK</button>
+            </div>
+          </div>
+        </div>
+
+        <p class="ap">Every person in Toronto's emergency shelter system has a file in SMIS — the Shelter Management Information System. It follows them from facility to facility. Case notes, incident reports, service plans, mental health characterizations — all of it stored, searchable, accessible by staff at any shelter. The resident is not shown what is written. They are not given copies in real time. They cannot see how they are characterized while those characterizations shape decisions about their housing.</p>
+
+        <div class="co blue">
+          <div class="co-h">◆ WHAT IS SMIS?</div>
+          <p><strong>SMIS — Shelter Management Information System</strong> is the City of Toronto's central database for its emergency shelter network — the largest municipal shelter system in Canada. Every intake record, case note, incident report, and service plan for every shelter resident is stored here. Staff at any City-funded shelter can access a resident's full record. The resident sees nothing unless they file a formal MFIPPA (freedom of information) request. Khan's 454 pages came through this process. An IPC audit complaint is now asking whether this violates Ontario privacy law for all shelter residents.</p>
+        </div>
+
+        <p class="ap">Khan's SMIS file shows a progression the claim calls "upstream record propagation." Before he arrived at Fort York, his file already contained a notation entered at a previous Homes First shelter recording he had ADHD and PTSD. Khan had never disclosed either. He denied both. The source assessment form was not attached. The notation was there anyway — shaping how Fort York staff read him before he arrived.</p>
+        <p class="ap">At Travellers Hostel in July 2025, his intake form recorded: Mental health concerns — No. Diagnosis — No. Four months later, his ISP asserted a "mental health condition" that "has caused some limitations which disallows him from actively engaging in a housing search." No assessment occurred between those entries. No diagnosis was made. No clinical event is documented in 454 pages. His legal name is spelled wrong on the same document.</p>
+
+        <div class="exhibit">
+          <div class="ex-head">
+            <span class="elabel">Contradiction in City Records · Travellers Hostel 2025</span>
+            <span class="ex-stamp">EVIDENCE C</span>
+          </div>
+          <div class="ex-body">
+            <div class="etext">Intake form (July 2025): "Mental health concerns: No. Diagnosis: No."<br>ISP dated November 28, 2025: "Clients mental health condition has caused some limitations which disallows him from actively engaging in a housing search."<br>Time between entries: approximately four months. Clinical assessments in that period: zero. Diagnoses made: zero.</div>
+            <div class="esrc">CITY-DISCLOSED · AP-2026-00032 · PAGES 215–216 AND RELATED SMIS CASE NOTES</div>
+          </div>
+        </div>
+
+        <p class="ap">A City-disclosed employment invoice from March 2024 documents Khan working as a Business Instructor at $28/hour. A SMIS case note written six months later asserts he "has not made any effort to secure employment." The City's own disclosure contradicts the City's own notes.</p>
+        <p class="ap">On December 18, 2025 — the same day Khan filed a formal MFIPPA records request — a SMIS note appeared containing discharge-adjacent language absent from his own contemporaneous recap email sent hours earlier. The claim identifies six convergence points where adverse action followed protected activity within 24 to 72 hours — each timestamped in the City's own records.</p>
+
+        <div class="dropzone" data-section="smis">
+          <div class="dz-head">
+            <div class="dz-title">Evidence locker · Section 05 · The Secret File</div>
+            <div class="dz-count"><b class="dz-n">0</b>/∞ FILES</div>
+          </div>
+          <div class="dz-body">
+            <div class="dz-empty">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+              <div class="em-t">DROP SMIS RECORDS + ISPs</div>
+              <div class="em-s">MFIPPA disclosure · intake forms · ISP revisions · case notes</div>
+              <button class="dz-btn" data-upload="smis">+ UPLOAD FILE</button>
+            </div>
+          </div>
+          <div class="dz-foot">
+            <span class="dz-hint">Accepted · PDF · PNG · JPG · DOCX · TXT · max 20MB</span>
+            <button class="dz-btn" data-upload="smis">+ ADD FILE</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- SEC 06 -->
+      <section class="sec" id="osap" data-title="OSAP Weaponized">
+        <div class="sec-head">
+          <div class="snum">06</div>
+          <div class="stw">
+            <div class="slabel">The OSAP question</div>
+            <div class="stitle">Provincial student aid used as a shelter discharge rationale. Twice. Two years apart.</div>
+            <div class="sec-meta">
+              <span class="rtime"><span class="tdot"></span>4 min read</span>
+              <button class="sec-bookmark" data-sec="osap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>BOOKMARK</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="feat y">
+          <div class="feat-label">The OSAP Thread · What every homeless student in Ontario needs to read</div>
+          <h3>Ontario's student financial aid is not housing. It does not provide accommodation. Receiving OSAP does not mean a person has somewhere safe to sleep. So why did the City of Toronto use it — twice — to discharge a homeless student from emergency shelter?</h3>
+          <p><strong>OSAP</strong> — the Ontario Student Assistance Program — is the provincial government's main financial aid for post-secondary students. It provides grants and loans. A person can receive OSAP while in a shelter. OSAP is income. It is not a roof.</p>
+          <div class="sub-q">▸ INSTANCE 1 · SEPTEMBER 4, 2024 · FORT YORK</div>
+          <p>Leianne Spiteri's discharge letter stated Khan had "elected to pursue full time education," would be receiving OSAP, and had "made himself ineligible for the program." No mention of his concussion. No mention of the July 3 assault. Government student aid treated as evidence he no longer needed emergency shelter.</p>
+          <div class="sub-q">▸ INSTANCE 2 · JANUARY 16, 2026 · TRAVELLERS HOSTEL</div>
+          <p>Janeen Alexander emailed: if post-secondary education was his "primary focus," he would "not be eligible for the homeless shelter program." Khan replied in writing the same day: <strong>"OSAP does not constitute housing, nor does it render a person ineligible for emergency shelter or shelter-based housing pathways."</strong> The same logic. A different year. A different shelter. A different manager.</p>
+          <div class="sub-q">▸ WHY DOES THIS MATTER BEYOND ONE PERSON?</div>
+          <p>There is no written policy in the Toronto Shelter Standards making OSAP receipt a ground of ineligibility for emergency shelter. If this is an unwritten operational assumption applied across the system, it affects every homeless student in Toronto who receives student financial aid. They would not learn about it until the discharge letter arrived. The IPC complaint asks whether this is systemic. The claim pleads the OSAP rationale as part of a discriminatory pattern based on receipt of public assistance and race.</p>
+        </div>
+
+        <div class="co yellow">
+          <div class="co-h">◆ WHAT IS OSAP?</div>
+          <p><strong>OSAP — Ontario Student Assistance Program</strong> is the Province of Ontario's main student financial aid program. It provides grants and loans to eligible students in post-secondary education based on financial need. OSAP is specifically designed to support people who would otherwise not be able to afford education — including people in unstable housing. Receiving OSAP while in a shelter is not only legal, it is the intended use case. Using OSAP receipt as a shelter ineligibility criterion would effectively punish homeless students for pursuing the educational pathway that government policy holds up as the route out of poverty.</p>
+        </div>
+
+        <div class="dropzone" data-section="osap">
+          <div class="dz-head">
+            <div class="dz-title">Evidence locker · Section 06 · OSAP Weaponized</div>
+            <div class="dz-count"><b class="dz-n">0</b>/∞ FILES</div>
+          </div>
+          <div class="dz-body">
+            <div class="dz-empty">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+              <div class="em-t">DROP OSAP + EDUCATION RECORDS</div>
+              <div class="em-s">Spiteri letter · Alexander email Jan 16 · Khan's reply · enrolment docs</div>
+              <button class="dz-btn" data-upload="osap">+ UPLOAD FILE</button>
+            </div>
+          </div>
+          <div class="dz-foot">
+            <span class="dz-hint">Accepted · PDF · PNG · JPG · DOCX · TXT · max 20MB</span>
+            <button class="dz-btn" data-upload="osap">+ ADD FILE</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- SEC 07 -->
+      <section class="sec" id="legal" data-title="Legal Conduct">
+        <div class="sec-head">
+          <div class="snum">07</div>
+          <div class="stw">
+            <div class="slabel">The "no notice" incident</div>
+            <div class="stitle">City Legal told the Tribunal "no notice" — 7 minutes after his own solicitor acknowledged the file.</div>
+            <div class="sec-meta">
+              <span class="rtime"><span class="tdot"></span>5 min read</span>
+              <button class="sec-bookmark" data-sec="legal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>BOOKMARK</button>
+            </div>
+          </div>
+        </div>
+
+        <p class="ap">On January 16, 2026, Khan filed an HRTO application and requested an interim remedy — an urgent temporary order to prevent his discharge. Interim remedies exist precisely for situations where irreversible harm, like being discharged into winter, could occur before a full hearing.</p>
+        <p class="ap">On January 26, 2026 at 11:49 a.m., Amy Tieu, solicitor at City Legal Services, emailed Khan acknowledging HRTO File 2026-65086-I by its full case number. At 11:56 a.m. the same morning — seven minutes later — Fred Fischer, Director of Litigation at City Legal Services, personally emailed the HRTO Registrar claiming the City had received "no notice" of the application.</p>
+
+        <div class="exhibit">
+          <div class="ex-head">
+            <span class="elabel">The Seven-Minute Sequence · Both Emails in City-Disclosed Record</span>
+            <span class="ex-stamp">EVIDENCE D</span>
+          </div>
+          <div class="ex-body">
+            <div class="etext">11:49 a.m., January 26, 2026: Amy Tieu (City Legal solicitor) emails Khan acknowledging HRTO File 2026-65086-I by name.<br>11:56 a.m., January 26, 2026: Fred Fischer (Director of Litigation, City Legal) emails HRTO Registrar claiming the City has no notice of the application.<br>January 27, 2026: Janeen Alexander emails discharge threat with January 30 deadline — copied to Fischer, Tieu, Ombudsman, and four others.</div>
+            <div class="esrc">CITY-DISCLOSED · MFIPPA AP-2026-00032 · PLEADED IN ¶¶ 154–157 OF STATEMENT OF CLAIM</div>
+          </div>
+        </div>
+
+        <p class="ap">Khan's discharge deadline was January 30. The windchill on January 30 reached −30°C. The interim remedy was still pending. Fischer's name appears on the January 27 discharge threat email, copied to seven recipients. The claim pleads his presence proves "director-level knowledge at the exact moment of the discharge threat" and that this sequence forms part of the factual basis for punitive damages.</p>
+
+        <div class="conv">
+          <div class="conv-hd">
+            <span>SIX DOCUMENTED CONVERGENCE POINTS</span>
+            <span class="counter">ALL TIMESTAMPED IN CITY'S OWN RECORDS</span>
+          </div>
+          <div class="ci">
+            <div class="ci-d">JUL 3<br>2024</div>
+            <div class="ci-b"><div class="ci-t">Assault → same-day interrogation of the victim</div><div class="ci-s">5am assault. Staff refuse 911. Khan returns concussed. Shipley summons him immediately. Threats recorded. Notes created without Khan's knowledge.</div></div>
+          </div>
+          <div class="ci">
+            <div class="ci-d">SEP 4–5<br>2024</div>
+            <div class="ci-b"><div class="ci-t">Misleading "1:30" meeting → 1:30am forced transfer</div><div class="ci-s">Am/pm left ambiguous. Discharge letter backdated Sep 3. Less than 24 hours later: 1:30am forced packing under discharge threat. City codes it "voluntary."</div></div>
+          </div>
+          <div class="ci">
+            <div class="ci-d">DEC 18<br>2025</div>
+            <div class="ci-b"><div class="ci-t">MFIPPA request → same-day SMIS fabrication</div><div class="ci-s">Records request filed 5:39pm. Same evening: SMIS note appears with discharge language absent from Khan's own contemporaneous recap email.</div></div>
+          </div>
+          <div class="ci">
+            <div class="ci-d">JAN 17–18<br>2026</div>
+            <div class="ci-b"><div class="ci-t">Anti-retaliation notice → food accommodation withdrawn next day</div><div class="ci-s">Notice served Jan 17. Jan 18: six-month food accommodation withdrawn with no notice, no explanation, no service-planning discussion.</div></div>
+          </div>
+          <div class="ci">
+            <div class="ci-d">JAN 26–27<br>2026</div>
+            <div class="ci-b"><div class="ci-t">"No notice" to Tribunal → discharge threat next day</div><div class="ci-s">Fischer emails Registrar at 11:56am. Tieu acknowledged file at 11:49am same morning. Next day: discharge threat copied to seven recipients including Fischer.</div></div>
+          </div>
+          <div class="ci">
+            <div class="ci-d">JAN 21+30<br>2026</div>
+            <div class="ci-b"><div class="ci-t">COHB closed → discharge into −30°C with no pathway</div><div class="ci-s">Jan 21: Alexander confirms COHB has "ended and is not accepting new applications." Nine days later: discharge at −30°C. No housing alternative identified.</div></div>
+          </div>
+        </div>
+
+        <div class="dropzone" data-section="legal">
+          <div class="dz-head">
+            <div class="dz-title">Evidence locker · Section 07 · Legal Conduct</div>
+            <div class="dz-count"><b class="dz-n">0</b>/∞ FILES</div>
+          </div>
+          <div class="dz-body">
+            <div class="dz-empty">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+              <div class="em-t">DROP LEGAL CORRESPONDENCE</div>
+              <div class="em-s">Tieu email 11:49 · Fischer email 11:56 · HRTO filings · Alexander threat email</div>
+              <button class="dz-btn" data-upload="legal">+ UPLOAD FILE</button>
+            </div>
+          </div>
+          <div class="dz-foot">
+            <span class="dz-hint">Accepted · PDF · PNG · JPG · DOCX · TXT · max 20MB</span>
+            <button class="dz-btn" data-upload="legal">+ ADD FILE</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- SEC 08 -->
+      <section class="sec" id="coldday" data-title="−30°C Discharge">
+        <div class="sec-head">
+          <div class="snum">08</div>
+          <div class="stw">
+            <div class="slabel">January 30, 2026</div>
+            <div class="stitle">−30°C. Four proceedings active. No housing pathway. The discharge went ahead.</div>
+            <div class="sec-meta">
+              <span class="rtime"><span class="tdot"></span>4 min read</span>
+              <button class="sec-bookmark" data-sec="coldday"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>BOOKMARK</button>
+            </div>
+          </div>
+        </div>
+
+        <p class="ap">On January 30, 2026 — with the windchill in Toronto at −30 degrees Celsius — Richard Brown, City supervisor at Travellers Hostel, issued a formal discharge notice against Mohammad Khan. The stated basis: non-compliance with mandatory in-person housing-focused case management. Khan had been engaging in writing. The City refused to accept written engagement. No accommodation was offered or explored. No less intrusive alternative was considered before the discharge was issued.</p>
+
+        <div class="co red">
+          <div class="co-h">⚠ WHAT WAS SIMULTANEOUSLY TRUE AT THE MOMENT OF DISCHARGE</div>
+          <p>Khan's HRTO application for an <strong>interim remedy to prevent this exact discharge</strong> was still pending before the Tribunal.</p>
+          <p>An active IPC complaint was under review questioning the City's SMIS data practices.</p>
+          <p>An Ombudsman Toronto file was open.</p>
+          <p>A civil action in Ontario Superior Court (CV-25-00754505-0000) was active.</p>
+          <p>The COHB — the <strong>only housing pathway the shelter system had been managing for Khan</strong> — had closed to new applicants <strong>nine days earlier</strong>.</p>
+          <p>No alternative housing had been identified.</p>
+          <p>The windchill outside was <strong>−30°C</strong>.</p>
+        </div>
+
+        <p class="ap">The claim pleads that Khan repeatedly clarified he was not refusing housing-focused engagement — he was requesting it proceed in writing while disputed records remained unresolved. Manager Janeen Alexander's response: "Your proposal to engage in case management in writing only is not acceptable." No accommodation was offered. The claim pleads this as a failure of the duty to accommodate under the Human Rights Code, as Charter-breaching conduct, and as part of the retaliatory pattern documented throughout the six convergence points.</p>
+
+        <div class="co teal">
+          <div class="co-h">◆ WHAT IS COHB · AND WHY DID ITS CLOSURE MATTER?</div>
+          <p>The <strong>Canada-Ontario Housing Benefit (COHB)</strong> is a portable rent subsidy funded jointly by federal and provincial governments. Access runs through shelter case management — you must be engaged with your shelter caseworker to receive a COHB referral. When Alexander confirmed on January 21 that COHB had "ended and is not accepting new applications," the only housing pathway the City had been managing for Khan closed. Nine days later, he was discharged with no alternative. The claim pleads this sequence as evidence that the discharge was not a housing outcome — it was a punishment for asserting procedural rights.</p>
+        </div>
+
+        <div class="dropzone" data-section="coldday">
+          <div class="dz-head">
+            <div class="dz-title">Evidence locker · Section 08 · Cold Day Discharge</div>
+            <div class="dz-count"><b class="dz-n">0</b>/∞ FILES</div>
+          </div>
+          <div class="dz-body">
+            <div class="dz-empty">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+              <div class="em-t">DROP COLD-DAY DISCHARGE EVIDENCE</div>
+              <div class="em-s">Jan 30 notice · weather record · COHB closure email · HRTO pending confirmation</div>
+              <button class="dz-btn" data-upload="coldday">+ UPLOAD FILE</button>
+            </div>
+          </div>
+          <div class="dz-foot">
+            <span class="dz-hint">Accepted · PDF · PNG · JPG · DOCX · TXT · max 20MB</span>
+            <button class="dz-btn" data-upload="coldday">+ ADD FILE</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- SEC 09 -->
+      <section class="sec" id="angles" data-title="For the Press">
+        <div class="sec-head">
+          <div class="snum">09</div>
+          <div class="stw">
+            <div class="slabel">For journalists and editors</div>
+            <div class="stitle">Six distinct story angles. All documented. All primary source.</div>
+            <div class="sec-meta">
+              <span class="rtime"><span class="tdot"></span>3 min read</span>
+              <button class="sec-bookmark" data-sec="angles"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>BOOKMARK</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="co yellow">
+          <div class="co-h">◆ THIS IS NOT ALLEGATIONS · THIS IS THE CITY'S OWN PAPERWORK</div>
+          <p>Every claim in this investigation is drawn from (a) documents the City of Toronto was legally compelled to produce under MFIPPA, (b) filed court documents in Ontario Superior Court, or (c) filed applications with the HRTO and IPC. Mohammad Khan is available for interview immediately. <strong>moh.khan@mail.utoronto.ca · 647-575-3903</strong></p>
+        </div>
+
+        <div class="co red"><div class="co-h">▸ ANGLE 01 · TORONTO STAR / GLOBE AND MAIL · THE OSAP POLICY STORY</div><p>Provincial student aid used as a shelter discharge criterion — twice, two years apart, two different City managers, no written policy basis. Affects every homeless student in Ontario. Queen's Park angle as much as City Hall.</p></div>
+        <div class="co blue"><div class="co-h">▸ ANGLE 02 · CBC TORONTO / TVO · THE SMIS INVESTIGATION</div><p>An invisible City database tracks thousands of shelter residents without meaningful transparency. Mental health labels applied with no diagnosis. The first IPC audit complaint of its kind — asking whether this violates Ontario privacy law for all shelter residents.</p></div>
+        <div class="co purple"><div class="co-h">▸ ANGLE 03 · GLOBE / LAW TIMES · THE LEGAL CONDUCT STORY</div><p>City Legal's Director of Litigation told the HRTO "no notice" seven minutes after his own solicitor acknowledged the file by case number. Pleaded as the basis for punitive damages. Director copied on the discharge threat the next day.</p></div>
+        <div class="co teal"><div class="co-h">▸ ANGLE 04 · THE WALRUS / CANADALAND · THE SYSTEMIC LONG-FORM</div><p>One man's SMIS file followed him across four shelters and three years — from an unsupported MH notation at Homes First to a fabricated "mental health condition" at Travellers. No journalist has ever audited what goes into SMIS and what it does to the people it tracks.</p></div>
+        <div class="co orange"><div class="co-h">▸ ANGLE 05 · CP24 / CTV · THE BROADCAST STORY</div><p>−30°C windchill. Human rights application pending. Four oversight bodies watching. City discharges a homeless UofT student into a polar vortex. Subject available on camera immediately.</p></div>
+        <div class="co red"><div class="co-h">▸ ANGLE 06 · ALL OUTLETS · THE RACIAL HARASSMENT STORY</div><p>A Black shelter resident was called the N-word and F-word repeatedly by other residents. He complained for months. Staff warned <em>him</em> about consequences. A City supervisor later acknowledged the racial targeting in writing — and redirected him to the disputed case management channel. No investigation. No incident report. No human rights referral.</p></div>
+
+        <div class="dropzone" data-section="angles">
+          <div class="dz-head">
+            <div class="dz-title">Evidence locker · Section 09 · Press Packet</div>
+            <div class="dz-count"><b class="dz-n">0</b>/∞ FILES</div>
+          </div>
+          <div class="dz-body">
+            <div class="dz-empty">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+              <div class="em-t">PRESS KIT UPLOADS</div>
+              <div class="em-s">bio · headshot · timeline graphic · consent letter · any doc you want to share</div>
+              <button class="dz-btn" data-upload="angles">+ UPLOAD FILE</button>
+            </div>
+          </div>
+          <div class="dz-foot">
+            <span class="dz-hint">Accepted · PDF · PNG · JPG · DOCX · TXT · max 20MB</span>
+            <button class="dz-btn" data-upload="angles">+ ADD FILE</button>
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- ============ SIDEBAR ============ -->
+    <aside class="sidebar">
+      <div class="cbox" id="contact">
+        <h3>INTERVIEW — AVAILABLE NOW</h3>
+        <div class="available">◉ Online · Ready to talk</div>
+        <p>Mohammad Khan is available on camera, by phone, or in writing. Full 454-page document record on request.</p>
+        <a href="mailto:moh.khan@mail.utoronto.ca">✉ moh.khan@mail.utoronto.ca</a>
+        <a href="tel:6475753903">☎ 647-575-3903</a>
+      </div>
+
+      <div class="sbc">
+        <div class="sbc-h" style="background:var(--ink)"><h3 style="color:var(--yellow)">BY THE NUMBERS</h3></div>
+        <div class="sbstats">
+          <div class="sbs"><div class="sbs-n">454</div><div class="sbs-l">MFIPPA pages</div></div>
+          <div class="sbs"><div class="sbs-n">189</div><div class="sbs-l">claim paragraphs</div></div>
+          <div class="sbs rd"><div class="sbs-n">5</div><div class="sbs-l">shelter facilities</div></div>
+          <div class="sbs"><div class="sbs-n">3 yr</div><div class="sbs-l">in shelter system</div></div>
+          <div class="sbs"><div class="sbs-n">2×</div><div class="sbs-l">OSAP as discharge</div></div>
+          <div class="sbs"><div class="sbs-n">7 min</div><div class="sbs-l">Fischer–Tieu gap</div></div>
+          <div class="sbs bl"><div class="sbs-n">−30°</div><div class="sbs-l">windchill</div></div>
+          <div class="sbs"><div class="sbs-n">0</div><div class="sbs-l">clinical basis</div></div>
+        </div>
+      </div>
+
+      <div class="sbc">
+        <div class="sbc-h" style="background:var(--red)"><h3 style="color:#fff">DOCUMENTED TIMELINE</h3></div>
+        <div class="sbc-b">
+          <div class="tli"><div class="tld">JUL–NOV<br>2023</div><div><div class="tlt">N-word, F-word — Lawrence Ave</div><div class="tls">Staff dismiss. Khan warned not to defend himself. CEO finally emailed.</div></div></div>
+          <div class="tli"><div class="tld">NOV 23<br>APR 24</div><div><div class="tlt">101 Placer — unsafe conditions</div><div class="tls">Drug use in room. Manager laughs. Khan blamed.</div></div></div>
+          <div class="tli"><div class="tld">JUL 3<br>2024</div><div><div class="tlt">Assaulted at 5am — Fort York</div><div class="tls">Staff refuse 911. Concussion. Interrogated same day.</div></div></div>
+          <div class="tli"><div class="tld">SEP 4<br>2024</div><div><div class="tlt">Backdated discharge letter</div><div class="tls">Dated Sep 3. OSAP cited. No mention of concussion or assault.</div></div></div>
+          <div class="tli"><div class="tld">SEP 5<br>1:30AM</div><div><div class="tlt">Forced 3am transfer</div><div class="tls">Bedbugs. "For troublemakers." Coded: voluntary.</div></div></div>
+          <div class="tli"><div class="tld">NOV 28<br>2025</div><div><div class="tlt">ISP invents diagnosis</div><div class="tls">"Mental health condition." Intake said: No.</div></div></div>
+          <div class="tli"><div class="tld">DEC 18<br>2025</div><div><div class="tlt">MFIPPA + SMIS same day</div><div class="tls">Records request filed. Same evening: note appears.</div></div></div>
+          <div class="tli"><div class="tld">JAN 16<br>2026</div><div><div class="tlt">HRTO filed — OSAP cited again</div><div class="tls">Alexander uses same logic. 16 months later.</div></div></div>
+          <div class="tli"><div class="tld">JAN 17–18<br>2026</div><div><div class="tlt">Anti-retaliation notice</div><div class="tls">Served. Next day: food accommodation withdrawn.</div></div></div>
+          <div class="tli"><div class="tld">JAN 21<br>2026</div><div><div class="tlt">COHB closed</div><div class="tls">Only housing pathway gone.</div></div></div>
+          <div class="tli"><div class="tld">JAN 26<br>2026</div><div><div class="tlt">"No notice" to HRTO</div><div class="tls">Fischer: 11:56am. Tieu: 11:49am.</div></div></div>
+          <div class="tli cold-i"><div class="tld">JAN 30<br>2026</div><div><div class="tlt">Discharged into −30°C</div><div class="tls">HRTO pending. 4 proceedings active.</div></div></div>
+        </div>
+      </div>
+
+      <div class="sbc">
+        <div class="sbc-h" style="background:var(--ink-2)"><h3 style="color:var(--yellow)">NAMED DEFENDANTS</h3></div>
+        <div class="sbc-b">
+          <div class="act"><div class="av">CT</div><div><div class="an">City of Toronto</div><div class="ar">Fort York + Travellers · Charter ss.7+15 · vicarious liability</div></div></div>
+          <div class="act"><div class="av">HF</div><div><div class="an">Homes First Society</div><div class="ar">Lawrence Ave + Placer Court · harassment ignored · record propagation</div></div></div>
+          <div class="act"><div class="av">SA</div><div><div class="an">Salvation Army</div><div class="ar">Maxwell Meighen Centre · negligence · unsafe conditions</div></div></div>
+          <div class="act"><div class="av">SS</div><div><div class="an">Sean Shipley</div><div class="ar">Supervisor, Fort York · misfeasance in public office</div></div></div>
+          <div class="act"><div class="av">LS</div><div><div class="an">Leianne Spiteri</div><div class="ar">Case worker, Fort York · backdated discharge · misfeasance</div></div></div>
+        </div>
+      </div>
+
+      <div class="sbc">
+        <div class="sbc-h" style="background:var(--blue)"><h3 style="color:#fff">ACTIVE PROCEEDINGS</h3></div>
+        <div class="sbc-b">
+          <div class="pi"><div class="pd"></div><div><strong>HRTO</strong> · File 2026-65086-I<br><span style="font-size:10.5px;color:var(--muted);font-family:'JetBrains Mono',monospace">Interim remedy sought</span></div></div>
+          <div class="pi"><div class="pd"></div><div><strong>Ontario Superior Court</strong> · CV-25-00754505-0000<br><span style="font-size:10.5px;color:var(--muted);font-family:'JetBrains Mono',monospace">Negligence · misfeasance · Charter</span></div></div>
+          <div class="pi"><div class="pd"></div><div><strong>IPC</strong> · SMIS Privacy Audit<br><span style="font-size:10.5px;color:var(--muted);font-family:'JetBrains Mono',monospace">System-wide audit requested</span></div></div>
+          <div class="pi"><div class="pd"></div><div><strong>Ombudsman Toronto</strong><br><span style="font-size:10.5px;color:var(--muted);font-family:'JetBrains Mono',monospace">Open file · Dec 17 2025</span></div></div>
+        </div>
+      </div>
+    </aside>
+
+  </div>
+</div>
+
+<!-- ================= FLOATER ================= -->
+<div class="floater">
+  <button class="fbtn" id="topBtn" title="Back to top">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18 15 12 9 6 15"/></svg>
+  </button>
+  <button class="fbtn" id="evidenceFloater" title="Your evidence locker">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18"/><path d="M8 2v4"/><path d="M16 2v4"/></svg>
+    <span class="badge" id="evidenceBadge" style="display:none">0</span>
+  </button>
+</div>
+
+<!-- ================= QUOTE SHARE POPUP ================= -->
+<div class="qshare" id="qshare">
+  <button id="copyQuote">⎘ COPY</button>
+  <span class="sep">·</span>
+  <button id="tweetQuote">↗ SHARE</button>
+</div>
+
+<!-- ================= TOAST ================= -->
+<div class="toast" id="toast">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+  <span id="toastMsg">Saved</span>
+</div>
+
+<!-- ================= MODAL ================= -->
+<div class="modal" id="modal">
+  <div class="modal-in">
+    <div class="modal-head">
+      <h3 id="modalTitle">GLOSSARY</h3>
+      <button class="modal-close" id="modalClose">✕ CLOSE</button>
+    </div>
+    <div class="modal-body" id="modalBody"></div>
+  </div>
+</div>
+
+<!-- hidden file input -->
+<input type="file" id="fileInput" multiple style="display:none" accept=".pdf,.png,.jpg,.jpeg,.gif,.doc,.docx,.txt,.eml,.msg,.heic,.webp">
+
+<!-- ================= FOOTER ================= -->
+<footer class="footer">
+  <div class="footer-in">
+    <div class="fp">THE KHAN<em>FILES</em></div>
+    <div class="fm">
+      Khan v. City of Toronto et al. · CV-25-00754505-0000 · HRTO 2026-65086-I · AP-2026-00032<br>
+      All facts sourced from City-disclosed MFIPPA records and Ontario court filings<br>
+      <a href="mailto:moh.khan@mail.utoronto.ca">moh.khan@mail.utoronto.ca</a> · <a href="tel:6475753903">647-575-3903</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ============ GLOBAL STATE ============
+const STORAGE_KEY = 'khanfiles_v1';
+const state = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{"bookmarks":[],"evidence":{},"read":[]}');
+const save = () => localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+
+// ============ PROGRESS BAR + SECTION INDICATOR ============
+const progressFill = document.getElementById('progressFill');
+const curSection = document.getElementById('curSection');
+const progPct = document.getElementById('progPct');
+const anchorLinks = document.querySelectorAll('.anchors a');
+const sections = Array.from(document.querySelectorAll('.sec, #intro'));
+
+function updateProgress() {
+  const h = document.documentElement;
+  const scrolled = h.scrollTop;
+  const max = h.scrollHeight - h.clientHeight;
+  const pct = Math.min(100, Math.max(0, (scrolled / max) * 100));
+  progressFill.style.width = pct + '%';
+  progPct.textContent = Math.round(pct) + '%';
+
+  // find active section — threshold adapts to mobile nav height
+  let active = sections[0];
+  const threshold = window.innerWidth <= 600 ? 110 : 180;
+  for (const s of sections) {
+    const r = s.getBoundingClientRect();
+    if (r.top <= threshold) active = s;
+  }
+  if (active) {
+    const title = active.getAttribute('data-title') || 'The Investigation';
+    curSection.textContent = title;
+    const id = active.id;
+    anchorLinks.forEach(a => a.classList.toggle('active', a.getAttribute('data-id') === id));
+    // scroll active anchor link into view in nav
+    const activeLink = document.querySelector(`.anchors a[data-id="${id}"]`);
+    if (activeLink) activeLink.scrollIntoView({block:'nearest',inline:'center'});
+  }
+}
+window.addEventListener('scroll', updateProgress, {passive:true});
+window.addEventListener('resize', updateProgress);
+updateProgress();
+
+// ============ SECTION READ TRACKING ============
+const readObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      const id = e.target.id;
+      if (id && !state.read.includes(id)) {
+        state.read.push(id);
+        save();
+      }
+      e.target.classList.add('read-seen');
+    }
+  });
+}, {threshold: 0.6});
+document.querySelectorAll('.sec').forEach(s => readObs.observe(s));
+
+// ============ BOOKMARKS ============
+document.querySelectorAll('.sec-bookmark').forEach(btn => {
+  const sec = btn.getAttribute('data-sec');
+  if (state.bookmarks.includes(sec)) btn.classList.add('on');
+  btn.addEventListener('click', () => {
+    if (state.bookmarks.includes(sec)) {
+      state.bookmarks = state.bookmarks.filter(s => s !== sec);
+      btn.classList.remove('on');
+      showToast('Bookmark removed');
+    } else {
+      state.bookmarks.push(sec);
+      btn.classList.add('on');
+      showToast('Section bookmarked');
+    }
+    save();
+  });
+});
+
+// ============ TOAST ============
+const toast = document.getElementById('toast');
+const toastMsg = document.getElementById('toastMsg');
+let toastTimer;
+function showToast(msg) {
+  toastMsg.textContent = msg;
+  toast.classList.add('on');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => toast.classList.remove('on'), 2400);
+}
+
+// ============ DROPZONES + FILE UPLOAD ============
+const dropzones = document.querySelectorAll('.dropzone');
+const fileInput = document.getElementById('fileInput');
+let currentSection = null;
+
+function renderEvidenceForSection(section) {
+  const dz = document.querySelector(`.dropzone[data-section="${section}"]`);
+  if (!dz) return;
+  const body = dz.querySelector('.dz-body');
+  const files = state.evidence[section] || [];
+  const countEl = dz.querySelector('.dz-n');
+  countEl.textContent = files.length;
+  if (files.length === 0) {
+    body.innerHTML = `<div class="dz-empty">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+      <div class="em-t">DROP DOCUMENTS HERE</div>
+      <div class="em-s">click or drag files into this box</div>
+      <button class="dz-btn" data-upload="${section}">+ UPLOAD FILE</button>
+    </div>`;
+    bindUploadBtns();
+    return;
+  }
+  body.innerHTML = '';
+  files.forEach((f, i) => {
+    const doc = document.createElement('div');
+    doc.className = 'doc';
+    const ext = (f.name.split('.').pop() || '').toUpperCase().slice(0,4);
+    const sizeK = (f.size / 1024).toFixed(1);
+    const sizeDisplay = f.size > 1048576 ? (f.size/1048576).toFixed(1)+' MB' : sizeK+' KB';
+    doc.innerHTML = `
+      <div class="doc-icon">${ext || 'DOC'}</div>
+      <div class="doc-info">
+        <div class="doc-name">${escapeHtml(f.name)}</div>
+        <div class="doc-meta">
+          <span>${sizeDisplay}</span>
+          <span>· ${f.time}</span>
+          <span class="verified">✓ LOGGED</span>
+        </div>
+      </div>
+      <button class="doc-x" data-rm="${section}:${i}">✕ REMOVE</button>
+    `;
+    body.appendChild(doc);
+  });
+  body.querySelectorAll('.doc-x').forEach(b => {
+    b.addEventListener('click', (e) => {
+      const [sec, idx] = b.getAttribute('data-rm').split(':');
+      state.evidence[sec].splice(parseInt(idx), 1);
+      save();
+      renderEvidenceForSection(sec);
+      updateEvidenceTotal();
+      showToast('Document removed from locker');
+    });
+  });
+}
+
+function updateEvidenceTotal() {
+  const total = Object.values(state.evidence).reduce((sum, arr) => sum + (arr?.length || 0), 0);
+  document.getElementById('evidenceCount').textContent = total;
+  const badge = document.getElementById('evidenceBadge');
+  if (total > 0) { badge.style.display = 'inline-block'; badge.textContent = total; }
+  else badge.style.display = 'none';
+}
+
+function addFiles(section, fileList) {
+  if (!state.evidence[section]) state.evidence[section] = [];
+  const now = new Date();
+  const timeStr = now.toLocaleDateString('en-CA', {month:'short', day:'numeric'}).toUpperCase() + ' · ' + now.toLocaleTimeString('en-GB', {hour:'2-digit', minute:'2-digit'});
+  Array.from(fileList).forEach(f => {
+    state.evidence[section].push({name: f.name, size: f.size, type: f.type, time: timeStr});
+  });
+  save();
+  renderEvidenceForSection(section);
+  updateEvidenceTotal();
+  showToast(`✓ ${fileList.length} file${fileList.length>1?'s':''} added to ${section} locker`);
+}
+
+function bindUploadBtns() {
+  document.querySelectorAll('[data-upload]').forEach(b => {
+    b.onclick = () => {
+      currentSection = b.getAttribute('data-upload');
+      fileInput.click();
+    };
+  });
+}
+bindUploadBtns();
+
+fileInput.addEventListener('change', () => {
+  if (currentSection && fileInput.files.length > 0) addFiles(currentSection, fileInput.files);
+  fileInput.value = '';
+});
+
+dropzones.forEach(dz => {
+  const section = dz.getAttribute('data-section');
+  ['dragenter','dragover'].forEach(evt => dz.addEventListener(evt, (e) => {
+    e.preventDefault(); e.stopPropagation(); dz.classList.add('drag');
+  }));
+  ['dragleave','drop'].forEach(evt => dz.addEventListener(evt, (e) => {
+    e.preventDefault(); e.stopPropagation();
+    if (evt === 'dragleave' && dz.contains(e.relatedTarget)) return;
+    dz.classList.remove('drag');
+  }));
+  dz.addEventListener('drop', (e) => {
+    if (e.dataTransfer.files.length) addFiles(section, e.dataTransfer.files);
+  });
+});
+
+// render initial state
+Object.keys(state.evidence).forEach(renderEvidenceForSection);
+updateEvidenceTotal();
+
+function escapeHtml(s){return s.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+
+// ============ UPLOAD ALL (hero) ============
+document.getElementById('uploadAllBtn').addEventListener('click', () => {
+  document.getElementById('journey').scrollIntoView({behavior:'smooth', block:'start'});
+  setTimeout(() => {
+    const firstDz = document.querySelector('.dropzone');
+    if (firstDz) {
+      firstDz.style.transition = 'box-shadow .4s';
+      firstDz.style.boxShadow = '0 0 0 4px var(--yellow)';
+      setTimeout(() => firstDz.style.boxShadow = '', 1400);
+    }
+  }, 600);
+});
+
+// ============ FLOATER ============
+document.getElementById('topBtn').addEventListener('click', () => window.scrollTo({top:0, behavior:'smooth'}));
+document.getElementById('evidenceFloater').addEventListener('click', showEvidenceModal);
+document.getElementById('evidenceBtn').addEventListener('click', showEvidenceModal);
+
+// ============ MODAL ============
+const modal = document.getElementById('modal');
+const modalTitle = document.getElementById('modalTitle');
+const modalBody = document.getElementById('modalBody');
+document.getElementById('modalClose').addEventListener('click', () => modal.classList.remove('on'));
+modal.addEventListener('click', (e) => { if (e.target === modal) modal.classList.remove('on'); });
+
+function showEvidenceModal() {
+  modalTitle.textContent = 'YOUR EVIDENCE LOCKER';
+  const entries = Object.entries(state.evidence).filter(([k,v])=>v&&v.length);
+  if (entries.length === 0) {
+    modalBody.innerHTML = `<h4>No documents uploaded yet</h4>
+      <p>Every section of this investigation has a live evidence locker. Drop source documents — SMIS pages, emails, letters, intake forms — into the relevant section as you read. They'll live here and persist across visits.</p>
+      <p style="font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--muted)">Documents stay in your browser (localStorage). Nothing is uploaded to a server.</p>`;
+  } else {
+    let html = `<p style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted);margin-bottom:16px">Documents stored locally in this browser. Nothing uploaded to any server.</p>`;
+    for (const [sec, files] of entries) {
+      html += `<h4 style="margin-top:20px;text-transform:uppercase;font-family:'Bebas Neue',sans-serif;letter-spacing:2px;font-size:15px;color:var(--red)">${sec} · ${files.length} file${files.length>1?'s':''}</h4>`;
+      files.forEach(f => {
+        html += `<p style="font-family:'JetBrains Mono',monospace;font-size:12px;margin-bottom:4px">✓ ${escapeHtml(f.name)} <span style="color:var(--muted)">— ${f.time}</span></p>`;
+      });
+    }
+    modalBody.innerHTML = html;
+  }
+  modal.classList.add('on');
+}
+
+document.getElementById('glossaryBtn').addEventListener('click', () => {
+  modalTitle.textContent = 'GLOSSARY · PLAIN LANGUAGE';
+  modalBody.innerHTML = `
+    <h4>SMIS — Shelter Management Information System</h4>
+    <p>City's central shelter database. Notes follow residents between shelters invisibly. Residents cannot see what's written in real time — they must file an MFIPPA request to see their own file.</p>
+    <h4>OSAP — Ontario Student Assistance Program</h4>
+    <p>Provincial student grants and loans. <strong>Not housing.</strong> Used twice in this file as a discharge rationale.</p>
+    <h4>MFIPPA</h4>
+    <p>Ontario's Municipal Freedom of Information and Protection of Privacy Act. Khan's 454 pages came through this process.</p>
+    <h4>HRTO — Human Rights Tribunal of Ontario</h4>
+    <p>Adjudicates Human Rights Code complaints. Khan's interim remedy was pending at the moment of his −30°C discharge.</p>
+    <h4>IPC — Information and Privacy Commissioner</h4>
+    <p>Provincial privacy watchdog. Can audit City institutions. Complaint filed on SMIS practices system-wide.</p>
+    <h4>ISP — Individualized Service Plan</h4>
+    <p>Housing plan for each resident. Controls referrals and benefits. Khan's asserted a mental health condition with no clinical basis.</p>
+    <h4>COHB — Canada-Ontario Housing Benefit</h4>
+    <p>Portable rent subsidy. Access through shelter case management. Closed 9 days before Khan's −30°C discharge.</p>
+    <h4>Interim remedy</h4>
+    <p>Urgent HRTO order to prevent irreversible harm while a case is heard. Pending at time of discharge.</p>
+    <h4>ROS — Restriction of Service</h4>
+    <p>Shelter sanction. The July 3 assault report recommended 30-day ROS against Khan — the victim.</p>
+    <h4>Misfeasance in public office</h4>
+    <p>Serious tort: knowing or reckless unlawful use of public authority causing harm. Pleaded against Shipley and Spiteri individually.</p>
+  `;
+  modal.classList.add('on');
+});
+
+document.getElementById('shareBtn').addEventListener('click', async () => {
+  const url = window.location.href;
+  const title = 'The Khan Files — Toronto Shelter System Exposed';
+  if (navigator.share) {
+    try { await navigator.share({title, url}); showToast('Shared'); } catch {}
+  } else {
+    try { await navigator.clipboard.writeText(url); showToast('Link copied to clipboard'); } catch { showToast('Share: ' + url); }
+  }
+});
+
+// ============ QUOTE SHARE ============
+const qshare = document.getElementById('qshare');
+let selectedText = '';
+const isMobile = () => window.innerWidth <= 768;
+document.addEventListener('mouseup', (e) => {
+  if (isMobile()) return;
+  const sel = window.getSelection();
+  const text = sel.toString().trim();
+  if (text.length > 20 && text.length < 400) {
+    selectedText = text;
+    const range = sel.getRangeAt(0);
+    const rect = range.getBoundingClientRect();
+    qshare.style.position = 'fixed';
+    qshare.style.top = Math.max(8, rect.top - 48) + 'px';
+    const leftPos = Math.min(rect.left, window.innerWidth - 200);
+    qshare.style.left = Math.max(8, leftPos) + 'px';
+    qshare.classList.add('on');
+  } else {
+    qshare.classList.remove('on');
+  }
+});
+
+document.getElementById('copyQuote').addEventListener('click', async () => {
+  try {
+    await navigator.clipboard.writeText(`"${selectedText}"\n\n— The Khan Files · ${window.location.href}`);
+    showToast('Quote copied');
+  } catch { showToast('Copy failed'); }
+  qshare.classList.remove('on');
+});
+document.getElementById('tweetQuote').addEventListener('click', () => {
+  const text = encodeURIComponent(`"${selectedText.slice(0,180)}..." — The Khan Files ${window.location.href}`);
+  window.open(`https://twitter.com/intent/tweet?text=${text}`, '_blank');
+  qshare.classList.remove('on');
+});
+
+// ============ JUMP SMOOTH / ANCHOR CLICK ============
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', function(e) {
+    const id = this.getAttribute('href').slice(1);
+    const el = document.getElementById(id);
+    if (!el) return;
+    e.preventDefault();
+    el.scrollIntoView({behavior:'smooth', block:'start'});
+  });
+});
+
+// ============ INITIAL STATE: mark read sections ============
+state.read.forEach(id => document.getElementById(id)?.classList.add('read'));
+
+// ============ KEYBOARD SHORTCUTS ============
+document.addEventListener('keydown', (e) => {
+  if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+  if (e.key === 'Escape') { modal.classList.remove('on'); qshare.classList.remove('on'); }
+  if (e.key === 'j' || e.key === 'J') {
+    const idx = sections.findIndex(s => s.getBoundingClientRect().top > 10);
+    if (idx >= 0 && idx < sections.length) sections[idx].scrollIntoView({behavior:'smooth'});
+  }
+  if (e.key === 'k' || e.key === 'K') {
+    const top = sections.map(s => s.getBoundingClientRect().top).filter(t => t < -50);
+    if (top.length) sections[top.length - 1].scrollIntoView({behavior:'smooth'});
+  }
+});
+</script>
+</body>
+</html>
